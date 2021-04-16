@@ -425,6 +425,7 @@ section {
   background-color: #149ddd;
 }
 
+
 .matlabicon{ 
   content:url('../img/matlab-icon.png');
   font-size: 2em;
@@ -439,18 +440,25 @@ section {
   width: 25px;
 }
 
-.officeicon{ 
-  content:url('../img/office-icon.png');
-  font-size: 2em;
-  height: 25px;
-  width: 25px;
+.citeicon{ 
+  content:url('../img/citation-icon.png');
+  font-size: 5em;
+  height: 50px;
+  width: auto;
 }
 
-.texicon{ 
-  content:url('../img/tex-icon.jpg');
-  font-size: 2em;
-  height: 20px;
-  width: 25px;
+.papericon{ 
+  content:url('../img/pub-icon-2.png');
+  font-size: 5em;
+  height: 50px;
+  width: auto;
+}
+
+.patenticon{ 
+  content:url('../img/patent-icon.png');
+  font-size: 5em;
+  height: 50px;
+  width: auto;
 }
 
 /*--------------------------------------------------------------
