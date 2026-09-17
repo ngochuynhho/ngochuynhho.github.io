@@ -29,6 +29,22 @@ jobs:
       - uses: actions/setup-python@v7
         with:
           python-version: '3.12'
+      - name: Check Scholar API key
+        env:
+          SERPAPI_KEY: ${{ secrets.SERPAPI_KEY }}
+        run: |
+          python - <<'PY'
+          import os, sys
+          if not os.environ.get('SERPAPI_KEY', '').strip():
+              message = ('Add a repository Actions secret named SERPAPI_KEY containing your SerpApi API key. '
+                         'Use Settings > Secrets and variables > Actions > Secrets > New repository secret. '
+                         'A GitHub login token or an Actions variable does not replace this secret.')
+              print('::error title=Missing Scholar API key::' + message)
+              with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as summary:
+                  summary.write('### Scholar setup required\n\n' + message + '\n\nNo website data was changed.\n')
+              sys.exit(1)
+          print('Scholar API secret is available. Its value is never displayed.')
+          PY
       - name: Back up public research data
         uses: actions/upload-artifact@v7
         with:

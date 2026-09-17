@@ -32,7 +32,27 @@
     });
     if (!response.ok) {
       if (response.status === 401) throw new Error("GitHub rejected this token. Check that it is valid and has not expired.");
-      if (response.status === 403) throw new Error("GitHub denied access. Check the token’s Contents and Actions permissions, or your GitHub rate limit.");
+      if (response.status === 403 || response.status === 429) {
+        let detail = {};
+        try {detail = await response.json();} catch { /* Headers still identify primary rate limits. */ }
+        const retry = Number(response.headers.get("retry-after"));
+        const limited = response.status === 429 || response.headers.get("x-ratelimit-remaining") === "0" ||
+          retry > 0 || /rate limit|abuse detection/i.test(String(detail.message || ""));
+        if (limited) {
+          const reset = Number(response.headers.get("x-ratelimit-reset"));
+          const wait = retry > 0 ? `Wait at least ${Math.ceil(retry)} seconds before trying again.` :
+            reset > Date.now() / 1000 ? `Try again after ${new Date(reset * 1000).toLocaleString()}.` :
+              "Wait at least one minute before trying again.";
+          throw new Error(`GitHub API rate limit reached. ${wait}`);
+        }
+        const action = path.endsWith("/dispatches") ? "start the Scholar scan" :
+          path.includes("/actions/") ? "read the Scholar scan status" :
+            path.includes("/contents/") ? options.method === "PUT" ? "save the publication catalog" : "read the research data" :
+              path === "/user" ? "verify your GitHub identity" : "access the website repository";
+        const accepted = response.headers.get("x-accepted-github-permissions") || "";
+        const required = /^[a-z_ =,;]+$/.test(accepted) ? ` GitHub requires: ${accepted.slice(0, 180)}.` : "";
+        throw new Error(`GitHub denied permission to ${action} (403).${required} Edit your fine-grained GitHub token: resource owner ${config.owner}, repository ${config.repo}, Contents: read and write, Actions: read and write. Save the token settings, then sign out and sign in again with the GitHub token.`);
+      }
       if (response.status === 404) throw new Error("GitHub could not find the repository, data, or workflow. Deploy these files and check the token’s repository selection.");
       if (response.status === 409 || response.status === 422) throw new Error("The repository changed or rejected the update. Refresh the scan and retry; your changes were not saved.");
       throw new Error(`GitHub request failed (${response.status}). Please try again.`);
@@ -95,7 +115,17 @@
         if (!run) {setStatus("Scan requested. Waiting for a GitHub Actions runner…"); continue;}
         showRunLink(run.html_url);
         if (run.status !== "completed") {setStatus("Scanning your Scholar profile and checking for new papers…"); continue;}
-        if (run.conclusion !== "success") throw new Error("The Scholar scan did not complete. Open the GitHub Actions log below and check SERPAPI_KEY, API quota, and repository workflow permissions. Your existing website data has been kept.");
+        if (run.conclusion !== "success") {
+          let missingKey = false;
+          try {
+            const jobs = await api(`${base()}/actions/runs/${run.id}/jobs?per_page=100`);
+            missingKey = jobs.jobs.some(job => job.steps?.some(step =>
+              step.name === "Check Scholar API key" && step.conclusion === "failure"));
+          } catch { /* Retain the general diagnostic if job details are unavailable. */ }
+          if (current !== session) return;
+          if (missingKey) throw new Error("Scholar setup required: SERPAPI_KEY is missing or empty. In your GitHub repository, open Settings → Secrets and variables → Actions → Secrets → New repository secret. Name it SERPAPI_KEY and use your SerpApi API key as the value, then scan again. Your GitHub login token is a separate credential. No website data was changed.");
+          throw new Error("The Scholar scan did not complete. Open the GitHub Actions log below and check SERPAPI_KEY, API quota, and repository workflow permissions. Your existing website data has been kept.");
+        }
         if (!await refreshData()) return;
         const count = pending(snapshot, catalog).length;
         setStatus(count ? `Scan complete: ${count} new ${count === 1 ? "publication is" : "publications are"} ready for review.` : "Scan complete. Your publication list is up to date.", "success");

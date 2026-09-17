@@ -109,6 +109,13 @@ class ScholarTests(unittest.TestCase):
         with patch.dict("os.environ", {}, clear=True), patch("sys.argv", ["sync_scholar.py"]), patch("sys.stderr", io.StringIO()):
             self.assertEqual(scholar.main(), 1)
 
+    def test_whitespace_secret_has_specific_setup_message(self):
+        output = io.StringIO()
+        with patch.dict("os.environ", {"SERPAPI_KEY": "  \n "}, clear=True), patch("sys.argv", ["sync_scholar.py"]), patch("sys.stderr", output):
+            self.assertEqual(scholar.main(), 1)
+        self.assertIn("Missing SERPAPI_KEY", output.getvalue())
+        self.assertIn("New repository secret", output.getvalue())
+
     def test_restore_takes_safety_backup(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)

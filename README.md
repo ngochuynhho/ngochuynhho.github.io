@@ -2,6 +2,8 @@
 
 A responsive portfolio for GitHub Pages, with research notes, a searchable bibliography, Google Scholar citation updates, and an owner workspace for reviewing new papers. The redesign preserves all 48 existing bibliography records and the complete supplied career history.
 
+Ngoc-Huynh Ho completed his UT Health Science Center at San Antonio postdoctoral appointment in May 2026 and began an Instructor appointment there in May 2026.
+
 ## Preview locally
 
 ```bash
@@ -29,6 +31,34 @@ The admin panel identifies its own scan by a unique workflow request ID. It read
 
 The public citation count initially retains **1,089**, the value supplied in the old website, and explicitly labels it as previously recorded. It becomes a dated Google Scholar count after the first successful scan. No current citation number was invented or claimed during the redesign.
 
+## Troubleshooting GitHub denied access
+
+The Admin login field requires your **GitHub personal access token**. Keep the SerpApi key in the repository’s `SERPAPI_KEY` secret.
+
+Open [GitHub fine-grained token settings](https://github.com/settings/personal-access-tokens), edit the token you use for Admin, and check:
+
+- **Resource owner:** `ngochuynhho`.
+- **Repository access:** include `ngochuynhho.github.io`.
+- **Repository permissions → Contents:** Read and write.
+- **Repository permissions → Actions:** Read and write.
+- The token is valid and has not expired or been revoked.
+
+Save the settings, sign out of Admin, and sign in again with that GitHub token. Workflow permissions in the repository’s Actions settings are separate from your login token’s permissions. Changing only workflow permissions will not grant the browser token access.
+
+The updated admin script distinguishes rate limits from permission denials, identifies the failed operation, and shows the required permissions when GitHub supplies them. If GitHub reports a rate limit, wait until the displayed retry time before scanning again. See [GitHub’s API troubleshooting guide](https://docs.github.com/en/rest/using-the-rest-api/troubleshooting-the-rest-api).
+
+## Troubleshooting the missing API key error
+
+If the Actions log says **“Set SERPAPI_KEY as a GitHub Actions secret”**, the sync process received no API key. This failure occurs before it requests Scholar data, so this particular error does not indicate an exhausted API quota.
+
+1. Open [the repository’s Actions secrets settings](https://github.com/ngochuynhho/ngochuynhho.github.io/settings/secrets/actions).
+2. Select **Secrets → New repository secret**. Enter **`SERPAPI_KEY`** as the name and your **SerpApi API key** as its value. Get the value from your SerpApi account dashboard.
+3. Use a **repository secret**, rather than an Actions variable or a secret confined to the `github-pages` environment. The Scholar job does not use that environment.
+4. Your **GitHub personal access token** signs you into the owner workspace; it is a different credential and cannot replace the SerpApi key.
+5. Push the updated workflow and admin files, then run **Scholar sync** again or click **Scan Scholar again** in Admin.
+
+The workflow now checks the secret in a dedicated **Check Scholar API key** step and provides setup instructions in the run summary. The admin panel identifies failure of that step and shows the specific missing-key message. Other scan failures retain a general diagnostic. Your key’s value is never displayed. See [GitHub’s secret configuration instructions](https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-secrets).
+
 ## Research content
 
 - `data/publications.json`: all bibliography records and ignored Scholar identities.
@@ -41,6 +71,8 @@ The five themes cover dementia and trustworthy AI; brain aging and vascular heal
 Publication type and theme suggested by a scan are heuristics and must be reviewed. Titles, Scholar IDs, and available DOIs prevent duplicate suggestions; ignored records stay ignored. Conferences, domestic publications, patents, the thesis, and the poster remain available under **All work**. Existing bibliographic metadata is preserved, with the malformed `110.1109/ACCESS.2019.2949125` DOI corrected.
 
 Each note links to its source papers. The SPAN research note’s quantitative findings are from the [2023 Scientific Reports article](https://www.nature.com/articles/s41598-023-37500-7), and the related longitudinal prediction work is linked to the [2022 Neural Networks paper](https://pubmed.ncbi.nlm.nih.gov/35364417/). Illustrations in `assets/img/research/` are original conceptual diagrams. Publisher figure servers did not provide usable image responses during development, so the site does not depend on unavailable images. If you replace a diagram with a paper figure, include its source and required license credit in `image_caption`.
+
+For better project artwork, [IMAGE_BRIEF.md](IMAGE_BRIEF.md) contains copy-ready ChatGPT prompts to find verified publication figures or generate original scientific editorial images, a distinct composition for each theme, all journal source links, and image integration instructions.
 
 The public page includes embedded bibliography and topic data as a fallback for direct file previews or network errors. When hosted, current JSON files take priority. If you want to refresh the fallback after a manual content edit, update its `initial-publications` or `initial-topics` JSON block in `index.html`; the hosted site does not require this.
 

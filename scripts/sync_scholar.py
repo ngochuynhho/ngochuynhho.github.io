@@ -191,9 +191,9 @@ def main() -> int:
     parser.add_argument("--data-dir", type=Path, default=Path("data"))
     parser.add_argument("--backup-dir", type=Path, default=Path(".backups/scholar"))
     args = parser.parse_args()
-    api_key = os.environ.get("SERPAPI_KEY", "")
+    api_key = os.environ.get("SERPAPI_KEY", "").strip()
     if not api_key:
-        print("Set SERPAPI_KEY as a GitHub Actions secret. No website data was changed.", file=sys.stderr)
+        print("Missing SERPAPI_KEY. Add your SerpApi API key under repository Settings > Secrets and variables > Actions > Secrets > New repository secret, named SERPAPI_KEY. A GitHub token or Actions variable is not a substitute. No website data was changed.", file=sys.stderr)
         return 1
     try:
         config = json.loads((args.data_dir / "site-config.json").read_text())
