@@ -2,7 +2,7 @@
   "schema_version": 1,
   "author_id": "dYRENHsAAAAJ",
   "profile_url": "https://scholar.google.com/citations?user=dYRENHsAAAAJ&hl=en",
-  "updated_at": "2026-09-17T03:36:30.187561+00:00",
+  "updated_at": "2026-09-17T15:32:03.613684+00:00",
   "citations": 1125,
   "h_index": 14,
   "i10_index": 16,
@@ -585,67 +585,6 @@
       "topic": "affective-ai"
     }
   ],
-  "pending": [
-    {
-      "title": "& Habes, M.(2025)",
-      "authors": "NH Ho, S Charisis, N Honnorat, SR Brandigampala, D Wang, ...",
-      "venue": "Advancing Fair and Explainable Machine Learning for Neuroimaging Dementia …, 2025",
-      "year": 2025,
-      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dYRENHsAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dYRENHsAAAAJ:_Qo2XoVZTnwC",
-      "doi": "",
-      "scholar_id": "dYRENHsAAAAJ:_Qo2XoVZTnwC",
-      "citations": 9,
-      "type": "other",
-      "topic": "other"
-    },
-    {
-      "title": "A transformer-based approach to video frame-level prediction in affective behaviour analysis in-the-wild",
-      "authors": "DK Nguyen, NH Ho, S Pant, HJ Yang",
-      "venue": "arXiv preprint arXiv:2303.09293, 2023",
-      "year": 2023,
-      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dYRENHsAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dYRENHsAAAAJ:ZeXyd9-uunAC",
-      "doi": "",
-      "scholar_id": "dYRENHsAAAAJ:ZeXyd9-uunAC",
-      "citations": 23,
-      "type": "other",
-      "topic": "affective-ai"
-    },
-    {
-      "title": "Fine-tuning wav2vec for vocal-burst emotion recognition",
-      "authors": "DK Nguyen, S Pant, NH Ho, GS Lee, SH Kim, HJ Yang",
-      "venue": "arXiv preprint arXiv:2210.00263, 2022",
-      "year": 2022,
-      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dYRENHsAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dYRENHsAAAAJ:dhFuZR0502QC",
-      "doi": "",
-      "scholar_id": "dYRENHsAAAAJ:dhFuZR0502QC",
-      "citations": 6,
-      "type": "other",
-      "topic": "affective-ai"
-    },
-    {
-      "title": "Non-white matter tissue extraction and deep convolutional neural network for Alzheimer’s disease detection: TD Vu et al.",
-      "authors": "TD Vu, NH Ho, HJ Yang, J Kim, HC Song",
-      "venue": "Soft Computing 22 (20), 6825-6833, 2018",
-      "year": 2018,
-      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dYRENHsAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dYRENHsAAAAJ:UeHWp8X0CEIC",
-      "doi": "",
-      "scholar_id": "dYRENHsAAAAJ:UeHWp8X0CEIC",
-      "citations": 85,
-      "type": "journal",
-      "topic": "dementia"
-    },
-    {
-      "title": "Deep Graph-Recurrent Model for Emotion Recognition in Conversation Using Fully Connected Directed Acyclic",
-      "authors": "AQ Duong, H Yang, NH Ho, GS Lee, SH Kim, S Pant",
-      "venue": "Available at SSRN 4203415, 0",
-      "year": null,
-      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dYRENHsAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dYRENHsAAAAJ:mVmsd5A6BfQC",
-      "doi": "",
-      "scholar_id": "dYRENHsAAAAJ:mVmsd5A6BfQC",
-      "citations": null,
-      "type": "other",
-      "topic": "affective-ai"
-    }
-  ],
+  "pending": [],
   "status": "ok"
 }
