@@ -92,10 +92,10 @@ let launchedBrowser, localServer;
     authHeaders.push(request.headers().authorization);
     const fulfill = data => route.fulfill({status:200, contentType:"application/json", body:JSON.stringify(data)});
     if (denied === "dispatch" && url.pathname.endsWith("/dispatches")) return route.fulfill({status:403,
-      contentType:"application/json", headers:{"x-accepted-github-permissions":"actions=write"},
+      contentType:"application/json", headers:{"x-accepted-github-permissions":"actions=write", "access-control-expose-headers":"x-accepted-github-permissions"},
       body:JSON.stringify({message:"Resource not accessible by personal access token"})});
     if (denied === "rate" && url.pathname === "/user") return route.fulfill({status:403,
-      contentType:"application/json", headers:{"x-ratelimit-remaining":"0", "retry-after":"60"},
+      contentType:"application/json", headers:{"x-ratelimit-remaining":"0", "retry-after":"60", "access-control-expose-headers":"x-ratelimit-remaining,retry-after"},
       body:JSON.stringify({message:"API rate limit exceeded"})});
     if (url.pathname === "/user") return fulfill({login:owner});
     if (url.pathname === "/repos/ngochuynhho/ngochuynhho.github.io") return fulfill({default_branch:"main", permissions:{push:true}});
