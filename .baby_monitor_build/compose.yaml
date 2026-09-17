@@ -1,0 +1,13 @@
+services:
+  little-days:
+    build: .
+    container_name: little-days
+    restart: unless-stopped
+    ports:
+      # Keep this loopback-only and publish it through an HTTPS reverse proxy.
+      - "127.0.0.1:8766:8766"
+    volumes:
+      - little-days-data:/data
+
+volumes:
+  little-days-data:

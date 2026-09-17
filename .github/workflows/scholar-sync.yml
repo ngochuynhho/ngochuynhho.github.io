@@ -1,0 +1,60 @@
+name: Scholar sync
+run-name: Scholar sync · ${{ inputs.request_id || github.event_name }}
+
+on:
+  schedule:
+    - cron: '17 11 * * *'
+  workflow_dispatch:
+    inputs:
+      request_id:
+        description: Request identifier from the owner workspace
+        required: false
+        default: manual
+
+permissions:
+  contents: write
+
+concurrency:
+  group: scholar-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - name: Back up public research data
+        uses: actions/upload-artifact@v7
+        with:
+          name: research-data-before-scan-${{ github.run_id }}
+          path: data/*.json
+          retention-days: 30
+      - name: Refresh Scholar citations and publication queue
+        env:
+          SERPAPI_KEY: ${{ secrets.SERPAPI_KEY }}
+        run: python scripts/sync_scholar.py
+      - name: Save the validated snapshot
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/scholar.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Refresh Google Scholar research data"
+            git pull --rebase
+            git push
+          fi
+      - name: Scan result
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          data = json.loads(Path('data/scholar.json').read_text())
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as summary:
+              summary.write(f"Scholar refreshed: **{data['citations']} citations**; **{len(data['pending'])} publications** ready for owner review.\n")
+          PY

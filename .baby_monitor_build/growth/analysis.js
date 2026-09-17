@@ -1,0 +1,43 @@
+(function(root){
+  'use strict';
+  /** @type {any} */ const G=root.LittleDaysGrowth=root.LittleDaysGrowth||{};
+  function birthTimestamp(baby){if(baby?.birthAt&&!Number.isNaN(+new Date(baby.birthAt)))return new Date(baby.birthAt).toISOString();return baby?.date&&baby?.time?new Date(`${baby.date}T${baby.time}:00`).toISOString():null}
+  function normalizeState(state){
+    state=state&&typeof state==='object'?state:{baby:{},entries:[]};state.baby=state.baby||{};state.entries=Array.isArray(state.entries)?state.entries:[];
+    const b=state.baby;b.gestationalDays=Number(b.gestationalDays||0);b.weightDisplayUnit=b.weightDisplayUnit||'kg';b.lengthDisplayUnit=b.lengthDisplayUnit||'cm';if(!b.birthAt&&b.date&&b.time)b.birthAt=new Date(`${b.date}T${b.time}:00`).toISOString();
+    if(b.birthWeight&&!b.birthWeightKg)b.birthWeightKg=G.units.weightKg(b.birthWeight,b.birthWeightUnit||'kg');
+    if(b.birthLength&&!b.birthLengthCm)b.birthLengthCm=G.units.lengthCm(b.birthLength,b.birthLengthUnit||'cm');
+    if(b.birthHead&&!b.birthHeadCm)b.birthHeadCm=G.units.lengthCm(b.birthHead,b.birthHeadUnit||'cm');
+    state.entries.forEach(e=>{if(e.type==='growth'){if(!Number.isFinite(Number(e.weightKg))&&e.weight)e.weightKg=G.units.weightKg(e.weight,e.weightUnit||'lb');if(!Number.isFinite(Number(e.lengthCm))&&e.height)e.lengthCm=G.units.lengthCm(e.height,e.heightUnit||'in');if(!Number.isFinite(Number(e.headCm))&&e.headCircumference)e.headCm=G.units.lengthCm(e.headCircumference,e.headUnit||'cm');if(e.includeInGrowthAnalysis===undefined)e.includeInGrowthAnalysis=true}});
+    return state
+  }
+  function measurements(state){
+    const b=state.baby||{},birthAt=birthTimestamp(b),all={weight:[],length:[],head:[]};if(!birthAt)return all;
+    if(Number(b.birthWeightKg)>0)all.weight.push({id:'birth-weight',entryId:null,kind:'weight',kg:Number(b.birthWeightKg),value:Number(b.birthWeightKg),at:birthAt,isBirth:true,include:true});
+    if(Number(b.birthLengthCm)>0)all.length.push({id:'birth-length',entryId:null,kind:'length',cm:Number(b.birthLengthCm),value:Number(b.birthLengthCm),at:birthAt,isBirth:true,include:true});
+    if(Number(b.birthHeadCm)>0)all.head.push({id:'birth-head',entryId:null,kind:'head',cm:Number(b.birthHeadCm),value:Number(b.birthHeadCm),at:birthAt,isBirth:true,include:true});
+    state.entries.filter(e=>e.type==='growth').forEach(e=>{const include=e.includeInGrowthAnalysis!==false;if(Number(e.weightKg)>0)all.weight.push({id:`${e.id}-weight`,entryId:e.id,kind:'weight',kg:Number(e.weightKg),value:Number(e.weightKg),at:e.at,include,unitValid:!e.weightUnit||['kg','lb','g','oz'].includes(e.weightUnit)});if(Number(e.lengthCm)>0)all.length.push({id:`${e.id}-length`,entryId:e.id,kind:'length',cm:Number(e.lengthCm),value:Number(e.lengthCm),at:e.at,include,unitValid:!e.heightUnit||['cm','in'].includes(e.heightUnit)});if(Number(e.headCm)>0)all.head.push({id:`${e.id}-head`,entryId:e.id,kind:'head',cm:Number(e.headCm),value:Number(e.headCm),at:e.at,include,unitValid:!e.headUnit||['cm','in'].includes(e.headUnit)})});Object.values(all).forEach(list=>list.sort((a,b)=>+new Date(a.at)-+new Date(b.at)));return all
+  }
+  function withAge(list,birthAt){return list.map(m=>({...m,age:G.age.exact(birthAt,m.at)}))}
+  function whoPoints(metric,list,sex,birthAt,valueKey){return list.filter(m=>m.include&&m.age&&m.age.months>=0&&m.age.months<=24).map(m=>{const result=G.lms.calculate(metric,sex,m.age.months,m[valueKey]);return result?{...m,...result}:null}).filter(Boolean)}
+  function nearestLength(weight,lengths,maxDays=7){return lengths.filter(l=>l.include).map(l=>({l,diff:Math.abs(+new Date(l.at)-+new Date(weight.at))/86400000})).filter(x=>x.diff<=maxDays).sort((a,b)=>a.diff-b.diff)[0]?.l||null}
+  function analyze(inputState,now=Date.now()){
+    const state=normalizeState(inputState),baby=state.baby,birthAt=birthTimestamp(baby);if(!birthAt)return{ready:false,reason:'Add birth details to begin growth analysis.'};
+    const raw=measurements(state),m={weight:withAge(raw.weight,birthAt),length:withAge(raw.length,birthAt),head:withAge(raw.head,birthAt)},sex=baby.sex,gest=G.age.gestationalWeeks(baby.gestationalWeeks,baby.gestationalDays),preterm=gest!==null&&gest<37,percentilesAvailable=!!sex&&gest!==null&&!preterm;
+    const included={weight:m.weight.filter(x=>x.include),length:m.length.filter(x=>x.include),head:m.head.filter(x=>x.include)};
+    const wfa=percentilesAvailable?whoPoints('weightForAge',included.weight,sex,birthAt,'kg'):[],lfa=percentilesAvailable?whoPoints('lengthForAge',included.length,sex,birthAt,'cm'):[],hca=percentilesAvailable?whoPoints('headForAge',included.head,sex,birthAt,'cm'):[];
+    const wfl=percentilesAvailable?included.weight.map(w=>{const length=nearestLength(w,included.length);if(!length)return null;const result=G.lms.calculate('weightForLength',sex,length.cm,w.kg);return result?{...w,lengthCm:length.cm,lengthAt:length.at,...result}:null}).filter(Boolean):[];
+    const latestWeight=included.weight.at(-1)||null,latestLength=included.length.at(-1)||null,latestHead=included.head.at(-1)||null,velocity=G.velocity.weight(included.weight),lengthVelocity=G.velocity.length(included.length),birthRecovery=G.newbornWeight.analyze(baby.birthWeightKg,included.weight.filter(w=>!w.isBirth),birthAt,now),trajectory={weight:G.trajectory.analyze(wfa),weightForLength:G.trajectory.analyze(wfl),length:G.trajectory.analyze(lfa)},currentDay=Math.max(1,G.age.exact(birthAt,now).babyDay),careByDay={current:G.careContext.babyDay(state.entries,birthAt,currentDay),previous:currentDay>1?G.careContext.babyDay(state.entries,birthAt,currentDay-1):null,days3:G.careContext.rollingBabyDays(state.entries,birthAt,currentDay,3),days7:G.careContext.rollingBabyDays(state.entries,birthAt,currentDay,7)},care7=careByDay.days7,qualityInput=[...m.weight,...m.length,...m.head].filter(x=>!x.isBirth),quality=G.quality.check(qualityInput,birthAt);
+    [[wfa,6,'weight'],[lfa,6,'length'],[wfl,5,'weight'],[hca,5,'head']].forEach(([points,limit,kind])=>points.filter(p=>Math.abs(p.z)>limit).forEach(p=>quality.push({id:p.id,kind,code:'who-biv',message:'This measurement produces a biologically implausible WHO z-score. Verify the value and unit.'})));
+    const latestWfa=wfa.at(-1)||null,latestLfa=lfa.at(-1)||null,latestWfl=wfl.at(-1)||null,latestHca=hca.at(-1)||null,signals=[];
+    if(birthRecovery?.overTenPercentLoss)signals.push({code:'birth_weight_loss_over_10',level:'review',message:"Weight loss is more than 10% of birth weight. The American Academy of Pediatrics recommends further evaluation. Contact your baby's pediatrician."});
+    if(birthRecovery?.notRegainedAround14)signals.push({code:'birth_weight_not_regained',level:'review',message:'Birth weight has not yet been regained. Consider discussing this growth pattern with your pediatrician.'});
+    const hasQualityIssue=id=>quality.some(q=>q.id===id);
+    if(latestWfl&&latestWfl.z<-1.65&&!hasQualityIssue(latestWfl.id))signals.push({code:'low_weight_for_length',level:'review',message:'The current weight-for-length pattern may be worth discussing with your pediatrician.'});
+    if(trajectory.weight.deltaZ!==null&&trajectory.weight.deltaZ<=-1&&!hasQualityIssue(trajectory.weight.latest?.id))signals.push({code:'wfa_decline',level:'review',message:'Weight-for-age has declined by about 1 z-score or more. Consider reviewing the pattern with your pediatrician.'});
+    if(trajectory.weightForLength.deltaZ!==null&&trajectory.weightForLength.deltaZ<=-1&&!hasQualityIssue(trajectory.weightForLength.latest?.id))signals.push({code:'wfl_decline',level:'review',message:'Weight-for-length has declined by about 1 z-score or more. Consider reviewing the pattern with your pediatrician.'});
+    const latestContext=latestWeight?{hours24:G.careContext.window(state.entries,latestWeight.at,24),hours72:G.careContext.window(state.entries,latestWeight.at,72)}:null;
+    return{ready:true,birthAt,sex,gestationalAgeWeeks:gest,preterm,correctedAge:latestWeight&&gest!==null?G.age.corrected(birthAt,latestWeight.at,baby.gestationalWeeks,baby.gestationalDays):null,percentilesAvailable,percentileReason:!sex?'Add sex at birth to calculate WHO growth percentiles.':gest===null?'Add gestational age at birth to confirm which growth reference applies.':preterm?'WHO term-infant percentiles are hidden for preterm measurements because a validated preterm reference is not bundled.':null,measurements:m,included,wfa,lfa,wfl,hca,latestWeight,latestLength,latestHead,latestWfa,latestLfa,latestWfl,latestHca,velocity,lengthVelocity,birthRecovery,trajectory,careByDay,care7,latestContext,quality,signals}
+  }
+  G.analysis={normalizeState,birthTimestamp,measurements,analyze};
+})(typeof window!=='undefined'?window:globalThis);

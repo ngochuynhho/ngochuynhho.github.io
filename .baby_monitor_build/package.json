@@ -1,0 +1,18 @@
+{
+  "name": "little-days-baby-monitor",
+  "version": "4.0.0",
+  "private": true,
+  "description": "Offline-first multi-baby care tracker with encrypted family sync",
+  "scripts": {
+    "test": "node tests/growth.test.js && node tests/feeding-guidance.test.js && node tests/family.test.js && node tests/sync.test.js && node tests/ui-smoke.test.js && python3 -m unittest tests/test_server.py",
+    "lint": "eslint app.js family.js sync.js sw.js growth feedingGuidance tests",
+    "typecheck": "tsc -p jsconfig.json",
+    "build": "node tests/static-build.test.js",
+    "check": "npm run test && npm run lint && npm run typecheck && npm run build"
+  },
+  "devDependencies": {
+    "eslint": "9.22.0",
+    "jsdom": "26.0.0",
+    "typescript": "5.8.2"
+  }
+}

@@ -1,0 +1,12 @@
+(function(root){
+  'use strict';
+  /** @type {any} */ const G=root.LittleDaysGrowth=root.LittleDaysGrowth||{};
+  function summarize(entries,start,end){
+    const list=(entries||[]).filter(e=>{const at=new Date(e.at);return at>=start&&at<end});
+    const feeds=list.filter(e=>e.type==='feed').sort((a,b)=>+new Date(a.at)-+new Date(b.at)),breast=feeds.filter(e=>e.method==='breast'),bottles=feeds.filter(e=>e.method==='bottle'),wet=list.filter(e=>e.type==='wet').length,soiled=list.filter(e=>e.type==='soiled').length,days=(+end-+start)/86400000,breastMinutes=breast.reduce((n,e)=>n+(Number(e.duration)||0),0),bottleMl=bottles.reduce((n,e)=>n+(Number(e.amount)||0),0),intervals=feeds.slice(1).map((f,i)=>(+new Date(f.at)-+new Date(feeds[i].at))/3600000);
+    return{days,feeds:feeds.length,feedsPerDay:feeds.length/days,breastSessions:breast.length,breastMinutes,breastMinutesPerDay:breastMinutes/days,averageBreastMinutes:breast.length?breastMinutes/breast.length:0,left:breast.filter(e=>e.side==='Left').length,right:breast.filter(e=>e.side==='Right').length,both:breast.filter(e=>e.side==='Both').length,bottleFeeds:bottles.length,bottleMl,bottleMlPerDay:bottleMl/days,averageBottleMl:bottles.length?bottleMl/bottles.length:0,bottleByType:bottles.reduce((a,e)=>{const key=e.milkType||'Not recorded';a[key]=(a[key]||0)+(Number(e.amount)||0);return a},{}),averageHoursBetweenFeeds:intervals.length?intervals.reduce((a,b)=>a+b,0)/intervals.length:null,wet,wetPerDay:wet/days,soiled,soiledPerDay:soiled/days,outputEvents:wet+soiled,outputEventsPerDay:(wet+soiled)/days}
+  }
+  function babyDay(entries,birthTimestamp,day){const birth=new Date(birthTimestamp),start=new Date(+birth+(day-1)*86400000),end=new Date(+start+86400000);return summarize(entries,start,end)}
+  function rollingBabyDays(entries,birthTimestamp,endDay,count){const birth=new Date(birthTimestamp),days=Math.max(1,Math.min(count,endDay)),startDay=Math.max(1,endDay-days+1),start=new Date(+birth+(startDay-1)*86400000),end=new Date(+birth+endDay*86400000);return summarize(entries,start,end)}
+  G.careContext={summarize,babyDay,rollingBabyDays,window(entries,endTimestamp,hours){const end=new Date(endTimestamp),start=new Date(+end-hours*3600000);return summarize(entries,start,end)},recent(entries,now=Date.now(),days=7){const end=new Date(now),start=new Date(+end-days*86400000);return summarize(entries,start,end)}};
+})(typeof window!=='undefined'?window:globalThis);

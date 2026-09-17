@@ -1,0 +1,53 @@
+name: Deploy portfolio
+
+on:
+  push:
+    paths:
+      - 'index.html'
+      - 'admin.html'
+      - 'assets/**'
+      - 'cv/**'
+      - 'data/**'
+      - 'robots.txt'
+      - 'sitemap.xml'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+  # GitHub's workflow token cannot trigger push workflows; deploy after a scan.
+  workflow_run:
+    workflows: ['Scholar sync']
+    types: [completed]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: >-
+      (github.event_name != 'push' || github.ref_name == github.event.repository.default_branch) &&
+      (github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success')
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+      - uses: actions/configure-pages@v5
+      - name: Stage the public website
+        run: |
+          mkdir -p _site
+          cp index.html admin.html robots.txt sitemap.xml .nojekyll _site/
+          cp -R assets data cv _site/
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

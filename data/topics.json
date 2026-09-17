@@ -1,0 +1,259 @@
+[
+  {
+    "id": "dementia",
+    "number": "01",
+    "label": "AI FOR HEALTHCARE",
+    "title": "Understanding dementia. Predicting what comes next.",
+    "short_title": "Dementia & trustworthy AI",
+    "summary": "Multimodal learning for earlier detection, disease progression, and fairer dementia classification.",
+    "tags": [
+      "Neuroimaging",
+      "Multimodal learning",
+      "Fairness"
+    ],
+    "problem": "A dementia prediction model must answer more than a diagnostic question. Can it distinguish stages of cognitive impairment, estimate when progression may occur, and work across populations? Clinical assessments and brain images provide complementary evidence, but missing observations and population differences make learning difficult.",
+    "approach": "This research brings together neuroimaging and clinical information through attention, multitask learning, and longitudinal models. The 2023 Scientific Reports study introduced stacked polynomial attention (SPAN) and adaptive exponential decay to jointly learn MCI stage and time to Alzheimer’s conversion. Related journal work explores bidirectional prediction with imputation, modality uncertainty, and fair and explainable dementia classification.",
+    "findings": [
+      {
+        "title": "Learning diagnosis and progression together",
+        "text": "On the ADNI cohort, the 2023 model reported a c-index of 0.85 for conversion-time prediction and 83.19% accuracy for MCI-stage classification. These are study results for that cohort."
+      },
+      {
+        "title": "Making incomplete histories useful",
+        "text": "The 2022 Neural Networks paper combines forward-to-backward bidirectional learning with integrative imputation for longitudinal progression prediction."
+      },
+      {
+        "title": "Extending the question to fairness",
+        "text": "The 2026 Nature Communications paper examines fair and explainable neuroimaging dementia pattern classification across racial and ethnic populations."
+      }
+    ],
+    "perspective": "The common thread is to learn from complementary patient information while examining how reliable a prediction is, and for whom it works.",
+    "videos": [
+      {
+        "title": "Alzheimer’s disease detection demo",
+        "url": "https://www.youtube.com/watch?v=5XkSoCVYRNA"
+      }
+    ],
+    "image": "assets/img/research/dementia.svg",
+    "image_caption": "Conceptual overview of this research theme; original illustration, not an experimental result.",
+    "sources": [
+      {
+        "title": "Advancing fair and explainable machine learning for neuroimaging dementia pattern classification in multi-racial and multi-ethnic populations",
+        "url": "https://www.nature.com/articles/s41467-026-74515-w"
+      },
+      {
+        "title": "Longitudinal Alzheimer's Disease Progression Prediction with Modality Uncertainty and Optimization of Information Flow",
+        "url": "https://ieeexplore.ieee.org/document/10702601"
+      },
+      {
+        "title": "Multimodal multitask learning for predicting MCI to AD conversion using stacked polynomial attention network and adaptive exponential decay",
+        "url": "https://www.nature.com/articles/s41598-023-37500-7"
+      },
+      {
+        "title": "Predicting progression of Alzheimer's disease using forward-to-backward bi-directional network with integrative imputation",
+        "url": "https://www.sciencedirect.com/science/article/pii/S0893608022000946"
+      },
+      {
+        "title": "Non-white matter tissue extraction and deep convolutional neural network for Alzheimer’s disease detection",
+        "url": "https://link.springer.com/article/10.1007/s00500-018-3421-5"
+      }
+    ]
+  },
+  {
+    "id": "brain-health",
+    "number": "02",
+    "label": "BRAIN HEALTH",
+    "title": "Brain aging, beyond a single biomarker.",
+    "short_title": "Brain aging & vascular health",
+    "summary": "Connecting brain networks, vascular burden, and population studies to understand brain health.",
+    "tags": [
+      "Connectomics",
+      "Brain aging",
+      "Population studies"
+    ],
+    "problem": "Brain health reflects multiple interacting processes. Functional connectivity, structural brain changes, and vascular disease each describe a different aspect of aging. A useful research question is how these measurements can be studied together without reducing every change to one diagnosis.",
+    "approach": "This theme groups collaborative journal work on machine learning biomarkers derived from a large functional-connectome collection and on brain small vessel disease in the SPRINT randomized clinical trial. It connects computational biomarker development with cohort-based clinical analysis.",
+    "findings": [
+      {
+        "title": "Studying aging through functional networks",
+        "text": "The 2026 Brain Research Bulletin paper derives machine learning brain-aging biomarkers from a collection of forty thousand functional connectomes."
+      },
+      {
+        "title": "Examining vascular burden in a trial setting",
+        "text": "The 2026 eClinicalMedicine paper examines overall brain small vessel disease burden in a post-hoc analysis of intensive versus standard blood pressure control in SPRINT."
+      }
+    ],
+    "perspective": "These papers address complementary measurements of brain health. The source articles provide the study designs, effect estimates, and limitations for each investigation.",
+    "videos": [],
+    "image": "assets/img/research/brain-health.svg",
+    "image_caption": "Conceptual overview of this research theme; original illustration, not an experimental result.",
+    "sources": [
+      {
+        "title": "Intensive versus standard blood pressure control and overall brain small vessel disease burden: a post-hoc analysis of the SPRINT randomized clinical trial",
+        "url": "https://www.sciencedirect.com/science/article/pii/S2589537026003962"
+      },
+      {
+        "title": "Derivation of machine learning brain aging biomarkers for a set of forty thousand functional connectomes",
+        "url": "https://www.sciencedirect.com/science/article/pii/S0361923026001012"
+      }
+    ]
+  },
+  {
+    "id": "affective-ai",
+    "number": "03",
+    "label": "HUMAN-CENTERED AI",
+    "title": "Understanding emotion in context.",
+    "short_title": "Multimodal emotion & social AI",
+    "summary": "Learning from voices, faces, language, and social relationships to understand affective behavior.",
+    "tags": [
+      "Graph learning",
+      "Audio + visual + text",
+      "Social context"
+    ],
+    "problem": "Emotion is expressed across channels, and the meaning of a cue can change with context. A voice, a facial expression, and a spoken sentence may reinforce or contradict one another. Conversations and group interactions add dependencies between people and over time.",
+    "approach": "The journal papers explore multi-head attention for speech emotion, deep graph fusion for evoked expressions, cross-modality interactions for emotion reasoning, and relation-aware graph-recurrent learning in conversations. The GCE dataset extends the work to group cohesion and emotion analysis.",
+    "findings": [
+      {
+        "title": "Moving from separate signals to interactions",
+        "text": "Attention and graph-based models explicitly learn relationships between modalities and contextual representations, rather than treating each channel as an isolated prediction task."
+      },
+      {
+        "title": "Representing conversational context",
+        "text": "The residual relation-aware model studies emotion recognition in conversation through graph-recurrent learning."
+      },
+      {
+        "title": "Studying people together",
+        "text": "The GCE journal publication contributes an audio-visual dataset for investigating group cohesion and emotion."
+      }
+    ],
+    "perspective": "Across these studies, the central contribution is the representation of complementary signals and their relationships. Each paper reports evaluations on its own datasets and tasks.",
+    "videos": [],
+    "image": "assets/img/research/affective-ai.svg",
+    "image_caption": "Conceptual overview of this research theme; original illustration, not an experimental result.",
+    "sources": [
+      {
+        "title": "GCE: An Audio-Visual Dataset for Group Cohesion and Emotion Analysis",
+        "url": "https://www.mdpi.com/2076-3417/14/15/6742"
+      },
+      {
+        "title": "Residual Relation-Aware Attention Deep Graph-Recurrent Model for Emotion Recognition in Conversation",
+        "url": "https://ieeexplore.ieee.org/document/10378668"
+      },
+      {
+        "title": "Cross-modality learning by exploring modality interactions for emotion reasoning",
+        "url": "https://ieeexplore.ieee.org/abstract/document/10145792"
+      },
+      {
+        "title": "Deep Graph Fusion based Multimodal Evoked Expressions from Large-Scale Videos",
+        "url": "https://ieeexplore.ieee.org/document/9521910"
+      },
+      {
+        "title": "Stress Analysis with Dimensions of Valence and Arousal in the Wild",
+        "url": "https://www.mdpi.com/2076-3417/11/11/5194"
+      },
+      {
+        "title": "Multimodal approach of speech emotion recognition using multi-level multi-head fusion attention-based recurrent neural network",
+        "url": "https://ieeexplore.ieee.org/abstract/document/9050806"
+      }
+    ]
+  },
+  {
+    "id": "medical-imaging",
+    "number": "04",
+    "label": "MEDICAL VISION",
+    "title": "From an image to a meaningful region.",
+    "short_title": "Medical image analysis",
+    "summary": "Segmentation and semi-supervised learning for bone tumors and abnormal tissue analysis.",
+    "tags": [
+      "Segmentation",
+      "Semi-supervised learning",
+      "Radiographs"
+    ],
+    "problem": "Medical images contain structures that matter differently to a diagnostic task. Learning a classifier from limited labeled images can be difficult when the relevant anatomy occupies only a small part of the image, or when normal tissue obscures an abnormal region.",
+    "approach": "This work connects segmentation with classification. The knee bone tumor study uses a regenerative semi-supervised bidirectional W-network guided by three-region bone segmentation. A related journal paper enhances U-Net with a spatial-channel attention gate for abnormal tissue segmentation.",
+    "findings": [
+      {
+        "title": "Using anatomy to guide classification",
+        "text": "The W-network study integrates three-region bone segmentation into the knee bone tumor classification pipeline."
+      },
+      {
+        "title": "Attending to relevant spatial and channel features",
+        "text": "The U-Net study investigates a spatial-channel attention gate for abnormal tissue segmentation in medical images."
+      }
+    ],
+    "perspective": "The shared idea is to make the region representation part of the learning problem. The publications provide the validation settings and performance comparisons.",
+    "videos": [
+      {
+        "title": "Bone tumor detection demo",
+        "url": "https://www.youtube.com/watch?v=w9sntPA24XQ"
+      }
+    ],
+    "image": "assets/img/research/medical-imaging.svg",
+    "image_caption": "Conceptual overview of this research theme; original illustration, not an experimental result.",
+    "sources": [
+      {
+        "title": "Enhancing U-Net with spatial-channel attention gate for abnormal tissue segmentation in medical imaging",
+        "url": "https://www.mdpi.com/2076-3417/10/17/5729"
+      },
+      {
+        "title": "Regenerative semi-supervised bidirectional W-network-based knee bone tumor classification on radiographs guided by three-region bone segmentation",
+        "url": "https://ieeexplore.ieee.org/abstract/document/8880590"
+      }
+    ]
+  },
+  {
+    "id": "sensing-interaction",
+    "number": "05",
+    "label": "SENSING & INTERACTION",
+    "title": "Turning everyday signals into interaction.",
+    "short_title": "Mobile sensing & intelligent interaction",
+    "summary": "Smartphone motion, depth cameras, and connected systems for localization and natural interaction.",
+    "tags": [
+      "Mobile sensing",
+      "Human interaction",
+      "Signal processing"
+    ],
+    "problem": "Everyday sensors are noisy, and the way a person moves changes the signal. A smartphone must estimate a walking path despite varying speed and arm swing. A depth camera must distinguish useful gestures and fingertips from background movement.",
+    "approach": "The journal work explores adaptive step detection and step-length estimation for smartphone pedestrian dead reckoning, nonparametric estimation for arm-swing walking, RGB-D hand gesture recognition, and a fingertip-driven virtual mouse. Earlier wireless-network research examines relay selection under channel estimation error.",
+    "findings": [
+      {
+        "title": "Adapting to the person’s movement",
+        "text": "The smartphone studies address variable walking speeds and arm-swing walking through adaptive and regression-based step-length estimation."
+      },
+      {
+        "title": "Connecting perception with an interface",
+        "text": "RGB-D studies investigate real-time hand gesture spotting and fingertip detection for a virtual mouse system."
+      },
+      {
+        "title": "Accounting for imperfect measurements",
+        "text": "The relay-selection paper studies the impact of channel estimation error in cognitive radio networks, an earlier foundation in signal analysis."
+      }
+    ],
+    "perspective": "These projects share an interest in building useful estimates and interfaces from imperfect measurements in everyday settings.",
+    "videos": [],
+    "image": "assets/img/research/sensing-interaction.svg",
+    "image_caption": "Conceptual overview of this research theme; original illustration, not an experimental result.",
+    "sources": [
+      {
+        "title": "Real-time virtual mouse system using RGB-D images and fingertip detection",
+        "url": "https://link.springer.com/article/10.1007/s11042-020-10156-5"
+      },
+      {
+        "title": "Real-time hand gesture spotting and recognition using RGB-D camera and 3D convolutional neural network",
+        "url": "https://www.mdpi.com/2076-3417/10/2/722"
+      },
+      {
+        "title": "Nonparametric regression-based step-length estimation for arm-swing walking using a smartphone",
+        "url": "http://univagora.ro/jour/index.php/ijccc/article/view/3148"
+      },
+      {
+        "title": "Step-detection and adaptive step-length estimation for pedestrian dead-reckoning at various walking speeds using a smartphone",
+        "url": "https://www.mdpi.com/1424-8220/16/9/1423"
+      },
+      {
+        "title": "Impact of channel estimation error on the performance of relay selection in cognitive radio networks",
+        "url": "https://link.springer.com/article/10.1007/s11277-015-2717-3"
+      }
+    ]
+  }
+]

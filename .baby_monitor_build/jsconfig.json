@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true,
+    "noEmit": true,
+    "target": "ES2022",
+    "module": "none",
+    "lib": ["ES2023", "DOM", "DOM.Iterable"]
+  },
+  "files": [
+    "types.d.ts",
+    "app.js",
+    "family.js",
+    "sync.js",
+    "growth/units.js",
+    "growth/age.js",
+    "growth/lms.js",
+    "growth/newbornWeight.js",
+    "growth/velocity.js",
+    "growth/trajectory.js",
+    "growth/careContext.js",
+    "growth/quality.js",
+    "growth/analysis.js",
+    "feedingGuidance/reference.js",
+    "feedingGuidance/windows.js",
+    "feedingGuidance/modes.js",
+    "feedingGuidance/formula.js",
+    "feedingGuidance/breastfeeding.js",
+    "feedingGuidance/diapers.js",
+    "feedingGuidance/decisionEngine.js",
+    "feedingGuidance/analysis.js"
+  ]
+}

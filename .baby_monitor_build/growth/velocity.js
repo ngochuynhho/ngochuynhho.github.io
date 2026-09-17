@@ -1,0 +1,5 @@
+(function(root){
+  'use strict';
+  /** @type {any} */ const G=root.LittleDaysGrowth=root.LittleDaysGrowth||{};
+  G.velocity={weight(weights){const list=(weights||[]).filter(w=>Number.isFinite(w.kg)).sort((a,b)=>+new Date(a.at)-+new Date(b.at));if(list.length<2)return null;const previous=list[list.length-2],latest=list[list.length-1],days=(+new Date(latest.at)-+new Date(previous.at))/86400000;if(!(days>0))return null;const grams=(latest.kg-previous.kg)*1000;return{previous,latest,grams,days,gramsPerDay:grams/days,gramsPerWeek:grams/days*7,gramsPerKgDay:grams/days/previous.kg,referenceComparison:null}},length(lengths){const list=(lengths||[]).filter(v=>Number.isFinite(v.cm)).sort((a,b)=>+new Date(a.at)-+new Date(b.at));if(list.length<2)return null;const previous=list[list.length-2],latest=list[list.length-1],days=(+new Date(latest.at)-+new Date(previous.at))/86400000;if(!(days>0))return null;return{previous,latest,changeCm:latest.cm-previous.cm,days,cmPerWeek:(latest.cm-previous.cm)/days*7,shortInterval:days<14}}};
+})(typeof window!=='undefined'?window:globalThis);
