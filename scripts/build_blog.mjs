@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import {fileURLToPath} from "node:url";
-import {escapeHTML as esc, renderMarkdown, safeLink, storyCard} from "./blog-renderer.mjs";
+import {escapeHTML as esc, renderMarkdown, safeLink} from "./blog-renderer.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const read = name => fs.readFileSync(path.join(root, name), "utf8");
@@ -77,9 +77,6 @@ for (const [index, topic] of blogTopics.entries()) {
   output.set(`blog/${slug}/index.html`, fill(values));
 }
 
-if (!homepage.includes("<!-- blog-cards:start -->")) throw new Error("The homepage Scientific Blog section is missing.");
-homepage = homepage.replace(/(<!-- blog-cards:start -->)[\s\S]*?(<!-- blog-cards:end -->)/,
-  (_, start, end) => `${start}\n${blogTopics.map(topic => storyCard(topic,catalog)).join("\n")}\n${end}`);
 homepage = homepage.replace(/(<script type="application\/json" id="initial-topics">)[\s\S]*?(<\/script>)/,
   (_, start, end) => `${start}${JSON.stringify(topics).replace(/</g,"\\u003c")}${end}`);
 output.set("index.html", homepage);
@@ -97,5 +94,5 @@ if (process.argv.includes("--check")) {
     fs.mkdirSync(path.dirname(target), {recursive:true});
     fs.writeFileSync(target, content);
   }
-  console.log(`Built ${blogTopics.length} research stories and updated homepage cards, topic fallback, and sitemap.`);
+  console.log(`Built ${blogTopics.length} research stories and updated topic fallback and sitemap.`);
 }

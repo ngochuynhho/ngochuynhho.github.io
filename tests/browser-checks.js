@@ -60,11 +60,14 @@ let launchedBrowser, localServer;
     await page.waitForFunction(() => !document.getElementById("topic-dialog").open && !document.body.classList.contains("dialog-open"));
     assert.equal(await page.evaluate(() => document.body.classList.contains("dialog-open")), false);
   }
-  assert.equal(await page.locator(".story-card").count(), 5);
+  assert.equal(await page.locator("#scientific-blog").count(), 0);
   assert.deepEqual(JSON.parse(await page.locator("#initial-topics").textContent()), read("topics"));
   for (const topic of read("topics")) {
     const storyPath = `blog/${topic.blog_slug}/index.html`;
-    await page.locator(`.story-card h3 a[href="${storyPath}"]`).click();
+    await page.locator(`[data-topic="${topic.id}"]`).click();
+    assert.equal(await page.locator(".topic-story-link a").textContent(), "View stories →");
+    assert.equal(await page.locator(".topic-body").evaluate(body => body.firstElementChild.className), "topic-story-link");
+    await page.locator(".topic-story-link a").click();
     await page.waitForURL(`${siteURL}/${storyPath}`);
     assert.equal(await page.locator(".story-header h1").textContent(), topic.blog_title);
     assert.equal(await page.locator(".story-glance li").count(), 3);
@@ -102,6 +105,7 @@ let launchedBrowser, localServer;
     }
     await page.goBack({waitUntil:"networkidle"});
     assert.equal(new URL(page.url()).pathname, "/");
+    if (await page.locator("#topic-dialog").evaluate(dialog => dialog.open)) await page.keyboard.press("Escape");
   }
   await page.setViewportSize({width:1440,height:1000});
   await page.locator('[data-topic="dementia"]').click();

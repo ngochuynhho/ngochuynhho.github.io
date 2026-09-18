@@ -80,7 +80,7 @@ The public page includes embedded bibliography and topic data as a fallback for 
 
 ## Scientific Blog: editing and adding stories
 
-Visitors can follow **Research card → short research note → Read research story → full article**, or open the **Scientific Blog** section directly. Each article has its own URL, such as `blog/dementia-trustworthy-ai/`, and uses ordinary links so browser Back navigation works. The five research stories use the supplied author draft; the original draft is preserved in `content/research-notes-draft.md`. Headlines and three-point takeaways match that draft. Article standfirsts use `blog_standfirst`, while `blog_summary` keeps homepage cards concise.
+Visitors can follow **Research card → short research note → View stories → full article**; the **View stories** button appears before **The problem** in each note. Each article has its own URL, such as `blog/dementia-trustworthy-ai/`, and uses ordinary links so browser Back navigation works. The five research stories use the supplied author draft; the original draft is preserved in `content/research-notes-draft.md`. Headlines and three-point takeaways match that draft. Article standfirsts use `blog_standfirst`, while `blog_summary` keeps homepage cards concise.
 
 The content structure is:
 
@@ -93,7 +93,7 @@ scripts/blog-renderer.mjs      Safe Markdown rendering
 tools/vendor/markdown-it/      Build-time renderer and its MIT license
 blog/<slug>/index.html         Generated public article
 assets/css/blog.css            Blog cards, reading layout, figures, tables, callouts
-assets/js/story-cards.js       Shared static/live homepage cards
+assets/js/story-cards.js       Shared card helper retained for future use
 assets/js/blog.js              Article navigation and footer year
 ```
 
@@ -108,7 +108,7 @@ node scripts/build_blog.mjs --check
 
 No npm install is needed. The renderer is vendored for building only; readers receive static HTML without a Markdown runtime or external content requests. Raw HTML in Markdown is escaped, executable URL schemes are blocked, figures stay in the local image collection, and external paper links open in a separate tab with `noopener noreferrer`. Headings, paragraphs, emphasis, links, blockquotes, lists, tables, images, and horizontal rules are supported. Tables have a keyboard-focusable scrolling region on smaller screens.
 
-The build also refreshes the static Scientific Blog cards, synchronizes `initial-topics` with `data/topics.json`, and updates the sitemap. Pages deployment runs the same builder automatically before staging the public website. Generated article files are included in local backups; templates, Markdown sources, and build tools are backed up too.
+The build synchronizes `initial-topics` with `data/topics.json`, and updates the sitemap. Pages deployment runs the same builder automatically before staging the public website. Generated article files are included in local backups; templates, Markdown sources, and build tools are backed up too.
 
 To add a sixth story:
 
@@ -116,7 +116,7 @@ To add a sixth story:
 2. Add the full references to `BLOG_BRIEF.md` using its existing numbered-title, Authors, Venue, Source, DOI, and DOI-link format. The builder treats these as the source of bibliography credit.
 3. Add a topic in `data/topics.json` with the existing short-note fields, image dimensions and descriptive alt text, plus `blog_slug`, `blog_markdown`, `blog_category`, `blog_title`, `blog_summary`, optional `blog_standfirst`, `blog_keywords`, `blog_publication_ids`, and **exactly three** `research_at_glance` strings. Reference IDs must belong to that topic. Use an empty `videos` array unless a demo is explicitly supplied in the brief.
 4. Write `content/blog/<blog_slug>.md`, set `blog_markdown` to that path, and save the figure in `assets/img/topics/`.
-5. Run the builder, preview the card, note, and article on desktop and mobile, then commit the source and generated files. Cards, next-story navigation, and sitemap entries are generated automatically.
+5. Run the builder, preview the card, note, and article on desktop and mobile, then commit the source and generated files. Research-note buttons use the article slug; next-story navigation and sitemap entries are generated automatically.
 
 The current narratives and study-specific claims come from the author-supplied draft. The import preserves supplied results and their study context rather than inventing additional measurements or author contributions. A complete fresh full-text review of every supplied claim has not been performed; the previously checked 2023 Scientific Reports metrics remain consistent with the publisher article. Keep any future quantitative additions tied to the source study and its evaluation setting. Supplied figure captions do not assert a reuse license or figure number.
 
