@@ -62,7 +62,7 @@ The workflow now checks the secret in a dedicated **Check Scholar API key** step
 ## Research content
 
 - `data/publications.json`: all bibliography records and ignored Scholar identities.
-- `data/topics.json`: five research notes, their problem definitions, methods, significant findings, conceptual illustrations, and original YouTube links.
+- `data/topics.json`: five research notes, their problem definitions, methods, significant findings, author-supplied research figures, and original YouTube links.
 - `data/scholar.json`: the most recent successful citation metrics and Scholar article list.
 - `data/site-config.json`: repository owner, admin account, workflow name, and Scholar author ID (`dYRENHsAAAAJ`). This configuration contains no secrets.
 
@@ -70,7 +70,7 @@ The five themes cover dementia and trustworthy AI; brain aging and vascular heal
 
 Publication type and theme suggested by a scan are heuristics and must be reviewed. Titles, Scholar IDs, and available DOIs prevent duplicate suggestions; ignored records stay ignored. Conferences, domestic publications, patents, the thesis, and the poster remain available under **All work**. Existing bibliographic metadata is preserved, with the malformed `110.1109/ACCESS.2019.2949125` DOI corrected.
 
-Each note links to its source papers. The SPAN research note’s quantitative findings are from the [2023 Scientific Reports article](https://www.nature.com/articles/s41598-023-37500-7), and the related longitudinal prediction work is linked to the [2022 Neural Networks paper](https://pubmed.ncbi.nlm.nih.gov/35364417/). Illustrations in `assets/img/research/` are original conceptual diagrams. Publisher figure servers did not provide usable image responses during development, so the site does not depend on unavailable images. If you replace a diagram with a paper figure, include its source and required license credit in `image_caption`.
+Each note links to its source papers. The SPAN research note’s quantitative findings are from the [2023 Scientific Reports article](https://www.nature.com/articles/s41598-023-37500-7), and the related longitudinal prediction work is linked to the [2022 Neural Networks paper](https://pubmed.ncbi.nlm.nih.gov/35364417/). The main website visual is `assets/img/topics/Research_topic.png`; the other five images in that folder appear on their topic cards and research-note panels. Cards show complete figures without cropping, and panels preserve their natural aspect ratios. Earlier conceptual diagrams remain in `assets/img/research/` as fallback assets. Include verified paper attribution and required license credit in `image_caption` for publication figures.
 
 For better project artwork, [IMAGE_BRIEF.md](IMAGE_BRIEF.md) contains copy-ready ChatGPT prompts to find verified publication figures or generate original scientific editorial images, a distinct composition for each theme, all journal source links, and image integration instructions.
 

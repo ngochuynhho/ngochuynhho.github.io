@@ -64,7 +64,7 @@ h2 span { color: var(--green); }
 .mini-cross { font-size: 30px; color: var(--green); }
 .hero-science { background: var(--tint); border-radius: 18px; position: relative; overflow: hidden; padding: 23px 25px 26px; }
 .science-topline { display: flex; justify-content: space-between; font-size: 9px; letter-spacing: 1.5px; color: var(--muted); }
-.brain-graphic { width: 100%; display: block; }
+.hero-research-image { width: 100%; height: auto; display: block; margin-block: 28px; border-radius: 10px; }
 .science-caption { position: relative; border-top: 1px solid #d4ddca; padding-top: 18px; }
 .science-index { font-size: 9px; letter-spacing: 1px; color: var(--muted); }
 .science-caption p { font: 500 19px/1.45 Manrope,sans-serif; color: var(--ink); margin: 8px 0 0; }
@@ -88,8 +88,8 @@ h2 span { color: var(--green); }
 .project-card:hover { transform: translateY(-5px); box-shadow: 0 14px 32px rgb(23 62 53 / 7%); }
 .project-visual { position: relative; background: var(--tint); height: 157px; overflow: hidden; border-bottom: 1px solid var(--line); }
 .project-card:nth-child(-n+2) .project-visual { height: 207px; }
-.project-visual img { width: 100%; height: 100%; object-fit: cover; }
-.project-number { position: absolute; right: 17px; top: 13px; font-size: 10px; color: var(--green); }
+.project-visual img { width: 100%; height: 100%; object-fit: contain; padding: 12px; background: white; }
+.project-number { position: absolute; right: 17px; top: 13px; font-size: 10px; color: var(--green); background: var(--paper); border-radius: 4px; padding: 2px 6px; }
 .project-body { padding: 26px; display: flex; flex-direction: column; flex: 1; }
 .project-body .eyebrow { font-size: 8px; }
 .project-body h3 { font-size: 20px; letter-spacing: -.6px; margin: 13px 0; }

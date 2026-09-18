@@ -34,8 +34,8 @@
         "url": "https://www.youtube.com/watch?v=5XkSoCVYRNA"
       }
     ],
-    "image": "assets/img/research/dementia.svg",
-    "image_caption": "Conceptual overview of this research theme; original illustration, not an experimental result.",
+    "image": "assets/img/topics/dementia_trustworthyAI.jpg",
+    "image_caption": "Dementia classification workflow with cohort design, cross-validation, discrepancy mitigation, and model interpretation. Figure supplied by the author; related publications are linked below.",
     "sources": [
       {
         "title": "Advancing fair and explainable machine learning for neuroimaging dementia pattern classification in multi-racial and multi-ethnic populations",
@@ -57,7 +57,10 @@
         "title": "Non-white matter tissue extraction and deep convolutional neural network for Alzheimer’s disease detection",
         "url": "https://link.springer.com/article/10.1007/s00500-018-3421-5"
       }
-    ]
+    ],
+    "image_width": 2000,
+    "image_height": 1615,
+    "image_alt": "Dementia classification workflow with cohort design, cross-validation, discrepancy mitigation, and model interpretation."
   },
   {
     "id": "brain-health",
@@ -85,8 +88,8 @@
     ],
     "perspective": "These papers address complementary measurements of brain health. The source articles provide the study designs, effect estimates, and limitations for each investigation.",
     "videos": [],
-    "image": "assets/img/research/brain-health.svg",
-    "image_caption": "Conceptual overview of this research theme; original illustration, not an experimental result.",
+    "image": "assets/img/topics/Brain_aging_vascular_health.jpg",
+    "image_caption": "Functional connectome datasets and transformations used for brain-age prediction and brain-health analysis. Figure supplied by the author; related publications are linked below.",
     "sources": [
       {
         "title": "Intensive versus standard blood pressure control and overall brain small vessel disease burden: a post-hoc analysis of the SPRINT randomized clinical trial",
@@ -96,7 +99,10 @@
         "title": "Derivation of machine learning brain aging biomarkers for a set of forty thousand functional connectomes",
         "url": "https://www.sciencedirect.com/science/article/pii/S0361923026001012"
       }
-    ]
+    ],
+    "image_width": 3042,
+    "image_height": 1279,
+    "image_alt": "Functional connectome datasets and transformations used for brain-age prediction and brain-health analysis."
   },
   {
     "id": "affective-ai",
@@ -128,8 +134,8 @@
     ],
     "perspective": "Across these studies, the central contribution is the representation of complementary signals and their relationships. Each paper reports evaluations on its own datasets and tasks.",
     "videos": [],
-    "image": "assets/img/research/affective-ai.svg",
-    "image_caption": "Conceptual overview of this research theme; original illustration, not an experimental result.",
+    "image": "assets/img/topics/Multimodal_emotion_social_AI.png",
+    "image_caption": "Audio-visual feature extraction and attention-based fusion for group emotion and cohesion analysis. Figure supplied by the author; related publications are linked below.",
     "sources": [
       {
         "title": "GCE: An Audio-Visual Dataset for Group Cohesion and Emotion Analysis",
@@ -155,7 +161,10 @@
         "title": "Multimodal approach of speech emotion recognition using multi-level multi-head fusion attention-based recurrent neural network",
         "url": "https://ieeexplore.ieee.org/abstract/document/9050806"
       }
-    ]
+    ],
+    "image_width": 4291,
+    "image_height": 1710,
+    "image_alt": "Audio-visual feature extraction and attention-based fusion for group emotion and cohesion analysis."
   },
   {
     "id": "medical-imaging",
@@ -188,8 +197,8 @@
         "url": "https://www.youtube.com/watch?v=w9sntPA24XQ"
       }
     ],
-    "image": "assets/img/research/medical-imaging.svg",
-    "image_caption": "Conceptual overview of this research theme; original illustration, not an experimental result.",
+    "image": "assets/img/topics/medical_image_analysis.jpg",
+    "image_caption": "Bidirectional network architecture showing reconstruction, merged representations, and classification for medical images. Figure supplied by the author; related publications are linked below.",
     "sources": [
       {
         "title": "Enhancing U-Net with spatial-channel attention gate for abnormal tissue segmentation in medical imaging",
@@ -199,7 +208,10 @@
         "title": "Regenerative semi-supervised bidirectional W-network-based knee bone tumor classification on radiographs guided by three-region bone segmentation",
         "url": "https://ieeexplore.ieee.org/abstract/document/8880590"
       }
-    ]
+    ],
+    "image_width": 632,
+    "image_height": 820,
+    "image_alt": "Bidirectional network architecture showing reconstruction, merged representations, and classification for medical images."
   },
   {
     "id": "sensing-interaction",
@@ -231,8 +243,8 @@
     ],
     "perspective": "These projects share an interest in building useful estimates and interfaces from imperfect measurements in everyday settings.",
     "videos": [],
-    "image": "assets/img/research/sensing-interaction.svg",
-    "image_caption": "Conceptual overview of this research theme; original illustration, not an experimental result.",
+    "image": "assets/img/topics/Mobile_sensing_intelligent_interaction.jpg",
+    "image_caption": "Fingertip tracking, gesture trajectory capture, and gesture recognition workflow. Figure supplied by the author; related publications are linked below.",
     "sources": [
       {
         "title": "Real-time virtual mouse system using RGB-D images and fingertip detection",
@@ -254,6 +266,9 @@
         "title": "Impact of channel estimation error on the performance of relay selection in cognitive radio networks",
         "url": "https://link.springer.com/article/10.1007/s11277-015-2717-3"
       }
-    ]
+    ],
+    "image_width": 546,
+    "image_height": 343,
+    "image_alt": "Fingertip tracking, gesture trajectory capture, and gesture recognition workflow."
   }
 ]
