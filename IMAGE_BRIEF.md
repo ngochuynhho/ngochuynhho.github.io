@@ -2,6 +2,8 @@
 
 Copy the prompts below into ChatGPT. This is an image brief, not a request to change the current site automatically.
 
+For longer research-note descriptions, [BLOG_BRIEF.md](BLOG_BRIEF.md) provides five complete ChatGPT prompts with the current note text, reference papers, figures, and demos.
+
 ## Website context and visual direction
 
 I am Ngoc-Huynh Ho, PhD, an Instructor at UT Health Science Center at San Antonio since May 2026. I completed my postdoctoral appointment there in May 2026. My website presents five research themes based primarily on my peer-reviewed journal publications.

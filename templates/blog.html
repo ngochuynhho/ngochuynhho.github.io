@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173e35">
+  <title>{{page_title}} | Ngoc-Huynh Ho, PhD</title>
+  <meta name="description" content="{{description}}">
+  <link rel="canonical" href="{{canonical}}">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{{page_title}}">
+  <meta property="og:description" content="{{description}}">
+  <meta property="og:url" content="{{canonical}}">
+  <meta property="og:image" content="{{social_image}}">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../../assets/img/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/site.css">
+  <link rel="stylesheet" href="../../assets/css/blog.css">
+  <script src="../../assets/js/blog.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to article</a>
+  <header class="site-header"><div class="header-inner container">
+    <a class="brand" href="../../index.html#hero" aria-label="Ngoc-Huynh Ho, home"><span class="brand-mark" aria-hidden="true">nh<span>.</span></span><span>Ngoc-Huynh Ho<small>AI RESEARCHER · PHD</small></span></a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open navigation"><span></span><span></span></button>
+    <nav id="primary-nav" aria-label="Main navigation"><a href="../../index.html#projects">Research</a><a href="../../index.html#scientific-blog" aria-current="page">Scientific Blog</a><a href="../../index.html#publications">Publications</a><a href="../../index.html#about">About</a><a class="nav-contact" href="../../index.html#contact">Let’s connect <span aria-hidden="true">↗</span></a></nav>
+  </div></header>
+  <main id="main">
+    <article class="research-story">
+      <header class="story-header story-text-column">
+        <a class="story-back" href="../../index.html#scientific-blog">← All research stories</a>
+        <span class="eyebrow">{{category}}</span>
+        <h1>{{page_title}}</h1>
+        <p class="story-standfirst">{{description}}</p>
+        <p class="story-byline">Ngoc-Huynh Ho, PhD <span aria-hidden="true">·</span> {{year_range}} publications <span aria-hidden="true">·</span> {{reading_time}} min read</p>
+        <ul class="story-keywords" aria-label="Article keywords">{{keywords}}</ul>
+      </header>
+      <figure class="story-hero"><a href="{{image}}" target="_blank" rel="noopener noreferrer" aria-label="Open research figure at full size"><img src="{{image}}" alt="{{image_alt}}" width="{{image_width}}" height="{{image_height}}" fetchpriority="high" decoding="async"></a><figcaption>Figure supplied by the author; related publications are listed below. <a href="{{image}}" target="_blank" rel="noopener noreferrer">View full-size figure ↗</a></figcaption></figure>
+      <div class="story-prose story-text-column">{{article_body}}</div>
+      <aside class="story-glance story-text-column" aria-labelledby="glance-title"><span class="eyebrow">THE SHARED THREAD</span><h2 id="glance-title">Research at a glance</h2><ul>{{takeaways}}</ul></aside>
+      <section class="story-references story-text-column" aria-labelledby="references-title"><span class="eyebrow">EXPLORE THE EVIDENCE</span><h2 id="references-title">Related publications</h2><ol>{{publications}}</ol></section>
+      {{demos}}
+      <section class="story-contact story-text-column" aria-labelledby="story-contact-title"><span class="eyebrow">CONTINUE THE CONVERSATION</span><h2 id="story-contact-title">Interested in this research?</h2><p>I am always interested in conversations around neuroimaging, multimodal learning, trustworthy AI, biomedical machine learning, and collaborative research. If your work intersects with these questions, I would be glad to connect.</p><a class="button button-primary" href="{{contact}}">Get in touch <span aria-hidden="true">→</span></a></section>
+      <nav class="story-next story-text-column" aria-label="More research stories"><a href="../../index.html#scientific-blog">← All research stories</a><a href="{{next_url}}">Next: {{next_title}} <span aria-hidden="true">→</span></a></nav>
+    </article>
+  </main>
+  <footer class="site-footer container"><span>© <span id="copyright-year">2026</span> Ngoc-Huynh Ho</span><span class="footer-links"><a href="../../index.html#contact">Contact</a><a href="#main">Back to top ↑</a></span><small>Original portfolio template by <a href="https://bootstrapmade.com/" target="_blank" rel="noopener noreferrer">BootstrapMade</a></small></footer>
+</body>
+</html>

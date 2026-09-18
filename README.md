@@ -1,6 +1,6 @@
 # Ngoc-Huynh Ho · Research portfolio
 
-A responsive portfolio for GitHub Pages, with research notes, a searchable bibliography, Google Scholar citation updates, and an owner workspace for reviewing new papers. The redesign preserves all 48 existing bibliography records and the complete supplied career history.
+A responsive portfolio for GitHub Pages, with research notes, long-form scientific blogs, a searchable bibliography, Google Scholar citation updates, and an owner workspace for reviewing new papers. The redesign preserves all 48 existing bibliography records and the complete supplied career history.
 
 Ngoc-Huynh Ho completed his UT Health Science Center at San Antonio postdoctoral appointment in May 2026 and began an Instructor appointment there in May 2026.
 
@@ -74,7 +74,51 @@ Each note links to its source papers. The SPAN research note’s quantitative fi
 
 For better project artwork, [IMAGE_BRIEF.md](IMAGE_BRIEF.md) contains copy-ready ChatGPT prompts to find verified publication figures or generate original scientific editorial images, a distinct composition for each theme, all journal source links, and image integration instructions.
 
+[BLOG_BRIEF.md](BLOG_BRIEF.md) contains five self-contained prompts to turn the current research notes into longer research blogs. Each includes the full existing draft, all relevant journal titles and DOI/source links, supplied figures, and available YouTube demos, plus instructions to verify claims and credit collaborators.
+
 The public page includes embedded bibliography and topic data as a fallback for direct file previews or network errors. When hosted, current JSON files take priority. If you want to refresh the fallback after a manual content edit, update its `initial-publications` or `initial-topics` JSON block in `index.html`; the hosted site does not require this.
+
+## Scientific Blog: editing and adding stories
+
+Visitors can follow **Research card → short research note → Read research story → full article**, or open the **Scientific Blog** section directly. Each article has its own URL, such as `blog/dementia-trustworthy-ai/`, and uses ordinary links so browser Back navigation works. The five initial stories are approximately 770–820 words each, excluding their bibliographies.
+
+The content structure is:
+
+```text
+content/blog/<slug>.md          Long-form Markdown article body
+data/topics.json              Story metadata, figure, keywords, takeaways, reference IDs
+templates/blog.html           Shared editorial article layout
+scripts/build_blog.mjs         Static page generator and bibliography validation
+scripts/blog-renderer.mjs      Safe Markdown rendering
+tools/vendor/markdown-it/      Build-time renderer and its MIT license
+blog/<slug>/index.html         Generated public article
+assets/css/blog.css            Blog cards, reading layout, figures, tables, callouts
+assets/js/story-cards.js       Shared static/live homepage cards
+assets/js/blog.js              Article navigation and footer year
+```
+
+The Markdown files contain the narrative. The template adds the hero figure, exactly three topic-specific takeaways, full related-publication entries, supplied demos, and the existing contact link. Bibliography wording and author credit come from `BLOG_BRIEF.md` and are checked against `data/publications.json`. Existing short-summary fields remain unchanged.
+
+After editing article text or story metadata, run:
+
+```bash
+node scripts/build_blog.mjs
+node scripts/build_blog.mjs --check
+```
+
+No npm install is needed. The renderer is vendored for building only; readers receive static HTML without a Markdown runtime or external content requests. Raw HTML in Markdown is escaped, executable URL schemes are blocked, figures stay in the local image collection, and external paper links open in a separate tab with `noopener noreferrer`. Headings, paragraphs, emphasis, links, blockquotes, lists, tables, images, and horizontal rules are supported. Tables have a keyboard-focusable scrolling region on smaller screens.
+
+The build also refreshes the static Scientific Blog cards, synchronizes `initial-topics` with `data/topics.json`, and updates the sitemap. Pages deployment runs the same builder automatically before staging the public website. Generated article files are included in local backups; templates, Markdown sources, and build tools are backed up too.
+
+To add a sixth story:
+
+1. Add its journal records to `data/publications.json` if they are not present, retaining full authors and exact publication metadata.
+2. Add the full references to `BLOG_BRIEF.md` using its existing numbered-title, Authors, Venue, Source, DOI, and DOI-link format. The builder treats these as the source of bibliography credit.
+3. Add a topic in `data/topics.json` with the existing short-note fields, image dimensions and descriptive alt text, plus `blog_slug`, `blog_markdown`, `blog_category`, `blog_title`, `blog_summary`, `blog_keywords`, `blog_publication_ids`, and **exactly three** `research_at_glance` strings. Reference IDs must belong to that topic. Use an empty `videos` array unless a demo is explicitly supplied in the brief.
+4. Write `content/blog/<blog_slug>.md`, set `blog_markdown` to that path, and save the figure in `assets/img/topics/`.
+5. Run the builder, preview the card, note, and article on desktop and mobile, then commit the source and generated files. Cards, next-story navigation, and sitemap entries are generated automatically.
+
+The initial narratives expand the supplied brief without adding new experimental claims or individual author-contribution claims. The 2023 Scientific Reports metrics were checked against the linked publisher article. Other discussions stay within the supplied notes and publication descriptions; publisher access restrictions prevented a complete fresh full-text review of every reference. Keep any future quantitative additions tied to the source study and its evaluation setting. Supplied figure captions do not assert a reuse license or figure number.
 
 ## Backups and recovery
 
@@ -108,9 +152,10 @@ Python 3.12 or newer is recommended for the backup restore command.
 
 ```bash
 python3 -m unittest discover -s tests -p 'test_*.py' -v
-node --test tests/research-core.test.js
+node --test tests/research-core.test.js tests/blog-renderer.test.mjs
+node scripts/build_blog.mjs --check
 ```
 
-Browser checks are provided in `tests/browser-checks.js`; install Playwright outside the site and run the script with `NODE_PATH` pointing to that installation’s `node_modules`. The script starts its own localhost preview, or uses an existing preview supplied through `SITE_URL`. It checks the public page, responsive layout, research dialogs, filtering, and the admin scan/publish flow against mocked GitHub responses. Real API scanning requires the repository secret and is not covered by the mocks.
+Browser checks are provided in `tests/browser-checks.js`; install Playwright outside the site and run the script with `NODE_PATH` pointing to that installation’s `node_modules`. The script starts its own localhost preview, or uses an existing preview supplied through `SITE_URL`. It checks all five scientific articles, complete bibliographies, image aspect ratios, mobile tables, Markdown links, direct article URLs, browser Back navigation, the public page, research dialogs, filtering, and the admin scan/publish flow against mocked GitHub responses. Real API scanning requires the repository secret and is not covered by the mocks.
 
 The original BootstrapMade attribution is retained. Existing vendor assets and other local work are preserved.

@@ -60,7 +60,30 @@
     ],
     "image_width": 2000,
     "image_height": 1615,
-    "image_alt": "Dementia classification workflow with cohort design, cross-validation, discrepancy mitigation, and model interpretation."
+    "image_alt": "Dementia classification workflow with cohort design, cross-validation, discrepancy mitigation, and model interpretation.",
+    "blog_slug": "dementia-trustworthy-ai",
+    "blog_markdown": "content/blog/dementia-trustworthy-ai.md",
+    "blog_category": "Dementia & Trustworthy AI",
+    "blog_title": "Understanding dementia. Predicting what comes next.",
+    "blog_summary": "From detecting dementia-related patterns to estimating disease progression and examining fairness across populations, this research explores how multimodal AI can learn from incomplete and heterogeneous biomedical data while asking an equally important question: for whom does the model work?",
+    "blog_keywords": [
+      "Neuroimaging",
+      "Multimodal Learning",
+      "Trustworthy AI",
+      "Fairness"
+    ],
+    "research_at_glance": [
+      "Multimodal models connect imaging and clinical information with distinct prediction tasks.",
+      "Longitudinal studies investigate incomplete histories and modality uncertainty.",
+      "Fair and explainable classification extends evaluation toward differences across populations."
+    ],
+    "blog_publication_ids": [
+      "journal-02",
+      "journal-04",
+      "journal-07",
+      "journal-09",
+      "journal-17"
+    ]
   },
   {
     "id": "brain-health",
@@ -102,7 +125,27 @@
     ],
     "image_width": 3042,
     "image_height": 1279,
-    "image_alt": "Functional connectome datasets and transformations used for brain-age prediction and brain-health analysis."
+    "image_alt": "Functional connectome datasets and transformations used for brain-age prediction and brain-health analysis.",
+    "blog_slug": "brain-aging-vascular-health",
+    "blog_markdown": "content/blog/brain-aging-vascular-health.md",
+    "blog_category": "Brain Aging & Vascular Health",
+    "blog_title": "Brain aging, beyond a single biomarker.",
+    "blog_summary": "Brain aging is reflected in networks, anatomy, vascular health, and population-level variation. This research connects machine-learning biomarkers derived from large functional-connectome datasets with clinical studies of cerebral small-vessel disease and blood-pressure control.",
+    "blog_keywords": [
+      "Connectomics",
+      "Brain Aging",
+      "Vascular Health",
+      "Population Studies"
+    ],
+    "research_at_glance": [
+      "Functional-connectome modeling investigates machine-learning brain-aging biomarkers.",
+      "The SPRINT publication examines brain small-vessel disease burden in a post-hoc trial analysis.",
+      "Predictive biomarkers and trial-based analyses answer complementary scientific questions."
+    ],
+    "blog_publication_ids": [
+      "journal-01",
+      "journal-03"
+    ]
   },
   {
     "id": "affective-ai",
@@ -164,7 +207,31 @@
     ],
     "image_width": 4291,
     "image_height": 1710,
-    "image_alt": "Audio-visual feature extraction and attention-based fusion for group emotion and cohesion analysis."
+    "image_alt": "Audio-visual feature extraction and attention-based fusion for group emotion and cohesion analysis.",
+    "blog_slug": "multimodal-emotion-social-ai",
+    "blog_markdown": "content/blog/multimodal-emotion-social-ai.md",
+    "blog_category": "Multimodal Emotion & Social AI",
+    "blog_title": "Understanding emotion in context.",
+    "blog_summary": "A facial expression, a voice, or a sentence rarely tells the whole story. This research investigates how AI can combine audio, visual, linguistic, temporal, and relational information to understand emotion in conversations and social interactions.",
+    "blog_keywords": [
+      "Graph Learning",
+      "Multimodal AI",
+      "Emotion",
+      "Social Context"
+    ],
+    "research_at_glance": [
+      "Attention and fusion methods investigate relationships between complementary input channels.",
+      "Graph-recurrent research brings relational and conversational context into modeling.",
+      "The GCE publication introduces an audio-visual dataset for group cohesion and emotion analysis."
+    ],
+    "blog_publication_ids": [
+      "journal-05",
+      "journal-06",
+      "journal-08",
+      "journal-10",
+      "journal-11",
+      "journal-13"
+    ]
   },
   {
     "id": "medical-imaging",
@@ -211,7 +278,27 @@
     ],
     "image_width": 632,
     "image_height": 820,
-    "image_alt": "Bidirectional network architecture showing reconstruction, merged representations, and classification for medical images."
+    "image_alt": "Bidirectional network architecture showing reconstruction, merged representations, and classification for medical images.",
+    "blog_slug": "medical-image-analysis",
+    "blog_markdown": "content/blog/medical-image-analysis.md",
+    "blog_category": "Medical Image Analysis",
+    "blog_title": "From an image to a meaningful region.",
+    "blog_summary": "When labeled medical images are limited, knowing where a model should look can be as important as the classifier itself. This work connects segmentation, attention, reconstruction, and semi-supervised learning to extract more meaningful representations from medical images.",
+    "blog_keywords": [
+      "Medical Imaging",
+      "Segmentation",
+      "Semi-supervised Learning",
+      "Attention"
+    ],
+    "research_at_glance": [
+      "The W-network study connects three-region bone segmentation with radiograph classification.",
+      "The U-Net study investigates spatial-channel attention for abnormal-tissue segmentation.",
+      "Segmentation and classification have different outputs and require task-specific evaluations."
+    ],
+    "blog_publication_ids": [
+      "journal-14",
+      "journal-16"
+    ]
   },
   {
     "id": "sensing-interaction",
@@ -269,6 +356,29 @@
     ],
     "image_width": 546,
     "image_height": 343,
-    "image_alt": "Fingertip tracking, gesture trajectory capture, and gesture recognition workflow."
+    "image_alt": "Fingertip tracking, gesture trajectory capture, and gesture recognition workflow.",
+    "blog_slug": "mobile-sensing-intelligent-interaction",
+    "blog_markdown": "content/blog/mobile-sensing-intelligent-interaction.md",
+    "blog_category": "Mobile Sensing & Intelligent Interaction",
+    "blog_title": "Turning everyday signals into intelligent interaction.",
+    "blog_summary": "Smartphones, depth cameras, and wireless systems all operate with imperfect measurements. These projects explore how computational models can convert noisy movement, visual, and signal data into localization estimates and natural human-computer interactions.",
+    "blog_keywords": [
+      "Mobile Sensing",
+      "Human Interaction",
+      "Computer Vision",
+      "Signal Processing"
+    ],
+    "research_at_glance": [
+      "Smartphone studies investigate step detection and step-length estimation under movement variation.",
+      "RGB-D research connects hand gestures and fingertip detection with real-time interaction.",
+      "Earlier wireless-network work examines relay selection when channel estimates contain error."
+    ],
+    "blog_publication_ids": [
+      "journal-12",
+      "journal-15",
+      "journal-18",
+      "journal-19",
+      "journal-20"
+    ]
   }
 ]

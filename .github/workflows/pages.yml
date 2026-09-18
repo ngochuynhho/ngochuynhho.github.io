@@ -5,6 +5,13 @@ on:
     paths:
       - 'index.html'
       - 'admin.html'
+      - 'blog/**'
+      - 'content/blog/**'
+      - 'templates/blog.html'
+      - 'scripts/build_blog.mjs'
+      - 'scripts/blog-renderer.mjs'
+      - 'tools/vendor/markdown-it/**'
+      - 'BLOG_BRIEF.md'
       - 'assets/**'
       - 'cv/**'
       - 'data/**'
@@ -40,11 +47,13 @@ jobs:
         with:
           ref: ${{ github.event.repository.default_branch }}
       - uses: actions/configure-pages@v5
+      - name: Build scientific blogs
+        run: node scripts/build_blog.mjs
       - name: Stage the public website
         run: |
           mkdir -p _site
           cp index.html admin.html robots.txt sitemap.xml .nojekyll _site/
-          cp -R assets data cv _site/
+          cp -R assets data cv blog _site/
       - uses: actions/upload-pages-artifact@v4
         with:
           path: _site

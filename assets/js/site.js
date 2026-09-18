@@ -51,12 +51,17 @@
       return `<button class="project-card" data-topic="${esc(topic.id)}" aria-haspopup="dialog"><div class="project-visual"><img src="${esc(topic.image)}" alt="" loading="lazy" width="640" height="300"><span class="project-number">${esc(topic.number)}</span></div><div class="project-body"><span class="eyebrow">${esc(topic.label)}</span><h3>${esc(topic.short_title)}</h3><p>${esc(topic.summary)}</p><div class="project-bottom"><span>${count} journal ${count === 1 ? "paper" : "papers"}</span><span class="read-note">Read research note <span aria-hidden="true">↗</span></span></div></div></button>`;
     }).join("");
   }
+  function renderStories() {
+    document.getElementById("story-grid").innerHTML = topics
+      .filter(topic => /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(topic.blog_slug || ""))
+      .map(topic => StoryCards.render(topic, catalog.publications)).join("");
+  }
   function openTopic(id, trigger) {
     const topic = topics.find(item => item.id === id);
     if (!topic) return;
     lastProject = trigger;
     const papers = catalog.publications.filter(paper => paper.type === "journal" && paper.topic === id);
-    document.getElementById("topic-content").innerHTML = `<header class="topic-header"><span class="eyebrow">RESEARCH NOTE ${esc(topic.number)} / ${esc(topic.label)}</span><h2 id="topic-title">${esc(topic.title)}</h2><div class="topic-tags">${topic.tags.map(tag => `<span class="topic-tag">${esc(tag)}</span>`).join("")}</div></header><div class="topic-body"><h3>The problem</h3><p>${esc(topic.problem)}</p><figure><img src="${esc(topic.image)}" alt="${esc(topic.image_alt || topic.short_title)}" width="${esc(topic.image_width || 640)}" height="${esc(topic.image_height || 300)}" decoding="async"><figcaption>${esc(topic.image_caption)}</figcaption></figure><h3>The research approach</h3><p>${esc(topic.approach)}</p><h3>Significant findings & contributions</h3>${topic.findings.map(finding => `<div class="finding"><h4>${esc(finding.title)}</h4><p>${esc(finding.text)}</p></div>`).join("")}<h3>The broader perspective</h3><p>${esc(topic.perspective)}</p><h3>Explore the journal papers</h3><ul class="topic-sources">${papers.map(paper => `<li>${paperURL(paper) ? `<a href="${esc(paperURL(paper))}" target="_blank" rel="noopener noreferrer">${esc(paper.title)} ↗</a>` : esc(paper.title)}<br><span class="muted">${esc(paper.year)} · ${esc(paper.venue)}</span></li>`).join("")}</ul>${topic.videos.length ? `<div class="topic-videos">${topic.videos.filter(video => safeURL(video.url)).map(video => `<a class="button button-primary" href="${esc(safeURL(video.url))}" target="_blank" rel="noopener noreferrer">▶ ${esc(video.title)} ↗</a>`).join("")}</div>` : ""}</div>`;
+    document.getElementById("topic-content").innerHTML = `<header class="topic-header"><span class="eyebrow">RESEARCH NOTE ${esc(topic.number)} / ${esc(topic.label)}</span><h2 id="topic-title">${esc(topic.title)}</h2><div class="topic-tags">${topic.tags.map(tag => `<span class="topic-tag">${esc(tag)}</span>`).join("")}</div></header><div class="topic-body"><h3>The problem</h3><p>${esc(topic.problem)}</p><figure><img src="${esc(topic.image)}" alt="${esc(topic.image_alt || topic.short_title)}" width="${esc(topic.image_width || 640)}" height="${esc(topic.image_height || 300)}" decoding="async"><figcaption>${esc(topic.image_caption)}</figcaption></figure><h3>The research approach</h3><p>${esc(topic.approach)}</p><h3>Significant findings & contributions</h3>${topic.findings.map(finding => `<div class="finding"><h4>${esc(finding.title)}</h4><p>${esc(finding.text)}</p></div>`).join("")}<h3>The broader perspective</h3><p>${esc(topic.perspective)}</p>${topic.blog_slug && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(topic.blog_slug) ? `<div class="topic-story-link"><a class="button button-primary" href="blog/${esc(topic.blog_slug)}/index.html">Read research story <span aria-hidden="true">→</span></a></div>` : ""}<h3>Explore the journal papers</h3><ul class="topic-sources">${papers.map(paper => `<li>${paperURL(paper) ? `<a href="${esc(paperURL(paper))}" target="_blank" rel="noopener noreferrer">${esc(paper.title)} ↗</a>` : esc(paper.title)}<br><span class="muted">${esc(paper.year)} · ${esc(paper.venue)}</span></li>`).join("")}</ul>${topic.videos.length ? `<div class="topic-videos">${topic.videos.filter(video => safeURL(video.url)).map(video => `<a class="button button-primary" href="${esc(safeURL(video.url))}" target="_blank" rel="noopener noreferrer">▶ ${esc(video.title)} ↗</a>`).join("")}</div>` : ""}</div>`;
     if (!dialog.open) dialog.showModal();
     dialog.scrollTop = 0;
     document.body.classList.add("dialog-open");
@@ -99,7 +104,7 @@
   document.addEventListener("keydown", event => {if (event.key === "Escape") closeMenu();});
   document.getElementById("copyright-year").textContent = new Date().getFullYear();
   document.documentElement.classList.add("js-ready");
-  renderPublications(); renderProjects(); renderMetrics();
+  renderPublications(); renderProjects(); renderStories(); renderMetrics();
   if ("IntersectionObserver" in window) {
     const observer = new IntersectionObserver(entries => {
       entries.filter(entry => entry.isIntersecting).forEach(entry => {
@@ -120,7 +125,7 @@
     if (results[0].status === "fulfilled" && Array.isArray(results[0].value.publications)) catalog = results[0].value;
     if (results[1].status === "fulfilled" && Array.isArray(results[1].value)) topics = results[1].value;
     if (results[2].status === "fulfilled" && results[2].value.author_id === scholar.author_id) scholar = results[2].value;
-    renderPublications(); renderProjects(); renderMetrics();
+    renderPublications(); renderProjects(); renderStories(); renderMetrics();
   }
   // Inline seed keeps the portfolio usable when opened directly from disk.
   if (location.protocol !== "file:") refresh().catch(() => {});

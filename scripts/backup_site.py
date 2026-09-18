@@ -5,7 +5,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 import tarfile
 
-SITE_PATHS = ("index.html", "admin.html", "README.md", "IMAGE_BRIEF.md", "assets", "cv", "data", "scripts", "tests",
+SITE_PATHS = ("index.html", "admin.html", "README.md", "IMAGE_BRIEF.md", "BLOG_BRIEF.md", "blog", "content", "templates", "tools", "assets", "cv", "data", "scripts", "tests",
               ".github", ".gitignore", ".nojekyll", "robots.txt", "sitemap.xml")
 
 

@@ -60,6 +60,58 @@ let launchedBrowser, localServer;
     await page.waitForFunction(() => !document.getElementById("topic-dialog").open && !document.body.classList.contains("dialog-open"));
     assert.equal(await page.evaluate(() => document.body.classList.contains("dialog-open")), false);
   }
+  assert.equal(await page.locator(".story-card").count(), 5);
+  assert.deepEqual(JSON.parse(await page.locator("#initial-topics").textContent()), read("topics"));
+  for (const topic of read("topics")) {
+    const storyPath = `blog/${topic.blog_slug}/index.html`;
+    await page.locator(`.story-card h3 a[href="${storyPath}"]`).click();
+    await page.waitForURL(`${siteURL}/${storyPath}`);
+    assert.equal(await page.locator(".story-header h1").textContent(), topic.blog_title);
+    assert.equal(await page.locator(".story-glance li").count(), 3);
+    assert.equal(await page.locator(".story-references li").count(), topic.blog_publication_ids.length);
+    assert(await page.locator(".story-prose h2").count() >= 5);
+    const hero = page.locator(".story-hero img");
+    await hero.evaluate(image => image.decode());
+    assert.equal(await hero.getAttribute("alt"), topic.image_alt);
+    assert.equal(await hero.getAttribute("src"), `../../${topic.image}`);
+    assert.equal(await page.locator(".story-hero figcaption").textContent(), "Figure supplied by the author; related publications are listed below. View full-size figure ↗");
+    for (const id of topic.blog_publication_ids) {
+      const paper = read("publications").publications.find(p => p.id === id);
+      assert(await page.locator(".story-references").textContent().then(text => text.includes(paper.title) && text.includes(paper.authors.trim()) && text.includes(paper.venue)));
+      const doi = page.locator(`.story-reference-links a[href="https://doi.org/${paper.doi}"]`);
+      assert.equal(await doi.count(), 1);
+      assert.equal(await doi.getAttribute("target"), "_blank");
+      assert.equal(await doi.getAttribute("rel"), "noopener noreferrer");
+    }
+    assert.equal(await page.locator(".story-demos a").count(), topic.videos.length);
+    for (const video of topic.videos) assert.equal(await page.locator(`.story-demos a[href="${video.url}"]`).count(), 1);
+    assert.equal(await page.locator(".story-contact a").getAttribute("href"), "mailto:hon3@uthscsa.edu");
+    for (const width of [360, 390, 768, 1000, 1440]) {
+      await page.setViewportSize({width, height:900});
+      assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `Article overflow at ${width}px: ${topic.id}`);
+      const shape = await hero.evaluate(image => ({width:image.clientWidth, height:image.clientHeight, ratio:image.naturalWidth/image.naturalHeight}));
+      assert(Math.abs(shape.width/shape.height - shape.ratio) < 0.02, `Figure stretched: ${topic.id}`);
+      if (width === 360 && await page.locator(".story-table").count()) {
+        assert(await page.locator(".story-table").first().evaluate(table => table.scrollWidth > table.clientWidth));
+      }
+    }
+    if (topic.id === "brain-health") {
+      await page.screenshot({path:"/tmp/scientific-blog-desktop.png", fullPage:true});
+      await page.setViewportSize({width:390,height:844});
+      await page.screenshot({path:"/tmp/scientific-blog-mobile.png", fullPage:true});
+    }
+    await page.goBack({waitUntil:"networkidle"});
+    assert.equal(new URL(page.url()).pathname, "/");
+  }
+  await page.setViewportSize({width:1440,height:1000});
+  await page.locator('[data-topic="dementia"]').click();
+  await page.locator(".topic-story-link a").click();
+  await page.waitForURL(`${siteURL}/blog/dementia-trustworthy-ai/index.html`);
+  await page.reload({waitUntil:"networkidle"});
+  assert.equal(await page.locator(".story-header h1").textContent(), read("topics")[0].blog_title);
+  await page.goBack({waitUntil:"networkidle"});
+  if (await page.locator("#topic-dialog").evaluate(dialog => dialog.open)) await page.keyboard.press("Escape");
+  console.log("Scientific blogs: all 5 articles, full bibliographies, figures, Markdown links/headings, takeaways, mobile tables, deep links, demos, and Back navigation passed.");
   for (const width of [360, 390, 768, 1000, 1440]) {
     await page.setViewportSize({width, height:900});
     assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `Horizontal overflow at ${width}px`);
