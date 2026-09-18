@@ -1,49 +1,127 @@
-## What can a prediction really tell us?
+Dementia research presents machine learning with an unusually difficult problem. The disease develops over years. Patients are observed at irregular intervals. MRI, clinical assessments, cognitive scores, and other biomarkers provide different pieces of information. Some measurements are missing. And the populations represented in research datasets do not always resemble the populations in which models may eventually be used.
 
-A brain image can reveal structure. A clinical assessment can describe aspects of cognition. A sequence of visits can show how measurements change. None of these views, on its own, answers every question about dementia.
+That means a high-performing model is only the beginning.
 
-The research question is therefore richer than “Can a model assign a label?” Can complementary measurements help distinguish patterns of impairment? Can a model investigate progression over time? And when the data come from different populations, what does it mean for a prediction to be reliable?
+A clinically meaningful computational framework must also confront **progression, missing information, multimodal uncertainty, population differences, and interpretability**.
 
-These questions connect the publications in this research theme. They also explain why the work moves between multimodal learning, longitudinal prediction, missing information, and fair and explainable classification. The papers are related investigations, rather than components of a single clinically validated system.
+My research in this area has evolved along that path—from detecting disease-related patterns, to modeling longitudinal progression, and more recently to examining fairness and explainability across diverse populations.
 
-## Learning from more than one view
 
-**Multimodal learning** combines different kinds of information. Here, brain imaging and clinical measurements offer complementary views of the problem. The computational challenge is to learn useful relationships between them without assuming that every input carries the same information.
+## When the same model does not behave the same way for everyone
 
-The [2023 Scientific Reports study](https://www.nature.com/articles/s41598-023-37500-7) brings two tasks together: distinguishing early from late mild cognitive impairment, or MCI, and predicting time to Alzheimer’s disease conversion. It uses stacked polynomial attention, called SPAN, alongside adaptive exponential decay to learn and combine representations of clinical and imaging-derived features.
+One of the most important questions in medical AI is deceptively simple:
 
-On the study’s ADNI cohort, the paper reported a c-index of **0.85** for conversion-time prediction and **83.19% accuracy** for MCI-stage classification. These metrics describe different endpoints in that study’s evaluation. They are not estimates of how accurately the model would diagnose any person visiting a clinic, and they should not be compared interchangeably.
+**If a model performs well overall, does it also perform comparably across populations?**
 
-The broader idea is to make the relationship between diagnosis and progression part of the learning problem. A model’s representation must serve more than one question, while the interpretation of each output remains specific to its task.
+Our 2026 collaborative study in *Nature Communications*, [*Advancing fair and explainable machine learning for neuroimaging dementia pattern classification in multi-racial and multi-ethnic populations*](https://doi.org/10.1038/s41467-026-74515-w), examined this question using structural MRI data from multiple cohorts.
 
-## A history is useful even when it is incomplete
+Rather than assuming that an observed performance gap simply reflects unequal sample sizes, the study constructed controlled, group-balanced evaluations involving non-Hispanic White, non-Hispanic African American, and Hispanic participants. Participants were matched across important characteristics, and imaging features were harmonized to reduce variation associated with acquisition site and demographic differences.
 
-Longitudinal research asks how observations relate across time. In practice, an incomplete record creates a second problem alongside prediction: how should the model use the information that is present when other observations are absent?
+Yet performance discrepancies remained.
 
-The [2022 Neural Networks paper](https://www.sciencedirect.com/science/article/pii/S0893608022000946) investigates forward-to-backward bidirectional learning with integrative imputation for Alzheimer’s disease progression prediction. Imputation means estimating missing information within a modeling procedure. It does not turn an estimated value into an observed measurement.
+This is an important distinction. Increasing representation is essential, but the results suggest that **sample imbalance alone does not explain every difference in model behavior**.
 
-That distinction matters when reading a prediction. A history assembled partly from estimates contains a different kind of evidence from a fully observed history. The paper connects these questions through its progression-prediction framework; the source article provides the implementation and evaluation details.
+The study therefore moved beyond asking only, “How accurate is the classifier?” It also examined differences in false-positive and false-negative rates between populations and evaluated methods designed to reduce those discrepancies.
 
-The [longitudinal study published in 2025](https://ieeexplore.ieee.org/document/10702601) addresses modality uncertainty and optimization of information flow. Its place in this research story is the question of how complementary inputs should be used when their information is uncertain. It extends the modeling discussion without making uncertainty disappear.
+A proposed approach, **RegAlign**, combines adaptation to a smaller target population with class-aware learning and alignment between populations. The goal is not to optimize fairness in isolation, because reducing a performance gap while substantially degrading the model would create another problem. Instead, the work treats predictive performance and inter-group discrepancy as objectives that must be considered together.
 
-## For whom does the model work?
+That trade-off is especially relevant in medicine. A false positive and a false negative are not abstract numbers; they represent different kinds of errors, and their frequencies may differ across populations.
 
-A useful headline result is only the beginning of an evaluation. This research theme also asks how model behavior should be examined across populations.
+## Explainability changes the question again
 
-The [2026 Nature Communications study](https://www.nature.com/articles/s41467-026-74515-w) examines fair and explainable machine learning for neuroimaging dementia-pattern classification in multiracial and multiethnic populations. Its focus brings population differences and interpretation into the same research conversation as predictive modeling.
+Fairness tells us **where performance differs**.
 
-Fairness is not a synonym for a high overall score. It prompts questions about which populations are represented, how the task is defined, and how results are examined for different groups. Explainability adds another question: what can the model’s behavior tell us about the information used in a classification? An explanation of model behavior is not, by itself, evidence of a biological mechanism.
+Explainability can help us investigate **what the model is using when those differences occur**.
 
-These are useful questions to bring to the paper and its evaluation, rather than conclusions that should be assumed from its title.
+The *Nature Communications* study used SHAP-based interpretation together with an independent neuroimaging meta-analysis to examine the contribution of individual brain regions. Many influential regions overlapped with structures commonly associated with Alzheimer-related neurodegeneration, including medial temporal and limbic regions.
 
-## From tissue representations to a broader research program
+But the strength and pattern of feature contributions were not identical across populations.
 
-An earlier [2018 Soft Computing study](https://link.springer.com/article/10.1007/s00500-018-3421-5) investigates non-white-matter tissue extraction and a deep convolutional neural network for Alzheimer’s disease detection. It represents a different point in the research program: learning from an imaging representation suited to a detection task.
+That observation is important because model explanations themselves may not automatically generalize. An explanation generated from one population should not be assumed to describe how the same model reaches predictions in another.
 
-Read together, the papers show a widening set of computational questions. Tissue representation, multimodal fusion, incomplete longitudinal records, uncertainty, and population-aware evaluation each address a different part of the problem. No single metric summarizes all of them.
+For trustworthy AI, interpretation therefore becomes more than producing an attractive feature-importance map. The deeper question is whether the biological patterns learned by a model remain stable under changes in population and dataset.
 
-## What remains open
 
-The next questions concern evidence as much as architecture. How does a method behave with a different pattern of missing observations? How should uncertainty be communicated? What evaluation would be appropriate for a new population or a different setting?
+## Before fairness comes another challenge: time
 
-Those questions require dedicated investigation. The studies linked here provide their own designs and results; they do not establish treatment benefit or replace a clinical assessment. The direction of this research is to learn more from complementary information while remaining explicit about the conditions under which a prediction was studied.
+Dementia is not a single event. It is a trajectory.
+
+A patient may move from cognitively normal aging to mild cognitive impairment and, for some individuals, later to dementia. Measurements collected at one visit therefore provide only one frame of a much longer story.
+
+The 2025 *IEEE Journal of Biomedical and Health Informatics* study, [*Longitudinal Alzheimer's Disease Progression Prediction with Modality Uncertainty and Optimization of Information Flow*](https://doi.org/10.1109/JBHI.2024.3472462), focused on this longitudinal setting.
+
+Multimodal longitudinal data create two linked problems. First, the available modalities may differ between visits or participants. Second, a recurrent model must decide what information from earlier visits should be preserved as the sequence evolves.
+
+The study approaches modality uncertainty by mapping complementary inputs into a shared representation and explicitly modeling interactions between them. It also introduces an auxiliary mechanism to improve how information flows through recurrent gates over time.
+
+The underlying idea is intuitive: **a model following disease progression should not treat every measurement as equally certain, nor should it forget clinically relevant history simply because the sequence becomes longer.**
+
+## Learning from incomplete patient histories
+
+Missing data had already been a central challenge in our earlier longitudinal work.
+
+The 2022 *Neural Networks* study, [*Predicting progression of Alzheimer's disease using forward-to-backward bi-directional network with integrative imputation*](https://doi.org/10.1016/j.neunet.2022.03.016), modeled longitudinal records from the TADPOLE cohort while jointly addressing several tasks.
+
+Instead of separating missing-value imputation from disease prediction, the framework connected them.
+
+A bidirectional strategy examined temporal relationships in both directions, while integrative imputation combined statistical information with the evolving structure of the longitudinal sequence. The model then used these representations to forecast clinical status and imaging-related measurements.
+
+The broader lesson remains relevant: **missingness is part of the data-generating process**. Simply discarding incomplete longitudinal records can remove valuable patients and potentially alter the study population. Modeling incomplete histories explicitly provides another way to use the available information while acknowledging that it is incomplete.
+
+## From “what stage?” to “when might progression occur?”
+
+A related question appeared in our 2023 *Scientific Reports* work, [*Multimodal multitask learning for predicting MCI to AD conversion using stacked polynomial attention network and adaptive exponential decay*](https://doi.org/10.1038/s41598-023-37500-7).
+
+Using the ADNI cohort, the study considered two tasks simultaneously:
+
+**What stage of mild cognitive impairment is represented?**
+
+and
+
+**When might conversion to Alzheimer’s disease occur?**
+
+Clinical measurements and MRI-derived radiomic features were processed through a stacked polynomial attention mechanism and combined through an adaptive exponential-decay strategy.
+
+In the study's evaluation of 249 early-MCI and 427 late-MCI participants, the multimodal framework reported a **c-index of 0.85 for conversion-time prediction and 83.19% accuracy for MCI-stage classification**.
+
+Those results belong specifically to that ADNI evaluation and should not be interpreted as a universal clinical performance estimate. Their value is in demonstrating how classification and time-to-event modeling can be learned together rather than treated as unrelated questions.
+
+## Where the research started
+
+Earlier work approached the problem from a more fundamental imaging perspective.
+
+The 2018 *Soft Computing* study, [*Non-white matter tissue extraction and deep convolutional neural network for Alzheimer's disease detection*](https://doi.org/10.1007/s00500-018-3421-5), investigated MRI and PET imaging for classification among normal control, mild cognitive impairment, and Alzheimer's disease groups.
+
+That work belongs to an earlier generation of the research program: identify useful imaging representations and improve disease classification.
+
+The later studies progressively expanded the question.
+
+Classification became progression.
+
+Single visits became longitudinal histories.
+
+Complete data became uncertain and missing modalities.
+
+Overall performance became population-specific performance.
+
+And prediction became something that also needed to be explained.
+
+## What comes next?
+
+The most interesting future direction is not simply a larger classifier.
+
+It is a model that can learn from structural MRI, functional imaging, molecular biomarkers, plasma measurements, longitudinal clinical histories, and potentially other sources while still allowing us to understand **which information drives a prediction and whether that behavior remains reliable across populations**.
+
+That raises difficult questions.
+
+How should uncertainty propagate through a multimodal model?
+
+How stable are explanations across cohorts?
+
+Can a foundation model learn reusable neuroimaging representations without amplifying the demographic structure of its training data?
+
+And how should fairness be evaluated when disease prevalence, data availability, imaging protocols, and clinical context all vary?
+
+These questions push dementia AI away from a narrow competition over accuracy and toward a more demanding goal:
+
+**building models whose behavior we can characterize, challenge, and understand.**

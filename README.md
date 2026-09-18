@@ -80,7 +80,7 @@ The public page includes embedded bibliography and topic data as a fallback for 
 
 ## Scientific Blog: editing and adding stories
 
-Visitors can follow **Research card → short research note → Read research story → full article**, or open the **Scientific Blog** section directly. Each article has its own URL, such as `blog/dementia-trustworthy-ai/`, and uses ordinary links so browser Back navigation works. The five initial stories are approximately 770–820 words each, excluding their bibliographies.
+Visitors can follow **Research card → short research note → Read research story → full article**, or open the **Scientific Blog** section directly. Each article has its own URL, such as `blog/dementia-trustworthy-ai/`, and uses ordinary links so browser Back navigation works. The five research stories use the supplied author draft; the original draft is preserved in `content/research-notes-draft.md`. Headlines and three-point takeaways match that draft. Article standfirsts use `blog_standfirst`, while `blog_summary` keeps homepage cards concise.
 
 The content structure is:
 
@@ -97,7 +97,7 @@ assets/js/story-cards.js       Shared static/live homepage cards
 assets/js/blog.js              Article navigation and footer year
 ```
 
-The Markdown files contain the narrative. The template adds the hero figure, exactly three topic-specific takeaways, full related-publication entries, supplied demos, and the existing contact link. Bibliography wording and author credit come from `BLOG_BRIEF.md` and are checked against `data/publications.json`. Existing short-summary fields remain unchanged.
+The Markdown files contain the narrative. The template adds the hero figure, exactly three topic-specific takeaways, full related-publication entries, supplied demos, and the existing contact link. Bibliography wording and author credit come from `BLOG_BRIEF.md` and are checked against `data/publications.json`. Short Research Notes summarize the updated narratives; the Markdown files hold the complete long-form text.
 
 After editing article text or story metadata, run:
 
@@ -114,11 +114,11 @@ To add a sixth story:
 
 1. Add its journal records to `data/publications.json` if they are not present, retaining full authors and exact publication metadata.
 2. Add the full references to `BLOG_BRIEF.md` using its existing numbered-title, Authors, Venue, Source, DOI, and DOI-link format. The builder treats these as the source of bibliography credit.
-3. Add a topic in `data/topics.json` with the existing short-note fields, image dimensions and descriptive alt text, plus `blog_slug`, `blog_markdown`, `blog_category`, `blog_title`, `blog_summary`, `blog_keywords`, `blog_publication_ids`, and **exactly three** `research_at_glance` strings. Reference IDs must belong to that topic. Use an empty `videos` array unless a demo is explicitly supplied in the brief.
+3. Add a topic in `data/topics.json` with the existing short-note fields, image dimensions and descriptive alt text, plus `blog_slug`, `blog_markdown`, `blog_category`, `blog_title`, `blog_summary`, optional `blog_standfirst`, `blog_keywords`, `blog_publication_ids`, and **exactly three** `research_at_glance` strings. Reference IDs must belong to that topic. Use an empty `videos` array unless a demo is explicitly supplied in the brief.
 4. Write `content/blog/<blog_slug>.md`, set `blog_markdown` to that path, and save the figure in `assets/img/topics/`.
 5. Run the builder, preview the card, note, and article on desktop and mobile, then commit the source and generated files. Cards, next-story navigation, and sitemap entries are generated automatically.
 
-The initial narratives expand the supplied brief without adding new experimental claims or individual author-contribution claims. The 2023 Scientific Reports metrics were checked against the linked publisher article. Other discussions stay within the supplied notes and publication descriptions; publisher access restrictions prevented a complete fresh full-text review of every reference. Keep any future quantitative additions tied to the source study and its evaluation setting. Supplied figure captions do not assert a reuse license or figure number.
+The current narratives and study-specific claims come from the author-supplied draft. The import preserves supplied results and their study context rather than inventing additional measurements or author contributions. A complete fresh full-text review of every supplied claim has not been performed; the previously checked 2023 Scientific Reports metrics remain consistent with the publisher article. Keep any future quantitative additions tied to the source study and its evaluation setting. Supplied figure captions do not assert a reuse license or figure number.
 
 ## Backups and recovery
 

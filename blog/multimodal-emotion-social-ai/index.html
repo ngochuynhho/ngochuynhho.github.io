@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#173e35">
-  <title>Understanding emotion in context. | Ngoc-Huynh Ho, PhD</title>
-  <meta name="description" content="A facial expression, a voice, or a sentence rarely tells the whole story. This research investigates how AI can combine audio, visual, linguistic, temporal, and relational information to understand emotion in conversations and social interactions.">
+  <title>Emotion is more than a face | Ngoc-Huynh Ho, PhD</title>
+  <meta name="description" content="A face, a voice, or a sentence rarely tells the whole story. These studies explore relationships among signals, people, and context in emotion and group interaction.">
   <link rel="canonical" href="https://ngochuynhho.github.io/blog/multimodal-emotion-social-ai/">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Understanding emotion in context.">
-  <meta property="og:description" content="A facial expression, a voice, or a sentence rarely tells the whole story. This research investigates how AI can combine audio, visual, linguistic, temporal, and relational information to understand emotion in conversations and social interactions.">
+  <meta property="og:title" content="Emotion is more than a face">
+  <meta property="og:description" content="A face, a voice, or a sentence rarely tells the whole story. These studies explore relationships among signals, people, and context in emotion and group interaction.">
   <meta property="og:url" content="https://ngochuynhho.github.io/blog/multimodal-emotion-social-ai/">
   <meta property="og:image" content="https://ngochuynhho.github.io/assets/img/topics/Multimodal_emotion_social_AI.png">
   <meta name="twitter:card" content="summary_large_image">
@@ -33,45 +33,92 @@
       <header class="story-header story-text-column">
         <a class="story-back" href="../../index.html#scientific-blog">← All research stories</a>
         <span class="eyebrow">Multimodal Emotion &amp; Social AI</span>
-        <h1>Understanding emotion in context.</h1>
-        <p class="story-standfirst">A facial expression, a voice, or a sentence rarely tells the whole story. This research investigates how AI can combine audio, visual, linguistic, temporal, and relational information to understand emotion in conversations and social interactions.</p>
-        <p class="story-byline">Ngoc-Huynh Ho, PhD <span aria-hidden="true">·</span> 2020–2024 publications <span aria-hidden="true">·</span> 4 min read</p>
+        <h1>Emotion is more than a face</h1>
+        <p class="story-standfirst">A sentence can sound positive while a speaker&#39;s voice suggests frustration. A smile can coexist with tension. And in a group conversation, one person&#39;s expression may make sense only after seeing how everyone else responds. This research explores how AI can learn those relationships rather than treating human signals in isolation.</p>
+        <p class="story-byline">Ngoc-Huynh Ho, PhD <span aria-hidden="true">·</span> 2020–2024 publications <span aria-hidden="true">·</span> 5 min read</p>
         <ul class="story-keywords" aria-label="Article keywords"><li>Graph Learning</li><li>Multimodal AI</li><li>Emotion</li><li>Social Context</li></ul>
       </header>
       <figure class="story-hero"><a href="../../assets/img/topics/Multimodal_emotion_social_AI.png" target="_blank" rel="noopener noreferrer" aria-label="Open research figure at full size"><img src="../../assets/img/topics/Multimodal_emotion_social_AI.png" alt="Audio-visual feature extraction and attention-based fusion for group emotion and cohesion analysis." width="4291" height="1710" fetchpriority="high" decoding="async"></a><figcaption>Figure supplied by the author; related publications are listed below. <a href="../../assets/img/topics/Multimodal_emotion_social_AI.png" target="_blank" rel="noopener noreferrer">View full-size figure ↗</a></figcaption></figure>
-      <div class="story-prose story-text-column"><h2>What changes when we listen and look together?</h2>
-<p>Imagine a hypothetical conversation in which someone says “I’m fine” with a hesitant voice and an expression that suggests otherwise. The words alone leave something out. The face alone leaves something out too. The meaning depends on how the cues fit together and on the surrounding interaction.</p>
-<p>That example illustrates the computational question behind this research theme: how can a model learn from complementary channels and their relationships? It is an illustration of the problem, not a claim about any person’s internal emotional state.</p>
-<p>The publications approach the question through speech, audio-visual information, multimodal fusion, conversational context, and group analysis. They investigate different tasks, so their findings should be read within their own datasets and evaluation settings.</p>
-<h2>Combining signals is only the first step</h2>
-<p><strong>Multimodal learning</strong> uses more than one kind of input. For emotion-related research, those inputs can include audio, facial information, language, and temporal context. The challenge is not just putting features next to one another. It is learning which relationships are useful for the task.</p>
-<p>The <a href="https://ieeexplore.ieee.org/abstract/document/9050806" target="_blank" rel="noopener noreferrer" class="external-link">2020 speech-emotion study</a> investigates multi-level, multi-head fusion attention in a recurrent neural network. Attention is a mechanism for weighting information within a learned representation. In this research story, its importance is the question of how complementary speech-related features can be combined rather than treated as unrelated inputs.</p>
-<p>The <a href="https://ieeexplore.ieee.org/abstract/document/10145792" target="_blank" rel="noopener noreferrer" class="external-link">2023 cross-modality learning paper</a> makes modality interactions central to emotion reasoning. The study’s focus is useful for explaining why a cue can matter differently when another channel is available. The source article supplies the model and evaluation details; the title does not establish universal emotion understanding.</p>
-<h2>Relationships can become part of the model</h2>
-<p>A <strong>graph</strong> represents entities and relationships. In machine learning, that structure allows a model to investigate dependencies rather than handling every observation as isolated. What the entities and connections represent depends on the research design.</p>
-<p>The <a href="https://ieeexplore.ieee.org/document/9521910" target="_blank" rel="noopener noreferrer" class="external-link">2021 deep graph fusion paper</a> investigates multimodal evoked expressions in large-scale videos. The <a href="https://ieeexplore.ieee.org/document/10378668" target="_blank" rel="noopener noreferrer" class="external-link">2024 relation-aware graph-recurrent paper</a> addresses emotion recognition in conversation.</p>
-<p>These papers share an interest in relational representation, but they should not be collapsed into one task. Evoked-expression analysis and conversational emotion recognition have different scopes. A recurrent component also directs attention toward sequences: the relationship between an observation and the observations around it can be part of the learning question.</p>
-<p>The conceptual shift is from “What does this cue look like?” toward “How does this cue relate to other information?” That shift creates new modeling opportunities and new questions about what a representation is learning.</p>
-<h2>From individuals to group interaction</h2>
-<p>The <a href="https://www.mdpi.com/2076-3417/14/15/6742" target="_blank" rel="noopener noreferrer" class="external-link">2024 GCE publication</a> presents an audio-visual dataset for group cohesion and emotion analysis. It expands the research story toward interactions involving more than one person and more than one target of analysis.</p>
-<p>The research figure depicts audio and visual feature extraction, temporal encoding, and fusion leading toward emotion and cohesion outputs. It offers a way to explain the pipeline: different channels are represented, their information is combined, and the resulting representation serves the study’s tasks.</p>
-<p>Group cohesion is not simply another name for a facial-expression category. Keeping those targets distinct helps explain why dataset design and labeling are part of the scientific contribution, alongside the learning method.</p>
-<h2>Not every affective task asks the same question</h2>
-<p>The <a href="https://www.mdpi.com/2076-3417/11/11/5194" target="_blank" rel="noopener noreferrer" class="external-link">2021 stress-analysis paper</a> investigates stress with dimensions of valence and arousal in the wild. Valence and arousal provide a dimensional framing: broadly, the pleasantness of an affective state and its activation level. That framing differs from choosing among discrete emotion categories.</p>
-<p>Across the theme, conversation emotion, evoked expressions, stress, and group cohesion should therefore retain their own definitions. A score reported for one is not direct evidence of performance on another.</p>
-<p>This distinction also matters for readers outside machine learning. A dataset label is an operational target for a study. Predicting it does not imply that a model has unrestricted access to a person’s thoughts or feelings.</p>
-<h2>Reading model behavior in context</h2>
-<p>An attractive model diagram can make a pipeline appear self-contained. The scientific interpretation still depends on the source data, annotations, input channels, and evaluation setting. A richer architecture does not make those conditions irrelevant.</p>
-<p>This research program’s recurring contribution is to investigate complementary signals and contextual relationships. It is best understood through the papers’ individual tasks, rather than as a claim that one system can understand emotion in every social setting.</p>
-<h2>The next conversation</h2>
-<p>Open questions include how a method behaves when channels are missing, what happens when interaction patterns differ, and how a learned relationship should be interpreted. These are questions for further study, not results asserted here.</p>
-<p>The broader direction is human-centered: develop representations that account for the fact that expression unfolds across channels, over time, and between people, while remaining clear about what the evidence supports.</p>
+      <div class="story-prose story-text-column"><p>Imagine hearing someone say:</p>
+<p><em>&quot;That's great.&quot;</em></p>
+<p>The words appear positive.</p>
+<p>But what if the voice is flat?</p>
+<p>What if the speaker avoids eye contact?</p>
+<p>What if the previous speaker has just delivered bad news?</p>
+<p>Emotion is not encoded in one channel. Humans combine language, voice, facial behavior, timing, social context, and prior interactions almost automatically.</p>
+<p>For artificial intelligence, doing the same is considerably harder.</p>
+<h2>Conversations are networks, not isolated sentences</h2>
+<p>The 2024 <em>IEEE Access</em> study, <a href="https://doi.org/10.1109/ACCESS.2023.3348518" target="_blank" rel="noopener noreferrer" class="external-link"><em>Residual Relation-Aware Attention Deep Graph-Recurrent Model for Emotion Recognition in Conversation</em></a>, focuses on emotion recognition in conversation.</p>
+<p>A conversation has structure.</p>
+<p>Speaker A responds to Speaker B.</p>
+<p>A later statement refers back to an earlier one.</p>
+<p>The emotional meaning of an utterance may depend on whether the same speaker was previously angry, whether another participant changed tone, or what happened several turns earlier.</p>
+<p>The study represents a conversation as a <strong>graph</strong>.</p>
+<p>In simple terms, a graph consists of nodes and connections. Here, utterances can be represented as nodes, while connections describe relationships among them—including interactions from the same speaker and across different speakers.</p>
+<p>That allows the model to reason about context rather than judging every sentence independently.</p>
+<p>Attention mechanisms then help determine which relationships deserve more weight for a particular prediction.</p>
+<p>The broader idea is straightforward: <strong>emotion lives partly in relationships.</strong></p>
+<h2>What happens when part of the signal disappears?</h2>
+<p>The 2023 <em>IEEE Access</em> study, <a href="https://doi.org/10.1109/ACCESS.2023.3283597" target="_blank" rel="noopener noreferrer" class="external-link"><em>Cross-modality learning by exploring modality interactions for emotion reasoning</em></a>, pushes that idea further.</p>
+<p>In real situations, the most obvious emotional signal is not always available.</p>
+<p>A face may be hidden.</p>
+<p>Speech may be inaudible.</p>
+<p>The person of interest may not even be directly visible.</p>
+<p>Humans can still infer something from context: what others are doing, what is happening in the scene, how the conversation unfolds, or which signals accompany one another.</p>
+<p>Rather than thinking of audio, visual information, and language as independent feature vectors, cross-modality learning examines <strong>interactions between representations</strong>.</p>
+<p>This matters because complementary information is useful precisely when one modality contains something another does not.</p>
+<h2>From feature fusion to graph fusion</h2>
+<p>Earlier work explored a related problem through evoked emotional expressions.</p>
+<p>The 2021 <em>IEEE Access</em> paper, <a href="https://doi.org/10.1109/ACCESS.2021.3107548" target="_blank" rel="noopener noreferrer" class="external-link"><em>Deep Graph Fusion Based Multimodal Evoked Expressions From Large-Scale Videos</em></a>, considers the relationship between audiovisual content and the expressions it evokes in viewers.</p>
+<p>Here again, the interesting part is not merely having two modalities.</p>
+<p>It is modeling how their representations relate.</p>
+<p>Graph-based fusion provides a way of constructing those relationships explicitly, allowing information from different audiovisual sources to interact before a final prediction is made.</p>
+<p>This line of work reflects a recurring theme across my research: <strong>multimodal learning becomes more powerful when the model learns structure between information sources rather than simply stacking them together.</strong></p>
+<h2>Attention asks: what should the model listen to?</h2>
+<p>Our 2020 <em>IEEE Access</em> work, <a href="https://doi.org/10.1109/ACCESS.2020.2984368" target="_blank" rel="noopener noreferrer" class="external-link"><em>Multimodal Approach of Speech Emotion Recognition Using Multi-Level Multi-Head Fusion Attention-Based Recurrent Neural Network</em></a>, explored multimodal speech-emotion recognition using attention-based fusion.</p>
+<p>Attention can be understood as a learned weighting process.</p>
+<p>If a segment of speech contains a particularly informative vocal pattern, the model can assign that representation greater importance. Multiple attention heads allow different parts of the model to focus on different relationships.</p>
+<p>This is especially useful in emotion recognition because emotional evidence is rarely distributed uniformly across a recording.</p>
+<p>Some moments matter more than others.</p>
+<p>Some modalities are more informative for one example than for another.</p>
+<p>The goal is therefore not only to collect more signals, but to learn <strong>which signals matter, at which level, and in which context</strong>.</p>
+<h2>From individuals to groups</h2>
+<p>Most emotion-recognition systems focus on an individual.</p>
+<p>But many meaningful human behaviors occur in groups.</p>
+<p>The 2024 <em>Applied Sciences</em> paper, <a href="https://doi.org/10.3390/app14156742" target="_blank" rel="noopener noreferrer" class="external-link"><em>GCE: An Audio-Visual Dataset for Group Cohesion and Emotion Analysis</em></a>, shifts the unit of analysis from a single person to the group itself.</p>
+<p>The GCE dataset contains <strong>1,029 30-second video segments</strong> drawn from conversational settings such as interviews, meetings, discussions, and debates.</p>
+<p>Psychology graduate students annotated the segments for group emotion—positive, neutral, or negative—and cohesion on a seven-level scale.</p>
+<p>Visual and audio representations were then combined through multi-head attention to establish baseline models for studying the two tasks.</p>
+<p>Group cohesion is particularly interesting because it is not reducible to whether every individual looks happy.</p>
+<p>A cohesive group may disagree.</p>
+<p>A positive group may not necessarily be highly coordinated.</p>
+<p>The relationships among participants become part of the phenomenon being measured.</p>
+<h2>Emotion is not the same as stress</h2>
+<p>A second <em>Applied Sciences</em> study, <a href="https://doi.org/10.3390/app11115194" target="_blank" rel="noopener noreferrer" class="external-link"><em>Stress Analysis with Dimensions of Valence and Arousal in the Wild</em></a>, illustrates why affective-computing tasks also need to remain conceptually distinct.</p>
+<p>The SADVAW dataset examined apparent stress together with <strong>valence</strong>—roughly, how positive or negative an affective state appears—and <strong>arousal</strong>, or the level of activation.</p>
+<p>The dataset contains 1,236 clips from 41 Korean movies with annotations spanning multiple levels of stress, valence, and arousal.</p>
+<p>This is not the same task as conversation emotion recognition or group cohesion.</p>
+<p>The distinction matters.</p>
+<p>Affect is multidimensional, and datasets operationalize it differently. Combining all such labels under a generic word like “emotion” can hide substantial differences in what models are actually learning.</p>
+<h2>The next challenge: multimodal AI that understands context</h2>
+<p>Modern multimodal models can process increasingly rich combinations of text, image, audio, and video.</p>
+<p>But adding modalities is not the same as understanding interactions.</p>
+<p>For social AI, the difficult questions remain relational:</p>
+<p>Who is responding to whom?</p>
+<p>Which signal changes the interpretation of another?</p>
+<p>When do modalities disagree?</p>
+<p>How should the model behave when one channel is missing?</p>
+<p>And can the system distinguish an individual's affect from the emotional dynamics of the group?</p>
+<p>Those questions are likely to become even more important as multimodal foundation models move from static inputs toward continuous human interaction.</p>
+<p>The goal is not to make an AI system claim that it can “read people's minds.”</p>
+<p>It is much more concrete:</p>
+<p><strong>to build representations that capture the observable relationships among signals, people, and context—and to be precise about what those representations can and cannot tell us.</strong></p>
 </div>
-      <aside class="story-glance story-text-column" aria-labelledby="glance-title"><span class="eyebrow">THE SHARED THREAD</span><h2 id="glance-title">Research at a glance</h2><ul><li>Attention and fusion methods investigate relationships between complementary input channels.</li><li>Graph-recurrent research brings relational and conversational context into modeling.</li><li>The GCE publication introduces an audio-visual dataset for group cohesion and emotion analysis.</li></ul></aside>
+      <aside class="story-glance story-text-column" aria-labelledby="glance-title"><span class="eyebrow">THE SHARED THREAD</span><h2 id="glance-title">Research at a glance</h2><ul><li>Multimodal emotion recognition is not simply about concatenating audio, visual, and language features; the relationships between those modalities matter.</li><li>Graph models provide a natural way to represent relationships among speakers, utterances, modalities, and time.</li><li>Moving from individual emotion to group emotion and cohesion changes the scientific question: the social system itself becomes the object of analysis.</li></ul></aside>
       <section class="story-references story-text-column" aria-labelledby="references-title"><span class="eyebrow">EXPLORE THE EVIDENCE</span><h2 id="references-title">Related publications</h2><ol><li><h3><a href="https://www.mdpi.com/2076-3417/14/15/6742" target="_blank" rel="noopener noreferrer">GCE: An Audio-Visual Dataset for Group Cohesion and Emotion Analysis <span aria-hidden="true">↗</span></a></h3><p class="story-reference-authors">E Lim, NH Ho , S Pant, YS Kang, SE Jeon, S Kim, SH Kim, HJ Yang</p><p class="story-reference-venue">Applied Sciences 14 (2024), p. 6742 · 2024</p><div class="story-reference-links"><a href="https://doi.org/10.3390/app14156742" target="_blank" rel="noopener noreferrer">DOI: 10.3390/app14156742 <span aria-hidden="true">↗</span></a><a href="https://www.mdpi.com/2076-3417/14/15/6742" target="_blank" rel="noopener noreferrer">Publisher / source <span aria-hidden="true">↗</span></a></div></li><li><h3><a href="https://ieeexplore.ieee.org/document/10378668" target="_blank" rel="noopener noreferrer">Residual Relation-Aware Attention Deep Graph-Recurrent Model for Emotion Recognition in Conversation <span aria-hidden="true">↗</span></a></h3><p class="story-reference-authors">AQ Duong, NH Ho , S Pant, S Kim, SH Kim, HJ Yang</p><p class="story-reference-venue">IEEE Access 12 (2024), p. 11243 · 2024</p><div class="story-reference-links"><a href="https://doi.org/10.1109/ACCESS.2023.3348518" target="_blank" rel="noopener noreferrer">DOI: 10.1109/ACCESS.2023.3348518 <span aria-hidden="true">↗</span></a><a href="https://ieeexplore.ieee.org/document/10378668" target="_blank" rel="noopener noreferrer">Publisher / source <span aria-hidden="true">↗</span></a></div></li><li><h3><a href="https://ieeexplore.ieee.org/abstract/document/10145792" target="_blank" rel="noopener noreferrer">Cross-modality learning by exploring modality interactions for emotion reasoning <span aria-hidden="true">↗</span></a></h3><p class="story-reference-authors">TD Tran, NH Ho , S Pant, HJ Yang, SH Kim, G Lee</p><p class="story-reference-venue">IEEE Access 11 (2023), p. 56634-56648 · 2023</p><div class="story-reference-links"><a href="https://doi.org/10.1109/ACCESS.2023.3283597" target="_blank" rel="noopener noreferrer">DOI: 10.1109/ACCESS.2023.3283597 <span aria-hidden="true">↗</span></a><a href="https://ieeexplore.ieee.org/abstract/document/10145792" target="_blank" rel="noopener noreferrer">Publisher / source <span aria-hidden="true">↗</span></a></div></li><li><h3><a href="https://ieeexplore.ieee.org/document/9521910" target="_blank" rel="noopener noreferrer">Deep Graph Fusion based Multimodal Evoked Expressions from Large-Scale Videos <span aria-hidden="true">↗</span></a></h3><p class="story-reference-authors">NH Ho , HJ Yang, SH Kim, G Lee, SB Yoo</p><p class="story-reference-venue">IEEE Access 9 (2021) · 2021</p><div class="story-reference-links"><a href="https://doi.org/10.1109/ACCESS.2021.3107548" target="_blank" rel="noopener noreferrer">DOI: 10.1109/ACCESS.2021.3107548 <span aria-hidden="true">↗</span></a><a href="https://ieeexplore.ieee.org/document/9521910" target="_blank" rel="noopener noreferrer">Publisher / source <span aria-hidden="true">↗</span></a></div></li><li><h3><a href="https://www.mdpi.com/2076-3417/11/11/5194" target="_blank" rel="noopener noreferrer">Stress Analysis with Dimensions of Valence and Arousal in the Wild <span aria-hidden="true">↗</span></a></h3><p class="story-reference-authors">TD Tran, J Kim, NH Ho , HJ Yang, S Pant, SH Kim, G Lee</p><p class="story-reference-venue">Applied Sciences 11.11 (2021), p. 5194 · 2021</p><div class="story-reference-links"><a href="https://doi.org/10.3390/app11115194" target="_blank" rel="noopener noreferrer">DOI: 10.3390/app11115194 <span aria-hidden="true">↗</span></a><a href="https://www.mdpi.com/2076-3417/11/11/5194" target="_blank" rel="noopener noreferrer">Publisher / source <span aria-hidden="true">↗</span></a></div></li><li><h3><a href="https://ieeexplore.ieee.org/abstract/document/9050806" target="_blank" rel="noopener noreferrer">Multimodal approach of speech emotion recognition using multi-level multi-head fusion attention-based recurrent neural network <span aria-hidden="true">↗</span></a></h3><p class="story-reference-authors">NH Ho , HJ Yang, SH Kim, G Lee</p><p class="story-reference-venue">IEEE Access 8 (2020), p. 61672-61686 · 2020</p><div class="story-reference-links"><a href="https://doi.org/10.1109/ACCESS.2020.2984368" target="_blank" rel="noopener noreferrer">DOI: 10.1109/ACCESS.2020.2984368 <span aria-hidden="true">↗</span></a><a href="https://ieeexplore.ieee.org/abstract/document/9050806" target="_blank" rel="noopener noreferrer">Publisher / source <span aria-hidden="true">↗</span></a></div></li></ol></section>
       
-      <section class="story-contact story-text-column" aria-labelledby="story-contact-title"><span class="eyebrow">CONTINUE THE CONVERSATION</span><h2 id="story-contact-title">Interested in this research?</h2><p>I am always interested in conversations around neuroimaging, multimodal learning, trustworthy AI, biomedical machine learning, and collaborative research. If your work intersects with these questions, I would be glad to connect.</p><a class="button button-primary" href="mailto:hon3@uthscsa.edu">Get in touch <span aria-hidden="true">→</span></a></section>
-      <nav class="story-next story-text-column" aria-label="More research stories"><a href="../../index.html#scientific-blog">← All research stories</a><a href="../medical-image-analysis/index.html">Next: From an image to a meaningful region. <span aria-hidden="true">→</span></a></nav>
+      <section class="story-contact story-text-column" aria-labelledby="story-contact-title"><span class="eyebrow">CONTINUE THE CONVERSATION</span><h2 id="story-contact-title">Interested in this research?</h2><p>My current interests center on <strong>neuroimaging, trustworthy AI, multimodal learning, and foundation models for biomedical data</strong>. I am particularly interested in research that connects methodological development with questions of generalizability, interpretation, population differences, and biological relevance.</p><p>If your work intersects with these areas—or if you are a student interested in developing research at their intersection—I would be glad to connect.</p><a class="button button-primary" href="mailto:hon3@uthscsa.edu">Get in touch <span aria-hidden="true">→</span></a></section>
+      <nav class="story-next story-text-column" aria-label="More research stories"><a href="../../index.html#scientific-blog">← All research stories</a><a href="../medical-image-analysis/index.html">Next: Teaching AI where to look <span aria-hidden="true">→</span></a></nav>
     </article>
   </main>
   <footer class="site-footer container"><span>© <span id="copyright-year">2026</span> Ngoc-Huynh Ho</span><span class="footer-links"><a href="../../index.html#contact">Contact</a><a href="#main">Back to top ↑</a></span><small>Original portfolio template by <a href="https://bootstrapmade.com/" target="_blank" rel="noopener noreferrer">BootstrapMade</a></small></footer>

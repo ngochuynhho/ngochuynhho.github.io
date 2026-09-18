@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#173e35">
-  <title>From an image to a meaningful region. | Ngoc-Huynh Ho, PhD</title>
-  <meta name="description" content="When labeled medical images are limited, knowing where a model should look can be as important as the classifier itself. This work connects segmentation, attention, reconstruction, and semi-supervised learning to extract more meaningful representations from medical images.">
+  <title>Teaching AI where to look | Ngoc-Huynh Ho, PhD</title>
+  <meta name="description" content="Before asking what a medical image means, it can help to ask where meaningful anatomy is located. These studies connect segmentation, reconstruction, and attention.">
   <link rel="canonical" href="https://ngochuynhho.github.io/blog/medical-image-analysis/">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="From an image to a meaningful region.">
-  <meta property="og:description" content="When labeled medical images are limited, knowing where a model should look can be as important as the classifier itself. This work connects segmentation, attention, reconstruction, and semi-supervised learning to extract more meaningful representations from medical images.">
+  <meta property="og:title" content="Teaching AI where to look">
+  <meta property="og:description" content="Before asking what a medical image means, it can help to ask where meaningful anatomy is located. These studies connect segmentation, reconstruction, and attention.">
   <meta property="og:url" content="https://ngochuynhho.github.io/blog/medical-image-analysis/">
   <meta property="og:image" content="https://ngochuynhho.github.io/assets/img/topics/medical_image_analysis.jpg">
   <meta name="twitter:card" content="summary_large_image">
@@ -33,32 +33,64 @@
       <header class="story-header story-text-column">
         <a class="story-back" href="../../index.html#scientific-blog">← All research stories</a>
         <span class="eyebrow">Medical Image Analysis</span>
-        <h1>From an image to a meaningful region.</h1>
-        <p class="story-standfirst">When labeled medical images are limited, knowing where a model should look can be as important as the classifier itself. This work connects segmentation, attention, reconstruction, and semi-supervised learning to extract more meaningful representations from medical images.</p>
-        <p class="story-byline">Ngoc-Huynh Ho, PhD <span aria-hidden="true">·</span> 2019–2020 publications <span aria-hidden="true">·</span> 4 min read</p>
+        <h1>Teaching AI where to look</h1>
+        <p class="story-standfirst">Medical-image classification becomes especially difficult when the abnormal region is small, labels are scarce, and much of an image contains anatomy unrelated to the diagnostic question. My research in medical image analysis explores a simple but powerful idea: before asking a model what an image means, it can help to teach it where meaningful anatomy is located.</p>
+        <p class="story-byline">Ngoc-Huynh Ho, PhD <span aria-hidden="true">·</span> 2019–2020 publications <span aria-hidden="true">·</span> 5 min read</p>
         <ul class="story-keywords" aria-label="Article keywords"><li>Medical Imaging</li><li>Segmentation</li><li>Semi-supervised Learning</li><li>Attention</li></ul>
       </header>
       <figure class="story-hero"><a href="../../assets/img/topics/medical_image_analysis.jpg" target="_blank" rel="noopener noreferrer" aria-label="Open research figure at full size"><img src="../../assets/img/topics/medical_image_analysis.jpg" alt="Bidirectional network architecture showing reconstruction, merged representations, and classification for medical images." width="632" height="820" fetchpriority="high" decoding="async"></a><figcaption>Figure supplied by the author; related publications are listed below. <a href="../../assets/img/topics/medical_image_analysis.jpg" target="_blank" rel="noopener noreferrer">View full-size figure ↗</a></figcaption></figure>
-      <div class="story-prose story-text-column"><h2>Where should a model look?</h2>
-<p>A classifier receives an image and returns a prediction. That simple description hides an important question: which parts of the image should influence the representation used for that prediction?</p>
-<p>For medical-image research, the distinction between a whole image and a meaningful anatomical region can become part of the learning problem. The two journal publications in this theme explore that question through segmentation-guided classification and attention-based segmentation.</p>
-<p>They are separate studies with separate tasks. Their connection is an interest in learning representations that account for relevant regions rather than treating image interpretation as an undifferentiated classification problem.</p>
-<h2>A region is a representation, not just a crop</h2>
-<p><strong>Segmentation</strong> assigns image locations to regions. <strong>Classification</strong> assigns a category to an image or another defined unit. Both can involve learning from images, but they produce different outputs and need different evaluations.</p>
-<p>This distinction helps explain the <a href="https://ieeexplore.ieee.org/abstract/document/8880590" target="_blank" rel="noopener noreferrer" class="external-link">2019 knee bone-tumor study</a>. The publication investigates a regenerative semi-supervised bidirectional W-network for classification on radiographs, guided by three-region bone segmentation.</p>
-<p>The important research idea is the connection between anatomy and the representation used for a classification task. Segmentation becomes part of the pipeline rather than an unrelated illustration beside the final prediction. The paper provides the particular region definitions, training procedure, and evaluation.</p>
-<p>The architecture makes a useful scientific question tangible: how should region information and classification learning relate? Understanding that relationship helps a reader assess the contribution before turning to the paper’s performance comparisons.</p>
-<h2>Learning when labeled examples are limited</h2>
-<p><strong>Semi-supervised learning</strong> refers to methods that use labeled and unlabeled information in a learning procedure. The exact use of each depends on the method; the term alone does not tell us how a particular network was trained.</p>
-<p>In the W-network study, semi-supervised learning is connected with reconstruction and bidirectional representation learning. The architecture figure shows reconstruction paths, merged representations, and a classification stage. It provides a visual entry point into the paper’s framework without establishing that every component is necessary in every medical-image task.</p>
-<p>Reconstruction gives a model a question about representing its input alongside the question posed by labeled examples. It is helpful to distinguish those objectives: a representation that reconstructs an image well is not automatically a representation that answers a classification question well.</p>
-<p>How the study connects those objectives is part of its specific contribution, and should be assessed using the evaluation in the publication.</p>
-<h2>Attention asks which features matter</h2>
-<p>The <a href="https://www.mdpi.com/2076-3417/10/17/5729" target="_blank" rel="noopener noreferrer" class="external-link">2020 U-Net study</a> addresses abnormal-tissue segmentation through a spatial-channel attention gate. Its focus is the representation of relevant spatial and channel information within a segmentation model.</p>
-<p>Spatial information concerns where a feature appears. Channel information concerns the different feature responses a network represents. An attention mechanism weights information in the model; it does not supply an independent clinical explanation for every highlighted location.</p>
-<p>This distinction keeps the story precise. The study investigates an enhanced segmentation architecture. It is not evidence that any attention visualization is a diagnostic annotation, or that attention alone establishes the biological significance of a region.</p>
-<h2>Two approaches to meaningful image information</h2>
-<p>The publications connect at the level of representation while keeping different endpoints:</p>
+      <div class="story-prose story-text-column"><p>A radiograph may contain thousands or millions of pixels.</p>
+<p>Only a fraction may describe the abnormality of interest.</p>
+<p>That creates a fundamental machine-learning problem.</p>
+<p>A classifier can technically learn directly from the entire image, but with limited training data it may spend much of its capacity modeling irrelevant structure—or worse, learn shortcuts that correlate with a label without representing the anatomy we actually care about.</p>
+<p>Segmentation offers another route.</p>
+<p>First identify meaningful regions.</p>
+<p>Then use those representations to support the downstream task.</p>
+<h2>Segment first, classify second</h2>
+<p>The 2019 <em>IEEE Access</em> study, <a href="https://doi.org/10.1109/ACCESS.2019.2949125" target="_blank" rel="noopener noreferrer" class="external-link"><em>Regenerative Semi-Supervised Bidirectional W-Network-Based Knee Bone Tumor Classification on Radiographs Guided by Three-Region Bone Segmentation</em></a>, investigated knee-bone tumor classification from radiographs.</p>
+<p>The central idea was not to immediately send the entire radiograph into a classifier.</p>
+<p>Instead, the system first separated three major anatomical regions—the <strong>femur, tibia, and fibula</strong>.</p>
+<p>That anatomical information was then incorporated into a broader learning architecture for classifying radiographs as normal, benign, or malignant.</p>
+<p>The three-region bone-segmentation component achieved a mean Dice score of <strong>98.06%</strong> in the study's evaluation.</p>
+<p>When the segmented regions were used for the single-step normal/benign/malignant classification strategy, the reported mean classification accuracy was <strong>85.23%</strong>.</p>
+<p>These measurements describe different tasks and should not be conflated: Dice evaluates spatial overlap in segmentation, whereas classification accuracy evaluates diagnostic-category predictions.</p>
+<p>That distinction is important because a good segmentation does not automatically guarantee a good diagnosis.</p>
+<p>It simply gives the downstream model a more focused representation.</p>
+<h2>Why a W-network?</h2>
+<p>The architecture also incorporated reconstruction through a bidirectional W-shaped network.</p>
+<p>Reconstruction introduces another question during training:</p>
+<p><strong>Can the model preserve enough information about the image to recreate meaningful structure?</strong></p>
+<p>That task provides an additional source of supervision.</p>
+<p>This is particularly relevant when class labels are limited. Medical annotations can be expensive because they may require expert review, while unlabeled or weakly labeled images can be more abundant.</p>
+<p>Semi-supervised learning attempts to use that imbalance productively.</p>
+<p>Instead of learning only from the final diagnostic labels, the system can also learn structure from the images themselves.</p>
+<p>The goal is not to replace clinical labels, but to extract a stronger representation from the available data before using those labels for classification.</p>
+<h2>Segmentation has its own problem: not every feature deserves to pass through</h2>
+<p>A second project approaches medical-image analysis from the segmentation side.</p>
+<p>The 2020 <em>Applied Sciences</em> study, <a href="https://doi.org/10.3390/app10175729" target="_blank" rel="noopener noreferrer" class="external-link"><em>Enhancing U-Net with spatial-channel attention gate for abnormal tissue segmentation in medical imaging</em></a>, asks what information should flow through a segmentation network.</p>
+<p>U-Net became widely used in biomedical imaging partly because of its <strong>skip connections</strong>.</p>
+<p>As an image moves through the encoder, its representation becomes increasingly abstract. Spatial detail can be lost. Skip connections send higher-resolution information directly from encoder layers to corresponding decoder layers so that the final segmentation can recover precise boundaries.</p>
+<p>But there is a catch:</p>
+<p>not everything carried by a skip connection is useful.</p>
+<h2>Where—and what—should the network attend to?</h2>
+<p>The study introduced a <strong>spatial-channel attention gate</strong>.</p>
+<p>The two parts answer different questions.</p>
+<p><strong>Spatial attention:</strong> Where in the image is the relevant information?</p>
+<p><strong>Channel attention:</strong> Which types of learned feature are most useful?</p>
+<p>Combining them allows the network to selectively emphasize information before passing encoder features into the decoder.</p>
+<p>The method was evaluated across several medical-imaging settings, including polyp, lung-tumor, and brain-tumor segmentation.</p>
+<p>On the CVC-ClinicDB evaluation described in the paper, the spatial-channel attention approach achieved a Dice score of <strong>71.72%</strong> in the attention-gate comparison, compared with <strong>65.93%</strong> for the baseline U-Net.</p>
+<p>But the broader contribution is not the six-point difference alone.</p>
+<p>It is the architectural idea that a skip connection does not have to be an indiscriminate pipe.</p>
+<p>It can itself become a learned decision about which information deserves to move forward.</p>
+<h2>Segmentation and classification solve different problems</h2>
+<p>These two projects are closely related, but they should not be presented as the same task.</p>
+<p>The knee-radiograph study uses segmentation to <strong>guide classification</strong>.</p>
+<p>The spatial-channel attention study improves <strong>segmentation itself</strong>.</p>
+<p>In the first case, anatomical localization is a step toward predicting a diagnostic category.</p>
+<p>In the second, the predicted region is the endpoint being evaluated.</p>
+<p>That distinction becomes especially important when reading medical-AI results. A high Dice coefficient, classification accuracy, sensitivity, or AUC each answers a different question.</p>
+<p>No single number summarizes the entire system.</p>
 <div class="story-table" tabindex="0" role="region" aria-label="Research comparison table"><table>
 <thead>
 <tr>
@@ -80,19 +112,24 @@
 </tr>
 </tbody>
 </table></div>
-<p>The table makes the shared computational interest visible without implying a head-to-head comparison. A segmentation result and a classification result should not be treated as the same measurement.</p>
-<h2>What a figure can—and cannot—show</h2>
-<p>A framework figure is a map of a method. It can explain how an input passes through representations, how paths connect, and where an output is produced. It cannot substitute for the training and evaluation details required to interpret a result.</p>
-<p>The figure offers an invitation to explore the architecture and its source publication. It is not a clinical claim or a patient-level diagnostic result. The linked demo similarly provides a view of an interface or procedure, rather than validation of clinical effectiveness.</p>
-<h2>Questions beyond the architecture</h2>
-<p>For a new application, useful questions include what counts as a meaningful region, which labels are available, how anatomical information is represented, and what evaluation matches the intended task. Those questions must be answered in the application’s own setting.</p>
-<p>The research direction is to make representation learning more responsive to the structure of the imaging problem. The publications investigate specific ways to do that; further evidence would be needed to establish performance in another dataset, workflow, or clinical environment.</p>
+<h2>Why this idea still matters</h2>
+<p>Large foundation models are rapidly changing medical imaging.</p>
+<p>Yet the underlying problem has not disappeared.</p>
+<p>A model still needs to distinguish relevant anatomy from nuisance information.</p>
+<p>It still needs to learn from datasets in which labels may be limited or inconsistent.</p>
+<p>And researchers still need to understand whether performance comes from biologically meaningful structures or from shortcuts hidden in the image.</p>
+<p>Modern self-supervised and foundation-model approaches offer new tools for representation learning, but segmentation and attention remain valuable precisely because they introduce structure into the learning problem.</p>
+<p>They ask the model not merely:</p>
+<p><strong>What is this image?</strong></p>
+<p>but also:</p>
+<p><strong>Which region supports that decision?</strong></p>
+<p>That is a much more useful question for the next generation of interpretable medical-imaging systems.</p>
 </div>
-      <aside class="story-glance story-text-column" aria-labelledby="glance-title"><span class="eyebrow">THE SHARED THREAD</span><h2 id="glance-title">Research at a glance</h2><ul><li>The W-network study connects three-region bone segmentation with radiograph classification.</li><li>The U-Net study investigates spatial-channel attention for abnormal-tissue segmentation.</li><li>Segmentation and classification have different outputs and require task-specific evaluations.</li></ul></aside>
+      <aside class="story-glance story-text-column" aria-labelledby="glance-title"><span class="eyebrow">THE SHARED THREAD</span><h2 id="glance-title">Research at a glance</h2><ul><li>Anatomical segmentation can reduce irrelevant image content before classification.</li><li>Semi-supervised reconstruction provides an additional learning signal when diagnostic labels are limited.</li><li>Spatial and channel attention address complementary questions: where is useful information located, and which feature representations are most useful?</li></ul></aside>
       <section class="story-references story-text-column" aria-labelledby="references-title"><span class="eyebrow">EXPLORE THE EVIDENCE</span><h2 id="references-title">Related publications</h2><ol><li><h3><a href="https://www.mdpi.com/2076-3417/10/17/5729" target="_blank" rel="noopener noreferrer">Enhancing U-Net with spatial-channel attention gate for abnormal tissue segmentation in medical imaging <span aria-hidden="true">↗</span></a></h3><p class="story-reference-authors">TLB Khanh, DP Dao, NH Ho , HJ Yang, ET Baek, G Lee, SH Kim, SB Yoo</p><p class="story-reference-venue">Applied Sciences 10.17 (2020), p. 5729 · 2020</p><div class="story-reference-links"><a href="https://doi.org/10.3390/app10175729" target="_blank" rel="noopener noreferrer">DOI: 10.3390/app10175729 <span aria-hidden="true">↗</span></a><a href="https://www.mdpi.com/2076-3417/10/17/5729" target="_blank" rel="noopener noreferrer">Publisher / source <span aria-hidden="true">↗</span></a></div></li><li><h3><a href="https://ieeexplore.ieee.org/abstract/document/8880590" target="_blank" rel="noopener noreferrer">Regenerative semi-supervised bidirectional W-network-based knee bone tumor classification on radiographs guided by three-region bone segmentation <span aria-hidden="true">↗</span></a></h3><p class="story-reference-authors">NH Ho , HJ Yang, SH Kim, ST Jung, SD Joo</p><p class="story-reference-venue">IEEE Access 7 (2019), p. 6825-6833 · 2019</p><div class="story-reference-links"><a href="https://doi.org/10.1109/ACCESS.2019.2949125" target="_blank" rel="noopener noreferrer">DOI: 10.1109/ACCESS.2019.2949125 <span aria-hidden="true">↗</span></a><a href="https://ieeexplore.ieee.org/abstract/document/8880590" target="_blank" rel="noopener noreferrer">Publisher / source <span aria-hidden="true">↗</span></a></div></li></ol></section>
       <section class="story-demos story-text-column" aria-labelledby="demo-title"><h2 id="demo-title">See the research in action</h2><p>Bone tumor detection demo</p><a class="button button-outline" href="https://www.youtube.com/watch?v=w9sntPA24XQ" target="_blank" rel="noopener noreferrer">Watch the demo <span aria-hidden="true">→</span></a></section>
-      <section class="story-contact story-text-column" aria-labelledby="story-contact-title"><span class="eyebrow">CONTINUE THE CONVERSATION</span><h2 id="story-contact-title">Interested in this research?</h2><p>I am always interested in conversations around neuroimaging, multimodal learning, trustworthy AI, biomedical machine learning, and collaborative research. If your work intersects with these questions, I would be glad to connect.</p><a class="button button-primary" href="mailto:hon3@uthscsa.edu">Get in touch <span aria-hidden="true">→</span></a></section>
-      <nav class="story-next story-text-column" aria-label="More research stories"><a href="../../index.html#scientific-blog">← All research stories</a><a href="../mobile-sensing-intelligent-interaction/index.html">Next: Turning everyday signals into intelligent interaction. <span aria-hidden="true">→</span></a></nav>
+      <section class="story-contact story-text-column" aria-labelledby="story-contact-title"><span class="eyebrow">CONTINUE THE CONVERSATION</span><h2 id="story-contact-title">Interested in this research?</h2><p>My current interests center on <strong>neuroimaging, trustworthy AI, multimodal learning, and foundation models for biomedical data</strong>. I am particularly interested in research that connects methodological development with questions of generalizability, interpretation, population differences, and biological relevance.</p><p>If your work intersects with these areas—or if you are a student interested in developing research at their intersection—I would be glad to connect.</p><a class="button button-primary" href="mailto:hon3@uthscsa.edu">Get in touch <span aria-hidden="true">→</span></a></section>
+      <nav class="story-next story-text-column" aria-label="More research stories"><a href="../../index.html#scientific-blog">← All research stories</a><a href="../mobile-sensing-intelligent-interaction/index.html">Next: From footsteps to fingertips <span aria-hidden="true">→</span></a></nav>
     </article>
   </main>
   <footer class="site-footer container"><span>© <span id="copyright-year">2026</span> Ngoc-Huynh Ho</span><span class="footer-links"><a href="../../index.html#contact">Contact</a><a href="#main">Back to top ↑</a></span><small>Original portfolio template by <a href="https://bootstrapmade.com/" target="_blank" rel="noopener noreferrer">BootstrapMade</a></small></footer>

@@ -64,7 +64,7 @@ for (const [index, topic] of blogTopics.entries()) {
     return `<p>${esc(video.title)}</p><a class="button button-outline" href="${esc(video.url)}" target="_blank" rel="noopener noreferrer">Watch the demo <span aria-hidden="true">→</span></a>`;
   }).join("");
   const values = {
-    page_title:esc(topic.blog_title), description:esc(topic.blog_summary), category:esc(topic.blog_category),
+    page_title:esc(topic.blog_title), description:esc(topic.blog_summary), standfirst:esc(topic.blog_standfirst || topic.blog_summary), category:esc(topic.blog_category),
     canonical:esc(`https://ngochuynhho.github.io/blog/${slug}/`), social_image:esc(`https://ngochuynhho.github.io/${topic.image}`),
     year_range:`${Math.min(...years)}–${Math.max(...years)}`, reading_time:String(Math.max(1,Math.ceil(source.split(/\s+/).length / 210))),
     keywords:topic.blog_keywords.map(keyword => `<li>${esc(keyword)}</li>`).join(""),

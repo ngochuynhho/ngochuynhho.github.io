@@ -2,7 +2,7 @@
 
 The five prompts below gather the **complete current research-note text**, all **20 journal reference papers**, the supplied topic images, and existing YouTube links. There are no publication placeholders. Copy one entire fenced prompt into ChatGPT with web browsing enabled. Each prompt is self-contained.
 
-The website keeps short topic notes as entry points and now also includes full research stories. Their Markdown sources live in `content/blog/`; topic metadata and three-point takeaways live in `data/topics.json`. A shared template and the lightweight Markdown builder generate static pages under `blog/`. To revise an article using these prompts, edit its Markdown file and run `node scripts/build_blog.mjs`. Keep long-form text out of the existing plain-text problem, approach, findings, and perspective fields. The builder synchronizes the homepage fallback and validates related-publication metadata against the references in this brief.
+The website keeps short topic notes as entry points and now also includes full research stories. The article narratives, headlines, and takeaways were revised using the author-supplied draft preserved in `content/research-notes-draft.md`. Their Markdown sources live in `content/blog/`; topic metadata and three-point takeaways live in `data/topics.json`. A shared template and the lightweight Markdown builder generate static pages under `blog/`. To revise an article using these prompts, edit its Markdown file and run `node scripts/build_blog.mjs`. Keep long-form text out of the existing plain-text problem, approach, findings, and perspective fields. The builder synchronizes the homepage fallback and validates related-publication metadata against the references in this brief.
 
 ## 01. Dementia & trustworthy AI
 
@@ -37,37 +37,36 @@ Build a narrative from detecting dementia patterns to predicting progression and
 
 COMPLETE EXISTING RESEARCH NOTE
 
-Current title: Understanding dementia. Predicting what comes next.
+Current title: Can dementia AI be accurate—and fair?
 
 Project-card title: Dementia & trustworthy AI
 
-Current summary: Multimodal learning for earlier detection, disease progression, and fairer dementia classification.
+Current summary: Learning from incomplete patient histories and complementary imaging and clinical data while examining progression, fairness, and explainability across populations.
 
 Keywords: Neuroimaging, Multimodal learning, Fairness
 
-
 The problem
-A dementia prediction model must answer more than a diagnostic question. Can it distinguish stages of cognitive impairment, estimate when progression may occur, and work across populations? Clinical assessments and brain images provide complementary evidence, but missing observations and population differences make learning difficult.
-
+Dementia develops over years, but research records capture only parts of that trajectory. Imaging, cognitive scores, and clinical assessments provide complementary information; irregular visits, missing measurements, and differences between populations complicate learning. A useful model must be evaluated for progression, uncertainty, error patterns, and interpretation as well as overall performance.
 
 The research approach
-This research brings together neuroimaging and clinical information through attention, multitask learning, and longitudinal models. The 2023 Scientific Reports study introduced stacked polynomial attention (SPAN) and adaptive exponential decay to jointly learn MCI stage and time to Alzheimer’s conversion. Related journal work explores bidirectional prediction with imputation, modality uncertainty, and fair and explainable dementia classification.
-
+The journal studies connect several stages of this question: imaging-based classification, longitudinal prediction with integrative imputation, multimodal multitask learning for MCI stage and conversion time, and recurrent modeling with modality uncertainty. The 2026 Nature Communications study adds group-balanced evaluation, discrepancy mitigation through RegAlign, and SHAP-based interpretation across racial and ethnic populations.
 
 Significant findings & contributions
 
-Learning diagnosis and progression together
-On the ADNI cohort, the 2023 model reported a c-index of 0.85 for conversion-time prediction and 83.19% accuracy for MCI-stage classification. These are study results for that cohort.
+Population differences extend beyond sample imbalance
+The 2026 study describes performance discrepancies remaining after group-balanced evaluation, matching, and imaging-feature harmonization. The study examines false-positive and false-negative rates alongside predictive performance.
 
-Making incomplete histories useful
-The 2022 Neural Networks paper combines forward-to-backward bidirectional learning with integrative imputation for longitudinal progression prediction.
+Interpreting predictions across populations
+SHAP-based interpretation and an independent neuroimaging meta-analysis examine influential brain regions. Feature-contribution patterns are not identical across populations, motivating population-specific examination of explanations.
 
-Extending the question to fairness
-The 2026 Nature Communications paper examines fair and explainable neuroimaging dementia pattern classification across racial and ethnic populations.
+Learning progression from incomplete histories
+The 2022 study connects imputation and longitudinal prediction using bidirectional learning. The 2025 study addresses modality uncertainty and information flow through recurrent gates.
 
+Learning stage and conversion time together
+In the 2023 ADNI evaluation of 249 early-MCI and 427 late-MCI participants, the framework reported a c-index of 0.85 for conversion-time prediction and 83.19% accuracy for MCI-stage classification. These are separate endpoints within that study.
 
 The broader perspective
-The common thread is to learn from complementary patient information while examining how reliable a prediction is, and for whom it works.
+The direction is to investigate richer multimodal and longitudinal representations while asking how uncertainty propagates, how explanations behave across cohorts, and how performance should be evaluated across populations. These are future research questions, rather than claims of clinical readiness.
 
 REQUIRED JOURNAL REFERENCES
 
@@ -151,34 +150,33 @@ Connect two complementary lines of inquiry: deriving brain-aging biomarkers from
 
 COMPLETE EXISTING RESEARCH NOTE
 
-Current title: Brain aging, beyond a single biomarker.
+Current title: How old is the brain?
 
 Project-card title: Brain aging & vascular health
 
-Current summary: Connecting brain networks, vascular burden, and population studies to understand brain health.
+Current summary: Connecting vascular MRI markers and large-scale functional-connectome modeling to investigate complementary dimensions of brain aging.
 
 Keywords: Connectomics, Brain aging, Population studies
 
-
 The problem
-Brain health reflects multiple interacting processes. Functional connectivity, structural brain changes, and vascular disease each describe a different aspect of aging. A useful research question is how these measurements can be studied together without reducing every change to one diagnosis.
-
+Two people of the same chronological age can differ in vascular injury, functional organization, and cognition. No single imaging measurement captures all of those dimensions. This theme asks how complementary measurements can describe brain health without treating a predictive age estimate and a trial-based vascular outcome as the same kind of evidence.
 
 The research approach
-This theme groups collaborative journal work on machine learning biomarkers derived from a large functional-connectome collection and on brain small vessel disease in the SPRINT randomized clinical trial. It connects computational biomarker development with cohort-based clinical analysis.
-
+The SPRINT post-hoc imaging analysis combines periventricular white-matter hyperintensities, white-matter free water, and basal-ganglia perivascular spaces into a global small-vessel-disease burden. A separate connectome study compares transformations and predictors using more than 40,000 functional connectomes from the Framingham Heart Study, Human Connectome Project, MESA, and UK Biobank.
 
 Significant findings & contributions
 
-Studying aging through functional networks
-The 2026 Brain Research Bulletin paper derives machine learning brain-aging biomarkers from a collection of forty thousand functional connectomes.
+Studying vascular injury under a trial comparison
+The SPRINT analysis reports less progression of the global MRI-derived small-vessel-disease burden under intensive versus standard systolic blood-pressure treatment. This is a post-hoc imaging outcome within the SPRINT trial context.
 
-Examining vascular burden in a trial setting
-The 2026 eClinicalMedicine paper examines overall brain small vessel disease burden in a post-hoc analysis of intensive versus standard blood pressure control in SPRINT.
+Respecting the structure of brain networks
+The functional-connectome study reports improved age prediction using a transformation motivated by Bures–Wasserstein geometry and examines derived measures in relation to cognitive and health markers.
 
+Matching model complexity to available data
+In the connectome study, nonlinear predictors trained with fewer than roughly 2,000 connectomes did not necessarily outperform simpler regularized linear models. A predicted brain-age difference remains a statistical phenotype, not a literal biological clock.
 
 The broader perspective
-These papers address complementary measurements of brain health. The source articles provide the study designs, effect estimates, and limitations for each investigation.
+Vascular burden and functional brain-age measures address different aspects of aging. Future multimodal research can investigate how structural, functional, vascular, molecular, and cognitive measurements interact while retaining their distinct biological meanings.
 
 REQUIRED JOURNAL REFERENCES
 
@@ -241,37 +239,33 @@ Begin with an accessible example of a conversation where voice and expression co
 
 COMPLETE EXISTING RESEARCH NOTE
 
-Current title: Understanding emotion in context.
+Current title: Emotion is more than a face
 
 Project-card title: Multimodal emotion & social AI
 
-Current summary: Learning from voices, faces, language, and social relationships to understand affective behavior.
+Current summary: Learning relationships among language, voice, facial behavior, time, and social context for emotion and group analysis.
 
 Keywords: Graph learning, Audio + visual + text, Social context
 
-
 The problem
-Emotion is expressed across channels, and the meaning of a cue can change with context. A voice, a facial expression, and a spoken sentence may reinforce or contradict one another. Conversations and group interactions add dependencies between people and over time.
-
+A sentence can appear positive while the voice or surrounding interaction suggests something different. Emotion-related tasks therefore require attention to complementary signals and context. Conversation emotion, evoked expressions, stress, and group cohesion also use different labels and definitions; they should not be treated as interchangeable targets.
 
 The research approach
-The journal papers explore multi-head attention for speech emotion, deep graph fusion for evoked expressions, cross-modality interactions for emotion reasoning, and relation-aware graph-recurrent learning in conversations. The GCE dataset extends the work to group cohesion and emotion analysis.
-
+The papers investigate relation-aware graph-recurrent modeling of conversations, cross-modality interactions, graph-based audiovisual fusion, and multi-level multi-head attention. Dataset work expands the focus from individuals to group emotion and cohesion, and from discrete emotion labels to stress, valence, and arousal.
 
 Significant findings & contributions
 
-Moving from separate signals to interactions
-Attention and graph-based models explicitly learn relationships between modalities and contextual representations, rather than treating each channel as an isolated prediction task.
+Representing conversations as relationships
+The conversation study uses a graph to represent utterance relationships within and across speakers, with attention weighting contextual information. Cross-modality work examines relationships between complementary representations.
 
-Representing conversational context
-The residual relation-aware model studies emotion recognition in conversation through graph-recurrent learning.
+Studying group emotion and cohesion
+The GCE publication describes 1,029 30-second conversational video segments annotated for group emotion and seven-level cohesion. Audio and visual representations are combined with multi-head attention for baseline models.
 
-Studying people together
-The GCE journal publication contributes an audio-visual dataset for investigating group cohesion and emotion.
-
+Keeping affective tasks distinct
+The stress-analysis publication describes SADVAW as 1,236 clips from 41 Korean movies annotated for apparent stress, valence, and arousal. These dimensions differ from conversational emotion categories and group cohesion.
 
 The broader perspective
-Across these studies, the central contribution is the representation of complementary signals and their relationships. Each paper reports evaluations on its own datasets and tasks.
+The next questions are relational: who responds to whom, which channel changes another channel’s interpretation, and what happens when a modality is missing or signals disagree? The goal is to characterize observable relationships, rather than claim access to a person’s private internal state.
 
 REQUIRED JOURNAL REFERENCES
 
@@ -362,34 +356,33 @@ Explain why identifying relevant anatomical regions can help classification when
 
 COMPLETE EXISTING RESEARCH NOTE
 
-Current title: From an image to a meaningful region.
+Current title: Teaching AI where to look
 
 Project-card title: Medical image analysis
 
-Current summary: Segmentation and semi-supervised learning for bone tumors and abnormal tissue analysis.
+Current summary: Using anatomical regions, reconstruction, and spatial-channel attention to support segmentation and classification when medical-image labels are limited.
 
 Keywords: Segmentation, Semi-supervised learning, Radiographs
 
-
 The problem
-Medical images contain structures that matter differently to a diagnostic task. Learning a classifier from limited labeled images can be difficult when the relevant anatomy occupies only a small part of the image, or when normal tissue obscures an abnormal region.
-
+An abnormal region may occupy only a small fraction of a medical image. With limited labels, a classifier can spend capacity on irrelevant structure or learn shortcuts. This theme asks how anatomical localization and selective feature transfer can support meaningful representations while keeping segmentation and classification as separate tasks.
 
 The research approach
-This work connects segmentation with classification. The knee bone tumor study uses a regenerative semi-supervised bidirectional W-network guided by three-region bone segmentation. A related journal paper enhances U-Net with a spatial-channel attention gate for abnormal tissue segmentation.
-
+The knee-radiograph study first segments the femur, tibia, and fibula and incorporates those regions into a regenerative semi-supervised bidirectional W-network for normal, benign, and malignant classification. A separate U-Net study introduces a spatial-channel attention gate to weight where useful information appears and which learned features are passed through skip connections.
 
 Significant findings & contributions
 
-Using anatomy to guide classification
-The W-network study integrates three-region bone segmentation into the knee bone tumor classification pipeline.
+Using bone regions to guide classification
+The knee-radiograph study reports a mean Dice score of 98.06% for three-region segmentation and mean accuracy of 85.23% for single-step normal/benign/malignant classification. Dice and accuracy describe different tasks in that study’s evaluation.
 
-Attending to relevant spatial and channel features
-The U-Net study investigates a spatial-channel attention gate for abnormal tissue segmentation in medical images.
+Learning from reconstruction as well as labels
+The bidirectional W-network incorporates reconstruction and merged representations as additional learning signals within a semi-supervised classification framework.
 
+Selecting information within skip connections
+For the CVC-ClinicDB attention-gate comparison in the U-Net paper, the spatial-channel attention method reported Dice of 71.72%, compared with 65.93% for baseline U-Net. The architectural question is which encoder information should reach the decoder.
 
 The broader perspective
-The shared idea is to make the region representation part of the learning problem. The publications provide the validation settings and performance comparisons.
+Segmentation and attention provide structure for representation learning. Future systems still need to distinguish relevant anatomy from nuisance information, examine shortcuts, and evaluate the endpoint they actually predict. A well-segmented region alone does not establish diagnostic performance or clinical benefit.
 
 REQUIRED JOURNAL REFERENCES
 
@@ -452,37 +445,33 @@ Use everyday movement as the narrative thread: estimating a walking path from sm
 
 COMPLETE EXISTING RESEARCH NOTE
 
-Current title: Turning everyday signals into interaction.
+Current title: From footsteps to fingertips
 
 Project-card title: Mobile sensing & intelligent interaction
 
-Current summary: Smartphone motion, depth cameras, and connected systems for localization and natural interaction.
+Current summary: Turning noisy movement and visual measurements into adaptive step-length estimates, hand-gesture recognition, and fingertip interaction.
 
 Keywords: Mobile sensing, Human interaction, Signal processing
 
-
 The problem
-Everyday sensors are noisy, and the way a person moves changes the signal. A smartphone must estimate a walking path despite varying speed and arm swing. A depth camera must distinguish useful gestures and fingertips from background movement.
-
+A smartphone moves with the person carrying it, and walking speed, arm swing, and sensor noise affect the recorded signal. A vision-based interface must distinguish hands and fingertips from changing backgrounds. Both settings require useful estimates from measurements that are imperfect and context-dependent.
 
 The research approach
-The journal work explores adaptive step detection and step-length estimation for smartphone pedestrian dead reckoning, nonparametric estimation for arm-swing walking, RGB-D hand gesture recognition, and a fingertip-driven virtual mouse. Earlier wireless-network research examines relay selection under channel estimation error.
-
+The smartphone studies combine step detection with adaptive and nonparametric step-length estimation. The gesture studies combine RGB appearance and depth with hand localization, fingertip tracking, and temporal recognition through a 3D convolutional network. Earlier cognitive-radio work separately analyzes relay selection under channel-estimation error.
 
 Significant findings & contributions
 
-Adapting to the person’s movement
-The smartphone studies address variable walking speeds and arm-swing walking through adaptive and regression-based step-length estimation.
+Adapting estimates to the movement pattern
+The 2016 study combines signal filtering, step-detection rules, and walking-speed-aware step-length estimation. The 2018 study investigates arm-swing walking using relationships involving walking speed and acceleration variability.
 
-Connecting perception with an interface
-RGB-D studies investigate real-time hand gesture spotting and fingertip detection for a virtual mouse system.
+Recognizing movement across space and time
+RGB-D gesture work connects hand and fingertip localization with 3D convolution over spatial and temporal information. A sequence represents movement that a static frame cannot describe alone.
 
-Accounting for imperfect measurements
-The relay-selection paper studies the impact of channel estimation error in cognitive radio networks, an earlier foundation in signal analysis.
-
+Connecting fingertip tracking to an interface
+The virtual-mouse paper reports its Kinect V2 system operating at 30 frames per second on a desktop using a single CPU, with experiments examining illumination, background, and tracking-distance conditions.
 
 The broader perspective
-These projects share an interest in building useful estimates and interfaces from imperfect measurements in everyday settings.
+The common engineering thread is sense, filter, represent, estimate, and act. Newer sensing and representation-learning methods still face questions about measurement uncertainty, environment changes, device movement, and the response time needed for human interaction.
 
 REQUIRED JOURNAL REFERENCES
 

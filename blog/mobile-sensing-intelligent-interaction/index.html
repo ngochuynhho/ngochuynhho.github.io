@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#173e35">
-  <title>Turning everyday signals into intelligent interaction. | Ngoc-Huynh Ho, PhD</title>
-  <meta name="description" content="Smartphones, depth cameras, and wireless systems all operate with imperfect measurements. These projects explore how computational models can convert noisy movement, visual, and signal data into localization estimates and natural human-computer interactions.">
+  <title>From footsteps to fingertips | Ngoc-Huynh Ho, PhD</title>
+  <meta name="description" content="From footsteps to fingertips, these projects explore how adaptive models turn noisy, changing measurements into localization estimates and human-computer interaction.">
   <link rel="canonical" href="https://ngochuynhho.github.io/blog/mobile-sensing-intelligent-interaction/">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Turning everyday signals into intelligent interaction.">
-  <meta property="og:description" content="Smartphones, depth cameras, and wireless systems all operate with imperfect measurements. These projects explore how computational models can convert noisy movement, visual, and signal data into localization estimates and natural human-computer interactions.">
+  <meta property="og:title" content="From footsteps to fingertips">
+  <meta property="og:description" content="From footsteps to fingertips, these projects explore how adaptive models turn noisy, changing measurements into localization estimates and human-computer interaction.">
   <meta property="og:url" content="https://ngochuynhho.github.io/blog/mobile-sensing-intelligent-interaction/">
   <meta property="og:image" content="https://ngochuynhho.github.io/assets/img/topics/Mobile_sensing_intelligent_interaction.jpg">
   <meta name="twitter:card" content="summary_large_image">
@@ -33,45 +33,103 @@
       <header class="story-header story-text-column">
         <a class="story-back" href="../../index.html#scientific-blog">← All research stories</a>
         <span class="eyebrow">Mobile Sensing &amp; Intelligent Interaction</span>
-        <h1>Turning everyday signals into intelligent interaction.</h1>
-        <p class="story-standfirst">Smartphones, depth cameras, and wireless systems all operate with imperfect measurements. These projects explore how computational models can convert noisy movement, visual, and signal data into localization estimates and natural human-computer interactions.</p>
-        <p class="story-byline">Ngoc-Huynh Ho, PhD <span aria-hidden="true">·</span> 2015–2021 publications <span aria-hidden="true">·</span> 4 min read</p>
+        <h1>From footsteps to fingertips</h1>
+        <p class="story-standfirst">A smartphone accelerometer, a depth camera, and a wireless receiver appear to have little in common. Yet they share a computational challenge: useful information must be recovered from measurements that are noisy, incomplete, and constantly changing. This early line of my research explored how adaptive models can turn imperfect signals into estimates and interactions people can actually use.</p>
+        <p class="story-byline">Ngoc-Huynh Ho, PhD <span aria-hidden="true">·</span> 2015–2021 publications <span aria-hidden="true">·</span> 5 min read</p>
         <ul class="story-keywords" aria-label="Article keywords"><li>Mobile Sensing</li><li>Human Interaction</li><li>Computer Vision</li><li>Signal Processing</li></ul>
       </header>
       <figure class="story-hero"><a href="../../assets/img/topics/Mobile_sensing_intelligent_interaction.jpg" target="_blank" rel="noopener noreferrer" aria-label="Open research figure at full size"><img src="../../assets/img/topics/Mobile_sensing_intelligent_interaction.jpg" alt="Fingertip tracking, gesture trajectory capture, and gesture recognition workflow." width="546" height="343" fetchpriority="high" decoding="async"></a><figcaption>Figure supplied by the author; related publications are listed below. <a href="../../assets/img/topics/Mobile_sensing_intelligent_interaction.jpg" target="_blank" rel="noopener noreferrer">View full-size figure ↗</a></figcaption></figure>
-      <div class="story-prose story-text-column"><h2>How does movement become information?</h2>
-<p>A step, a fingertip trajectory, and a wireless measurement look like different kinds of data. Each creates a related computational challenge: a useful estimate or interaction must be built from measurements that do not arrive as a finished answer.</p>
-<p>This theme brings together smartphone localization, depth-camera interaction, and earlier wireless-network research. The projects share an interest in imperfect signals, but they are separate investigations. They do not form one integrated sensing system.</p>
-<p>The central question is practical: how should a computational method account for the way a measurement is produced, and how does that choice shape the output a person can use?</p>
-<h2>A walking path begins with individual estimates</h2>
-<p><strong>Pedestrian dead reckoning</strong> estimates a walking path from movement-related measurements. The smartphone studies in this theme investigate steps and step length as parts of that estimation problem.</p>
-<p>The <a href="https://www.mdpi.com/1424-8220/16/9/1423" target="_blank" rel="noopener noreferrer" class="external-link">2016 Sensors publication</a> addresses step detection and adaptive step-length estimation at different walking speeds using a smartphone. The research question goes beyond recognizing that a step occurred. It asks how an estimate of movement should respond when walking behavior changes.</p>
-<p>The <a href="http://univagora.ro/jour/index.php/ijccc/article/view/3148" target="_blank" rel="noopener noreferrer" class="external-link">2018 nonparametric regression study</a> investigates step-length estimation for arm-swing walking. Regression estimates a quantity from input information; a nonparametric approach does not assume a fixed, simple parametric relationship in the same way as a predetermined formula.</p>
-<p>These projects make movement variation part of the modeling problem. Their linked papers provide the particular measurements, estimation procedures, and evaluation settings. Reading them together highlights two ways of approaching movement variation rather than a single fixed step-length rule.</p>
-<h2>Why the measurement context matters</h2>
-<p>An estimate has a context. For smartphone movement research, a method’s inputs reflect both the sensing device and the person’s motion. Changing walking speed or arm swing changes the circumstances under which the measurement is obtained.</p>
-<p>This observation helps explain the interest in adaptive and regression-based step-length estimation. The aim of the research is to investigate a mapping from movement information to a useful estimate, while accounting for the variation addressed by the study.</p>
-<p>It does not establish that one mapping will work under every carrying position, sensor configuration, or movement pattern. Those would require evaluations defined for those conditions.</p>
-<h2>From a visual trajectory to an interface</h2>
-<p>The interaction studies ask a different question: how can a visual measurement support an action in a computer interface?</p>
-<p>The <a href="https://www.mdpi.com/2076-3417/10/2/722" target="_blank" rel="noopener noreferrer" class="external-link">2020 hand-gesture publication</a> investigates real-time gesture spotting and recognition using an RGB-D camera and a three-dimensional convolutional neural network. RGB-D combines color and depth information. Spotting a gesture concerns identifying its occurrence in a stream; recognition concerns the gesture being interpreted.</p>
-<p>The <a href="https://link.springer.com/article/10.1007/s11042-020-10156-5" target="_blank" rel="noopener noreferrer" class="external-link">2021 virtual-mouse study</a> investigates RGB-D images and fingertip detection for real-time interaction. Here the representation of a fingertip supports an interface-oriented task rather than a walking-path estimate.</p>
-<p>The research figure shows fingertip tracking, start and end points, trajectory capture, and gesture recognition. It helps readers see the sequence from a measurement to an interaction. The publication provides the definitions and implementation needed to understand how that sequence was studied.</p>
-<h2>Real time is a system question</h2>
-<p>The phrase “real time” invites questions about an entire procedure: how measurements arrive, how representations are updated, and how an output is made available to an interface. A network architecture is one part of that procedure.</p>
-<p>For readers interested in extending these methods, the useful starting point is the particular task and sensing setup in each paper. The publications investigate their own systems. Their timing, sensing setup, and task definitions provide the context for interpreting real-time behavior and for deciding what a new application would need to evaluate.</p>
-<h2>An earlier foundation in imperfect signals</h2>
-<p>The <a href="https://link.springer.com/article/10.1007/s11277-015-2717-3" target="_blank" rel="noopener noreferrer" class="external-link">2015 cognitive-radio publication</a> examines the impact of channel-estimation error on relay-selection performance. It belongs to an earlier wireless-network line of work, rather than to the smartphone or gesture pipelines.</p>
-<p>Its connection to this theme is a broader interest in what happens when computational decisions rely on imperfect measurements. Channel estimation and visual fingertip detection are different problems. Preserving that distinction makes the research history more informative than forcing every project into one application narrative.</p>
-<h2>Useful estimates, clearly defined questions</h2>
-<p>Across these projects, the recurring task is to turn a measurement into a representation appropriate for an estimate or an interaction. Steps, trajectories, depth information, and channel estimates each demand their own assumptions and evaluations.</p>
-<p>Future investigation could ask how a method responds to a changed sensing setup or a wider variety of movement. Those are directions for study, not findings asserted here. The common approach is to stay close to the signal, define the task carefully, and evaluate the output under the conditions in which it is meant to be useful.</p>
+      <div class="story-prose story-text-column"><p>Consider something as ordinary as walking down a hallway with a phone.</p>
+<p>GPS may be unavailable indoors.</p>
+<p>The phone measures acceleration, but every step is different.</p>
+<p>Walking faster changes step length.</p>
+<p>Swinging the phone changes its motion.</p>
+<p>Sensor noise adds fluctuations unrelated to movement.</p>
+<p>And small errors accumulate with every step.</p>
+<p>Estimating a person's trajectory from those signals is an example of <strong>pedestrian dead reckoning</strong>: determining movement incrementally from sensor measurements rather than continuously relying on an external positioning system.</p>
+<p>It sounds simple.</p>
+<p>Count the steps. Estimate their length. Add them together.</p>
+<p>The difficult part is that neither the step nor its length is perfectly known.</p>
+<h2>A smartphone as a navigation sensor</h2>
+<p>Our 2016 <em>Sensors</em> study, <a href="https://doi.org/10.3390/s16091423" target="_blank" rel="noopener noreferrer" class="external-link"><em>Step-Detection and Adaptive Step-Length Estimation for Pedestrian Dead-Reckoning at Various Walking Speeds Using a Smartphone</em></a>, examined walking-distance estimation using smartphone acceleration signals.</p>
+<p>A fixed step length is convenient.</p>
+<p>It is also unrealistic.</p>
+<p>The same person takes different steps when walking slowly, normally, or quickly.</p>
+<p>The study therefore combined signal smoothing, step-detection rules, and an <strong>adaptive step-length estimator</strong> based partly on walking speed.</p>
+<p>A Fast Fourier Transform–based filtering step was used to reduce unwanted components of the acceleration signal before individual steps were identified.</p>
+<p>The important idea is adaptation.</p>
+<p>Instead of assuming that one calibration works for every walking condition, the estimator changes with the movement pattern being observed.</p>
+<h2>What if the phone is moving too?</h2>
+<p>The problem becomes more difficult when the smartphone itself swings with the user's arm.</p>
+<p>The 2018 study, <a href="https://doi.org/10.15837/ijccc.2018.4.3148" target="_blank" rel="noopener noreferrer" class="external-link"><em>Nonparametric regression-based step-length estimation for arm-swing walking using a smartphone</em></a>, addressed that setting.</p>
+<p>Arm swinging changes the acceleration signal measured by the phone, meaning that the sensor records a combination of body locomotion and device motion.</p>
+<p>The study modeled step length using relationships involving walking speed and acceleration variability.</p>
+<p>Conceptually, this reflects a broader lesson in mobile sensing:</p>
+<p><strong>the sensor is not observing the phenomenon from a fixed laboratory position. It is participating in the movement.</strong></p>
+<p>The model therefore needs to account for how the sensing device is being used, not merely what it measures.</p>
+<h2>From estimating movement to understanding gestures</h2>
+<p>The same principle appears in vision-based interaction.</p>
+<p>A computer observing a hand gesture must decide which pixels belong to the hand, where the fingertips are, whether the hand is moving intentionally, and which temporal pattern corresponds to a gesture.</p>
+<p>RGB cameras provide appearance.</p>
+<p>Depth sensors provide distance.</p>
+<p>Together, <strong>RGB-D</strong> data offer complementary information.</p>
+<p>The 2020 <em>Applied Sciences</em> study, <a href="https://doi.org/10.3390/app10020722" target="_blank" rel="noopener noreferrer" class="external-link"><em>Real-Time Hand Gesture Spotting and Recognition Using RGB-D Camera and 3D Convolutional Neural Network</em></a>, combined depth-based hand and fingertip localization with a 3D convolutional neural network for gesture recognition.</p>
+<p>The “3D” in this context does not simply mean that the camera senses depth.</p>
+<p>A 3D convolution can also learn across the spatial dimensions of image frames and the temporal dimension of a short video sequence.</p>
+<p>That is valuable for gestures because movement is part of their identity.</p>
+<p>A static frame may show where a hand is.</p>
+<p>A sequence shows <strong>what the hand is doing</strong>.</p>
+<h2>Turning a fingertip into a mouse</h2>
+<p>The 2021 <em>Multimedia Tools and Applications</em> study, <a href="https://doi.org/10.1007/s11042-020-10156-5" target="_blank" rel="noopener noreferrer" class="external-link"><em>Real-time virtual mouse system using RGB-D images and fingertip detection</em></a>, translated this sensing problem into an actual human-computer interface.</p>
+<p>Using a Kinect V2 RGB-D sensor, the system identified a hand region, extracted its contour, detected fingertips, and mapped fingertip movement to a virtual screen.</p>
+<p>The system operated at <strong>30 frames per second on a desktop computer using a single CPU</strong> in the reported experiments.</p>
+<p>That implementation detail matters.</p>
+<p>An interaction technique is not particularly useful if the user moves a hand and the pointer responds seconds later.</p>
+<p>Real-time performance therefore becomes part of the scientific problem rather than an engineering afterthought.</p>
+<p>The study also tested conditions such as changing illumination, complex backgrounds, and tracking distance—all situations where a visually elegant demonstration can become much less reliable.</p>
+<h2>An earlier lesson from wireless signals</h2>
+<p>An earlier strand of work approached measurement uncertainty from a different domain.</p>
+<p>The 2015 <em>Wireless Personal Communications</em> paper, <a href="https://doi.org/10.1007/s11277-015-2717-3" target="_blank" rel="noopener noreferrer" class="external-link"><em>Impact of channel estimation error on the performance of relay selection in cognitive radio networks</em></a>, analyzed how imperfect channel estimates influence communication performance.</p>
+<p>This is separate from the later smartphone and computer-vision pipeline and should not be interpreted as part of one unified sensing system.</p>
+<p>But conceptually, it introduced a recurring engineering concern:</p>
+<p><strong>algorithms make decisions from measurements, and those measurements are rarely exact.</strong></p>
+<p>Ignoring estimation error can make a theoretically strong method fragile in practice.</p>
+<p>The same principle later appears in another form in motion sensing and visual interaction, where noise, changing conditions, and imperfect observations must be incorporated into the design.</p>
+<h2>The thread connecting these projects</h2>
+<p>At first glance, indoor localization and fingertip interaction seem unrelated.</p>
+<p>One follows footsteps.</p>
+<p>The other follows hands.</p>
+<p>But both require translating continuous, noisy physical signals into discrete computational meaning.</p>
+<p>Was that acceleration peak really a step?</p>
+<p>How long was the step?</p>
+<p>Is that contour point actually a fingertip?</p>
+<p>Where should the cursor move?</p>
+<p>Has the gesture started?</p>
+<p>Has it ended?</p>
+<p>The algorithms differ, but the pattern is similar:</p>
+<p><strong>sense → filter → represent → estimate → act.</strong></p>
+<p>That pattern now appears in much more sophisticated forms across wearable computing, robotics, multimodal AI, and digital health.</p>
+<h2>From engineered features to learned representations</h2>
+<p>Modern sensing systems increasingly replace hand-designed processing stages with learned representations.</p>
+<p>Smartphones now contain richer inertial sensors.</p>
+<p>Depth estimation can be performed with newer camera systems.</p>
+<p>Transformers can model long temporal sequences.</p>
+<p>Multimodal foundation models can connect image, video, language, audio, and sensor measurements.</p>
+<p>But better models do not remove the fundamental questions that motivated this earlier work.</p>
+<p>Where does uncertainty enter the system?</p>
+<p>How does behavior change the measured signal?</p>
+<p>Does the model remain reliable when the environment changes?</p>
+<p>And can the algorithm run fast enough to support the human interacting with it?</p>
+<p>Those questions are as relevant to today's intelligent systems as they were to step-length estimation or fingertip tracking.</p>
+<p>The sensors have changed.</p>
+<p>The computational challenge remains remarkably familiar:</p>
+<p><strong>extract the right signal from a noisy world, and turn it into something useful.</strong></p>
 </div>
-      <aside class="story-glance story-text-column" aria-labelledby="glance-title"><span class="eyebrow">THE SHARED THREAD</span><h2 id="glance-title">Research at a glance</h2><ul><li>Smartphone studies investigate step detection and step-length estimation under movement variation.</li><li>RGB-D research connects hand gestures and fingertip detection with real-time interaction.</li><li>Earlier wireless-network work examines relay selection when channel estimates contain error.</li></ul></aside>
+      <aside class="story-glance story-text-column" aria-labelledby="glance-title"><span class="eyebrow">THE SHARED THREAD</span><h2 id="glance-title">Research at a glance</h2><ul><li>Pedestrian dead reckoning improves when step detection and step-length estimation adapt to how a person is actually moving.</li><li>RGB-D sensing combines appearance and depth, making hand and fingertip tracking more robust to challenging visual conditions.</li><li>Across localization, gesture recognition, and wireless communication, uncertainty in measurements is not an exception—it is part of the engineering problem.</li></ul></aside>
       <section class="story-references story-text-column" aria-labelledby="references-title"><span class="eyebrow">EXPLORE THE EVIDENCE</span><h2 id="references-title">Related publications</h2><ol><li><h3><a href="https://link.springer.com/article/10.1007/s11042-020-10156-5" target="_blank" rel="noopener noreferrer">Real-time virtual mouse system using RGB-D images and fingertip detection <span aria-hidden="true">↗</span></a></h3><p class="story-reference-authors">DS Tran, NH Ho , HJ Yang, SH Kim, G Lee</p><p class="story-reference-venue">Multimedia Tools and Applications 80 (2021), p. 10473-10490 · 2021</p><div class="story-reference-links"><a href="https://doi.org/10.1007/s11042-020-10156-5" target="_blank" rel="noopener noreferrer">DOI: 10.1007/s11042-020-10156-5 <span aria-hidden="true">↗</span></a><a href="https://link.springer.com/article/10.1007/s11042-020-10156-5" target="_blank" rel="noopener noreferrer">Publisher / source <span aria-hidden="true">↗</span></a></div></li><li><h3><a href="https://www.mdpi.com/2076-3417/10/2/722" target="_blank" rel="noopener noreferrer">Real-time hand gesture spotting and recognition using RGB-D camera and 3D convolutional neural network <span aria-hidden="true">↗</span></a></h3><p class="story-reference-authors">DS Tran, NH Ho , HJ Yang, ET Baek, SH Kim, G Lee</p><p class="story-reference-venue">Applied Sciences 10.2 (2020), p. 722 · 2020</p><div class="story-reference-links"><a href="https://doi.org/10.3390/app10020722" target="_blank" rel="noopener noreferrer">DOI: 10.3390/app10020722 <span aria-hidden="true">↗</span></a><a href="https://www.mdpi.com/2076-3417/10/2/722" target="_blank" rel="noopener noreferrer">Publisher / source <span aria-hidden="true">↗</span></a></div></li><li><h3><a href="http://univagora.ro/jour/index.php/ijccc/article/view/3148" target="_blank" rel="noopener noreferrer">Nonparametric regression-based step-length estimation for arm-swing walking using a smartphone <span aria-hidden="true">↗</span></a></h3><p class="story-reference-authors">PH Truong, ND Nguyen, NH Ho , GM Jeong</p><p class="story-reference-venue">IJCCC 13.4 (2018), p. 566-573 · 2018</p><div class="story-reference-links"><a href="https://doi.org/10.15837/ijccc.2018.4.3148" target="_blank" rel="noopener noreferrer">DOI: 10.15837/ijccc.2018.4.3148 <span aria-hidden="true">↗</span></a><a href="http://univagora.ro/jour/index.php/ijccc/article/view/3148" target="_blank" rel="noopener noreferrer">Publisher / source <span aria-hidden="true">↗</span></a></div></li><li><h3><a href="https://www.mdpi.com/1424-8220/16/9/1423" target="_blank" rel="noopener noreferrer">Step-detection and adaptive step-length estimation for pedestrian dead-reckoning at various walking speeds using a smartphone <span aria-hidden="true">↗</span></a></h3><p class="story-reference-authors">NH Ho , PH Truong, GM Jeong</p><p class="story-reference-venue">Sensors 16.9 (2016), p. 1423 · 2016</p><div class="story-reference-links"><a href="https://doi.org/10.3390/s16091423" target="_blank" rel="noopener noreferrer">DOI: 10.3390/s16091423 <span aria-hidden="true">↗</span></a><a href="https://www.mdpi.com/1424-8220/16/9/1423" target="_blank" rel="noopener noreferrer">Publisher / source <span aria-hidden="true">↗</span></a></div></li><li><h3><a href="https://link.springer.com/article/10.1007/s11277-015-2717-3" target="_blank" rel="noopener noreferrer">Impact of channel estimation error on the performance of relay selection in cognitive radio networks <span aria-hidden="true">↗</span></a></h3><p class="story-reference-authors">VK Ho, NK Doan, NH Ho</p><p class="story-reference-venue">Wireless Personal Communications 84 (2015), p. 2513-2536 · 2015</p><div class="story-reference-links"><a href="https://doi.org/10.1007/s11277-015-2717-3" target="_blank" rel="noopener noreferrer">DOI: 10.1007/s11277-015-2717-3 <span aria-hidden="true">↗</span></a><a href="https://link.springer.com/article/10.1007/s11277-015-2717-3" target="_blank" rel="noopener noreferrer">Publisher / source <span aria-hidden="true">↗</span></a></div></li></ol></section>
       
-      <section class="story-contact story-text-column" aria-labelledby="story-contact-title"><span class="eyebrow">CONTINUE THE CONVERSATION</span><h2 id="story-contact-title">Interested in this research?</h2><p>I am always interested in conversations around neuroimaging, multimodal learning, trustworthy AI, biomedical machine learning, and collaborative research. If your work intersects with these questions, I would be glad to connect.</p><a class="button button-primary" href="mailto:hon3@uthscsa.edu">Get in touch <span aria-hidden="true">→</span></a></section>
-      <nav class="story-next story-text-column" aria-label="More research stories"><a href="../../index.html#scientific-blog">← All research stories</a><a href="../dementia-trustworthy-ai/index.html">Next: Understanding dementia. Predicting what comes next. <span aria-hidden="true">→</span></a></nav>
+      <section class="story-contact story-text-column" aria-labelledby="story-contact-title"><span class="eyebrow">CONTINUE THE CONVERSATION</span><h2 id="story-contact-title">Interested in this research?</h2><p>My current interests center on <strong>neuroimaging, trustworthy AI, multimodal learning, and foundation models for biomedical data</strong>. I am particularly interested in research that connects methodological development with questions of generalizability, interpretation, population differences, and biological relevance.</p><p>If your work intersects with these areas—or if you are a student interested in developing research at their intersection—I would be glad to connect.</p><a class="button button-primary" href="mailto:hon3@uthscsa.edu">Get in touch <span aria-hidden="true">→</span></a></section>
+      <nav class="story-next story-text-column" aria-label="More research stories"><a href="../../index.html#scientific-blog">← All research stories</a><a href="../dementia-trustworthy-ai/index.html">Next: Can dementia AI be accurate—and fair? <span aria-hidden="true">→</span></a></nav>
     </article>
   </main>
   <footer class="site-footer container"><span>© <span id="copyright-year">2026</span> Ngoc-Huynh Ho</span><span class="footer-links"><a href="../../index.html#contact">Contact</a><a href="#main">Back to top ↑</a></span><small>Original portfolio template by <a href="https://bootstrapmade.com/" target="_blank" rel="noopener noreferrer">BootstrapMade</a></small></footer>
