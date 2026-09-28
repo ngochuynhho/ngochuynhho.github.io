@@ -2,8 +2,8 @@
   "schema_version": 1,
   "author_id": "dYRENHsAAAAJ",
   "profile_url": "https://scholar.google.com/citations?user=dYRENHsAAAAJ&hl=en",
-  "updated_at": "2026-09-27T15:39:15.108531+00:00",
-  "citations": 1127,
+  "updated_at": "2026-09-28T18:35:58.314268+00:00",
+  "citations": 1131,
   "h_index": 14,
   "i10_index": 16,
   "previously_recorded_citations": 1089,
@@ -28,7 +28,7 @@
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dYRENHsAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dYRENHsAAAAJ:TQgYirikUcIC",
       "doi": "",
       "scholar_id": "dYRENHsAAAAJ:TQgYirikUcIC",
-      "citations": null,
+      "citations": 1,
       "type": "journal",
       "topic": "dementia"
     },
@@ -388,7 +388,7 @@
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dYRENHsAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dYRENHsAAAAJ:W7OEmFMy1HYC",
       "doi": "",
       "scholar_id": "dYRENHsAAAAJ:W7OEmFMy1HYC",
-      "citations": 213,
+      "citations": 215,
       "type": "journal",
       "topic": "affective-ai"
     },
@@ -556,7 +556,7 @@
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dYRENHsAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dYRENHsAAAAJ:2osOgNQ5qMEC",
       "doi": "",
       "scholar_id": "dYRENHsAAAAJ:2osOgNQ5qMEC",
-      "citations": 238,
+      "citations": 239,
       "type": "journal",
       "topic": "sensing-interaction"
     },
