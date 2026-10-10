@@ -65,6 +65,22 @@
     const card = event.target.closest("[data-topic]");
     if (card) openTopic(card.dataset.topic, card);
   });
+  const presentationDialog = document.getElementById("presentation-dialog");
+  const presentationTrigger = document.querySelector("[data-presentation-open]");
+  const presentationFrame = document.getElementById("presentation-frame");
+  presentationTrigger.addEventListener("click", event => {
+    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    presentationFrame.src = presentationFrame.dataset.src;
+    presentationDialog.showModal();
+    document.body.classList.add("dialog-open");
+  });
+  presentationDialog.querySelector(".presentation-close").addEventListener("click", () => presentationDialog.close());
+  presentationDialog.addEventListener("close", () => {
+    presentationFrame.removeAttribute("src");
+    document.body.classList.remove("dialog-open");
+    presentationTrigger.focus();
+  });
   dialog.querySelector(".dialog-close").addEventListener("click", () => dialog.close());
   dialog.addEventListener("click", event => {
     const box = dialog.getBoundingClientRect();

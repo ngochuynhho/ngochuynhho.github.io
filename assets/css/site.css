@@ -113,6 +113,20 @@ h2 span { color: var(--green); }
 .talk-meta > span { border-left: 2px solid var(--lime); padding-left: 10px; }
 .talk-link { display: inline-flex; align-items: center; gap: 18px; color: var(--white); font-size: 12px; font-weight: 600; border-bottom: 1px solid #769083; padding-bottom: 7px; }
 .talk-link:hover { color: var(--lime); }
+.talk-actions { display: flex; flex-wrap: wrap; gap: 18px 28px; align-items: center; }
+.talk-link-secondary { color: #bfd0c5; }
+.presentation-dialog { width: min(1140px, calc(100% - 32px)); height: min(94dvh, 920px); max-height: none; padding: 0; border: 0; border-radius: 14px; background: var(--paper); color: var(--ink); overflow: hidden; flex-direction: column; }
+.presentation-dialog[open] { display: flex; }
+.presentation-dialog::backdrop { background: rgb(10 29 23 / 75%); backdrop-filter: blur(5px); }
+.presentation-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; padding: 20px 25px 16px; border-bottom: 1px solid var(--line); }
+.presentation-header .eyebrow { font-size: 9px; }
+.presentation-header h2 { font-size: clamp(16px, 2vw, 23px); letter-spacing: -.5px; line-height: 1.35; margin: 7px 0 0; }
+.presentation-close { flex: 0 0 36px; display: grid; place-items: center; width: 36px; height: 36px; border: 1px solid var(--line); border-radius: 50%; background: white; color: var(--ink); font-size: 23px; line-height: 1; }
+.presentation-dialog iframe { display: block; width: 100%; flex: 1; min-height: 0; border: 0; background: white; }
+.presentation-actions { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px 20px; padding: 12px 25px; border-top: 1px solid var(--line); font-size: 11px; }
+.presentation-actions > span { color: var(--muted); }
+.presentation-actions > div { display: flex; flex-wrap: wrap; gap: 10px 20px; }
+.presentation-actions a { color: var(--green); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
 .publications-section { background: #f0f3ec; border-block: 1px solid var(--line); }
 .text-link { color: var(--ink); font-size: 12px; font-weight: 500; }
 .text-link:hover { text-decoration: underline; text-underline-offset: 5px; }
@@ -312,6 +326,9 @@ h2 span { color: var(--green); }
   .talk-intro { flex-direction: column; }
   .talk-event span { display: none; }
   .talk-card h2 { font-size: 27px; }
+  .presentation-dialog { width: calc(100% - 12px); height: calc(100dvh - 12px); }
+  .presentation-header { padding: 15px 16px 12px; }
+  .presentation-actions { padding: 10px 16px; }
   .project-card, .project-card:nth-child(-n+2), .project-card:last-child { grid-column: 1; }
   .project-visual, .project-card:nth-child(-n+2) .project-visual { height: 175px; }
   .project-bottom { flex-direction: row; }

@@ -78,6 +78,10 @@ For better project artwork, [IMAGE_BRIEF.md](IMAGE_BRIEF.md) contains copy-ready
 
 The public page includes embedded bibliography and topic data as a fallback for direct file previews or network errors. When hosted, current JSON files take priority. If you want to refresh the fallback after a manual content edit, update its `initial-publications` or `initial-topics` JSON block in `index.html`; the hosted site does not require this.
 
+## Invited talk slides
+
+The Neurepiomics 2026 invited-talk section opens the 15-slide presentation in a keyboard-accessible PDF panel. Visitors can also open the full PDF in a new tab or download it. The file is `talks/Neurepiomics_2026.pdf`; the Pages workflow copies `talks/` into the public site, and local backups include it.
+
 ## Scientific Blog: editing and adding stories
 
 Visitors can follow **Research card → short research note → View stories → full article**; the **View stories** button appears before **The problem** in each note. Each article has its own URL, such as `blog/dementia-trustworthy-ai/`, and uses ordinary links so browser Back navigation works. The five research stories use the supplied author draft; the original draft is preserved in `content/research-notes-draft.md`. Headlines and three-point takeaways match that draft. Article standfirsts use `blog_standfirst`, while `blog_summary` keeps homepage cards concise.

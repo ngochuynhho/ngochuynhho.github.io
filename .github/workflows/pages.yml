@@ -6,6 +6,7 @@ on:
       - 'index.html'
       - 'admin.html'
       - 'blog/**'
+      - 'talks/**'
       - 'content/blog/**'
       - 'templates/blog.html'
       - 'scripts/build_blog.mjs'
@@ -53,7 +54,7 @@ jobs:
         run: |
           mkdir -p _site
           cp index.html admin.html robots.txt sitemap.xml .nojekyll _site/
-          cp -R assets data cv blog _site/
+          cp -R assets data cv blog talks _site/
       - uses: actions/upload-pages-artifact@v4
         with:
           path: _site
