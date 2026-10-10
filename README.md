@@ -1,6 +1,6 @@
 # Ngoc-Huynh Ho · Research portfolio
 
-A responsive portfolio for GitHub Pages, with research notes, long-form scientific blogs, a searchable bibliography, Google Scholar citation updates, and an owner workspace for reviewing new papers. The redesign preserves all 48 existing bibliography records and the complete supplied career history.
+A responsive portfolio for GitHub Pages, with research notes, long-form scientific blogs, invited talks, a searchable bibliography, Google Scholar citation updates, and an owner workspace for reviewing new papers. The redesign preserves all 48 existing bibliography records and the complete supplied career history.
 
 Ngoc-Huynh Ho completed his UT Health Science Center at San Antonio postdoctoral appointment in May 2026 and began an Instructor appointment there in May 2026.
 
