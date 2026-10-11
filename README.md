@@ -82,6 +82,12 @@ The public page includes embedded bibliography and topic data as a fallback for 
 
 The Neurepiomics 2026 invited-talk section opens the 15-slide presentation in a keyboard-accessible PDF panel. Visitors can also open the full PDF in a new tab or download it. The file is `talks/Neurepiomics_2026.pdf`; the Pages workflow copies `talks/` into the public site, and local backups include it.
 
+## PhD research slides
+
+The **Advancements in AI for Healthcare** card in About presents a 67-slide overview of PhD research. It is an archived research overview, with no event or invited-talk attribution. Visitors can preview the PDF in a keyboard-accessible panel, open the full PDF, or download the original PowerPoint. The files are `talks/medical_research.pdf` and `talks/medical_research.pptx`; the Pages workflow includes both through `talks/`.
+
+The Instructor and UT Health postdoctoral research descriptions in Professional Experience are adapted from `cv/cv_full.pdf`. The website retains **May 2026** as the Instructor start date, as supplied directly for this site; the current CV says June 2026 and should be corrected separately if May is the final date.
+
 ## Scientific Blog: editing and adding stories
 
 Visitors can follow **Research card → short research note → View stories → full article**; the **View stories** button appears before **The problem** in each note. Each article has its own URL, such as `blog/dementia-trustworthy-ai/`, and uses ordinary links so browser Back navigation works. The five research stories use the supplied author draft; the original draft is preserved in `content/research-notes-draft.md`. Headlines and three-point takeaways match that draft. Article standfirsts use `blog_standfirst`, while `blog_summary` keeps homepage cards concise.

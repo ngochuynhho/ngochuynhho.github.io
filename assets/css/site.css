@@ -158,6 +158,11 @@ h2 span { color: var(--green); }
 .expertise-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0; }
 .expertise-tags span, .topic-tag { border: 1px solid var(--line); border-radius: 22px; padding: 6px 13px; font-size: 10px; color: var(--green); }
 .about-links { display: flex; flex-wrap: wrap; gap: 23px; }
+.phd-slides { grid-column: 1/-1; display: flex; align-items: end; justify-content: space-between; flex-wrap: wrap; gap: 20px 35px; padding: 26px 30px; border: 1px solid var(--line); border-radius: 12px; background: #eef3e9; }
+.phd-slides .eyebrow { color: var(--green); }
+.phd-slides h3 { margin: 8px 0; font-size: clamp(20px, 2.5vw, 28px); letter-spacing: -.7px; }
+.phd-slides p { max-width: 660px; margin: 0; color: var(--muted); font-size: 12px; line-height: 1.75; }
+.phd-slides-actions { display: flex; flex-wrap: wrap; gap: 12px 24px; padding-bottom: 3px; }
 .career-details { grid-column: 1/-1; margin-top: -25px; border-block: 1px solid var(--line); }
 .career-details > summary { display: flex; justify-content: space-between; list-style: none; cursor: pointer; padding-block: 22px; font-size: 13px; font-weight: 500; color: var(--ink); }
 .career-details > summary::-webkit-details-marker { display: none; }
