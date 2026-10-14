@@ -2,8 +2,8 @@
   "schema_version": 1,
   "author_id": "dYRENHsAAAAJ",
   "profile_url": "https://scholar.google.com/citations?user=dYRENHsAAAAJ&hl=en",
-  "updated_at": "2026-10-13T18:17:05.833536+00:00",
-  "citations": 1139,
+  "updated_at": "2026-10-14T15:49:12.296156+00:00",
+  "citations": 1143,
   "h_index": 14,
   "i10_index": 16,
   "previously_recorded_citations": 1089,
@@ -112,7 +112,7 @@
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dYRENHsAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dYRENHsAAAAJ:hC7cP41nSMkC",
       "doi": "",
       "scholar_id": "dYRENHsAAAAJ:hC7cP41nSMkC",
-      "citations": 22,
+      "citations": 23,
       "type": "conference",
       "topic": "affective-ai"
     },
@@ -160,7 +160,7 @@
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dYRENHsAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dYRENHsAAAAJ:ZeXyd9-uunAC",
       "doi": "",
       "scholar_id": "dYRENHsAAAAJ:ZeXyd9-uunAC",
-      "citations": 23,
+      "citations": 24,
       "type": "other",
       "topic": "affective-ai"
     },
@@ -172,7 +172,7 @@
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dYRENHsAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dYRENHsAAAAJ:QIV2ME_5wuYC",
       "doi": "",
       "scholar_id": "dYRENHsAAAAJ:QIV2ME_5wuYC",
-      "citations": 25,
+      "citations": 26,
       "type": "conference",
       "topic": "affective-ai"
     },
@@ -328,7 +328,7 @@
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dYRENHsAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dYRENHsAAAAJ:WF5omc3nYNoC",
       "doi": "",
       "scholar_id": "dYRENHsAAAAJ:WF5omc3nYNoC",
-      "citations": 71,
+      "citations": 72,
       "type": "journal",
       "topic": "sensing-interaction"
     },
