@@ -29,7 +29,8 @@ function externalLink(href, label) {
   return `<a href="${esc(safe)}" target="_blank" rel="noopener noreferrer">${esc(label)} <span aria-hidden="true">↗</span></a>`;
 }
 function bibliography(paper) {
-  return `<li><h3>${externalLink(paper.url, paper.title)}</h3><p class="story-reference-authors">${esc(paper.authors)}</p><p class="story-reference-venue">${esc(paper.venue)} · ${esc(paper.year)}</p><div class="story-reference-links">${externalLink(`https://doi.org/${paper.doi}`, `DOI: ${paper.doi}`)}${externalLink(paper.url, "Publisher / source")}${paper.code_url ? externalLink(paper.code_url, "Source code") : ""}</div></li>`;
+  if (paper.app_path && !/^\/[a-z0-9-]+\/$/.test(paper.app_path)) throw new Error("Invalid research application path.");
+  return `<li><h3>${externalLink(paper.url, paper.title)}</h3><p class="story-reference-authors">${esc(paper.authors)}</p><p class="story-reference-venue">${esc(paper.venue)} · ${esc(paper.year)}</p><div class="story-reference-links">${externalLink(`https://doi.org/${paper.doi}`, `DOI: ${paper.doi}`)}${externalLink(paper.url, "Publisher / source")}${paper.code_url ? externalLink(paper.code_url, "Source code") : ""}${paper.app_path ? `<a href="${esc(paper.app_path)}">Open Fair SPARE-AD →</a>` : ""}</div></li>`;
 }
 function fill(values) {
   return template.replace(/\{\{([a-z_]+)\}\}/g, (_, key) => {
@@ -52,7 +53,7 @@ for (const [index, topic] of blogTopics.entries()) {
     if (!source || paper.type !== "journal" || paper.topic !== topic.id || source.title !== paper.title || source.year !== paper.year || source.url !== paper.url || source.authors !== paper.authors.trim() || source.venue !== paper.venue) {
       throw new Error(`Publication ${id} conflicts with BLOG_BRIEF.md or the topic catalog.`);
     }
-    return {...source, code_url: paper.code_url};
+    return {...source, code_url: paper.code_url, app_path: paper.app_path};
   });
   if (!selected.length || new Set(topic.blog_publication_ids).size !== selected.length) throw new Error(`Missing or duplicate references for ${slug}`);
   const source = read(topic.blog_markdown);
@@ -80,7 +81,7 @@ for (const [index, topic] of blogTopics.entries()) {
 homepage = homepage.replace(/(<script type="application\/json" id="initial-topics">)[\s\S]*?(<\/script>)/,
   (_, start, end) => `${start}${JSON.stringify(topics).replace(/</g,"\\u003c")}${end}`);
 output.set("index.html", homepage);
-const urls = ["https://ngochuynhho.github.io/", ...blogTopics.map(topic => `https://ngochuynhho.github.io/blog/${topic.blog_slug}/`)];
+const urls = ["https://ngochuynhho.github.io/", "https://ngochuynhho.github.io/spare-ad/", ...blogTopics.map(topic => `https://ngochuynhho.github.io/blog/${topic.blog_slug}/`)];
 output.set("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(url => `  <url><loc>${esc(url)}</loc></url>`).join("\n")}\n</urlset>\n`);
 
 if (process.argv.includes("--check")) {

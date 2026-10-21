@@ -6,7 +6,7 @@ from pathlib import Path
 import tarfile
 
 SITE_PATHS = ("index.html", "admin.html", "README.md", "IMAGE_BRIEF.md", "BLOG_BRIEF.md", "blog", "content", "templates", "tools", "assets", "cv", "data", "scripts", "tests", "talks",
-              ".github", ".gitignore", ".nojekyll", "robots.txt", "sitemap.xml")
+              "spare-ad", "services", ".dockerignore", ".github", ".gitignore", ".nojekyll", "robots.txt", "sitemap.xml")
 
 
 def create_backup(root: Path, output: Path | None = None) -> Path:

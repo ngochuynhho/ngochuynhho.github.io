@@ -88,7 +88,8 @@
       "doi": "10.1038/s41467-026-74515-w",
       "url": "https://www.nature.com/articles/s41467-026-74515-w",
       "topic": "dementia",
-      "code_url": "https://github.com/UTHSCSA-NAL/explainable_and_fair_ML_for_ADRD"
+      "code_url": "https://github.com/UTHSCSA-NAL/explainable_and_fair_ML_for_ADRD",
+      "app_path": "/spare-ad/"
     },
     {
       "id": "journal-03",

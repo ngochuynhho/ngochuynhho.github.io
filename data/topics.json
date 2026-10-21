@@ -88,7 +88,11 @@
       "journal-09",
       "journal-17"
     ],
-    "blog_standfirst": "From predicting disease progression to understanding why neuroimaging models behave differently across populations, this research asks a broader question than whether an AI model can make a correct prediction: can we understand when it works, why it works, and for whom it works?"
+    "blog_standfirst": "From predicting disease progression to understanding why neuroimaging models behave differently across populations, this research asks a broader question than whether an AI model can make a correct prediction: can we understand when it works, why it works, and for whom it works?",
+    "application": {
+      "title": "Fair SPARE-AD",
+      "path": "/spare-ad/"
+    }
   },
   {
     "id": "brain-health",

@@ -1,0 +1,23 @@
+services:
+  portfolio:
+    build:
+      context: ../..
+      dockerfile: services/spare_ad/Dockerfile
+    ports:
+      - "127.0.0.1:${SPARE_AD_PORT:-8765}:8765"
+    environment:
+      APP_BASE_PATH: /spare-ad
+      APP_PUBLIC_ORIGIN: ${APP_PUBLIC_ORIGIN:-}
+      APP_FRAME_ANCESTORS: "'self'"
+      SPARE_AD_BUNDLE: /opt/spare-ad
+    volumes:
+      - type: bind
+        source: ../../.spare-ad-runtime/bundle
+        target: /opt/spare-ad
+        read_only: true
+        bind:
+          create_host_path: false
+    read_only: true
+    tmpfs:
+      - /tmp
+    restart: unless-stopped

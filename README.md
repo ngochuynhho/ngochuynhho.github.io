@@ -7,10 +7,18 @@ Ngoc-Huynh Ho completed his UT Health Science Center at San Antonio postdoctoral
 ## Preview locally
 
 ```bash
-python3 -m http.server 8000
+python3 scripts/serve_portfolio.py --port 8000
 ```
 
 Open `http://localhost:8000`. Open `http://localhost:8000/admin.html` for the owner workspace. The public portfolio also works when `index.html` is opened directly from disk using embedded fallback data. The admin page needs HTTP to load its configuration.
+
+## Fair SPARE-AD application
+
+The Nature Communications paper, dementia research note, and related blog bibliography link to **`/spare-ad/`**. The supplied application is integrated with a Python gateway for real Best/Average CSV scoring, three score definitions, and the original frozen reference plots. See [services/spare_ad/README.md](services/spare_ad/README.md) for exact setup, validation, Docker, and HTTPS proxy commands.
+
+Prepare the handoff with `python3 scripts/prepare_spare_ad.py --bundle /mnt/d/Clone_GitHub/resources/spare_ad_website`, then run the integrated server using the Python environment with the pinned app dependencies. The private runtime is ignored by Git and excluded from the Pages artifact. Use the preview command above rather than a repository-root static server, which could expose private runtime files.
+
+GitHub Pages publishes a lightweight launch page at the same path. After deploying the Python service to its intended audience, set its HTTPS app URL in `spare-ad/service.json`. Until that is configured, the launcher explains that the research-server connection is pending. The model and row-level reference bundle is never included in the public site.
 
 ## Enable live Scholar updates and admin scanning
 

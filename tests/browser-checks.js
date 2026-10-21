@@ -46,6 +46,7 @@ let launchedBrowser, localServer;
   assert.equal((await slides.body()).subarray(0, 5).toString(), "%PDF-");
   const codeURL = "https://github.com/UTHSCSA-NAL/explainable_and_fair_ML_for_ADRD";
   assert.equal(await page.locator('#publication-list a.publication-code').getAttribute("href"), codeURL);
+  assert.equal(await page.locator("#publication-list .publication-app").getAttribute("href"), "/spare-ad/");
   await page.locator("#publication-search").fill("Integration of neuroimaging signatures");
   assert.equal(await page.locator(".publication").count(), 1);
   assert.equal(await page.locator(".publication h3 a").getAttribute("href"), "https://doi.org/10.1002/alz.71889");
@@ -109,9 +110,9 @@ let launchedBrowser, localServer;
   for (const topic of read("topics")) {
     const storyPath = `blog/${topic.blog_slug}/index.html`;
     await page.locator(`[data-topic="${topic.id}"]`).click();
-    assert.equal(await page.locator(".topic-story-link a").textContent(), "View stories →");
+    assert.equal(await page.locator('.topic-story-link a[href^="blog/"]').textContent(), "View stories →");
     assert.equal(await page.locator(".topic-body").evaluate(body => body.firstElementChild.className), "topic-story-link");
-    await page.locator(".topic-story-link a").click();
+    await page.locator('.topic-story-link a[href^="blog/"]').click();
     await page.waitForURL(`${siteURL}/${storyPath}`);
     assert.equal(await page.locator(".story-header h1").textContent(), topic.blog_title);
     assert.equal(await page.locator(".story-glance li").count(), 3);
@@ -153,7 +154,7 @@ let launchedBrowser, localServer;
   }
   await page.setViewportSize({width:1440,height:1000});
   await page.locator('[data-topic="dementia"]').click();
-  await page.locator(".topic-story-link a").click();
+  await page.locator('.topic-story-link a[href^="blog/"]').click();
   await page.waitForURL(`${siteURL}/blog/dementia-trustworthy-ai/index.html`);
   await page.reload({waitUntil:"networkidle"});
   assert.equal(await page.locator(".story-header h1").textContent(), read("topics")[0].blog_title);

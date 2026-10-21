@@ -2,3 +2,6 @@
 __pycache__/
 *.pyc
 .DS_Store
+.spare-ad-runtime/
+.venv-spare-ad/
+.env.spare-ad
