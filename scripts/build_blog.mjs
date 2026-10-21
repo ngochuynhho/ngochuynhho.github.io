@@ -29,7 +29,7 @@ function externalLink(href, label) {
   return `<a href="${esc(safe)}" target="_blank" rel="noopener noreferrer">${esc(label)} <span aria-hidden="true">↗</span></a>`;
 }
 function bibliography(paper) {
-  return `<li><h3>${externalLink(paper.url, paper.title)}</h3><p class="story-reference-authors">${esc(paper.authors)}</p><p class="story-reference-venue">${esc(paper.venue)} · ${esc(paper.year)}</p><div class="story-reference-links">${externalLink(`https://doi.org/${paper.doi}`, `DOI: ${paper.doi}`)}${externalLink(paper.url, "Publisher / source")}</div></li>`;
+  return `<li><h3>${externalLink(paper.url, paper.title)}</h3><p class="story-reference-authors">${esc(paper.authors)}</p><p class="story-reference-venue">${esc(paper.venue)} · ${esc(paper.year)}</p><div class="story-reference-links">${externalLink(`https://doi.org/${paper.doi}`, `DOI: ${paper.doi}`)}${externalLink(paper.url, "Publisher / source")}${paper.code_url ? externalLink(paper.code_url, "Source code") : ""}</div></li>`;
 }
 function fill(values) {
   return template.replace(/\{\{([a-z_]+)\}\}/g, (_, key) => {
@@ -52,7 +52,7 @@ for (const [index, topic] of blogTopics.entries()) {
     if (!source || paper.type !== "journal" || paper.topic !== topic.id || source.title !== paper.title || source.year !== paper.year || source.url !== paper.url || source.authors !== paper.authors.trim() || source.venue !== paper.venue) {
       throw new Error(`Publication ${id} conflicts with BLOG_BRIEF.md or the topic catalog.`);
     }
-    return source;
+    return {...source, code_url: paper.code_url};
   });
   if (!selected.length || new Set(topic.blog_publication_ids).size !== selected.length) throw new Error(`Missing or duplicate references for ${slug}`);
   const source = read(topic.blog_markdown);

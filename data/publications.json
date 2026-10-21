@@ -57,6 +57,17 @@
       "topic": "medical-imaging"
     },
     {
+      "id": "journal-21",
+      "title": "Integration of neuroimaging signatures of aging and Alzheimer's with fluid biomarkers",
+      "authors": "MM Gonzales, NH Ho, DH Wang, T Rashid, SR Brandigampala, M Dong, D Martinez, S Charisis, TJ Hohman, S Seshadri, C Davatzikos, G Maestre, TF Kautz, A LaRoche, VM Young, AC Sullivan, K Yaffe, JB Toledo, Alzheimer's Disease Neuroimaging InitiativeHABS‐HD Study Team, M Habes",
+      "venue": "Alzheimer's & Dementia 22(10) (2026), e71889",
+      "year": 2026,
+      "type": "journal",
+      "doi": "10.1002/alz.71889",
+      "url": "https://doi.org/10.1002/alz.71889",
+      "topic": "brain-health"
+    },
+    {
       "id": "journal-01",
       "title": "Intensive versus standard blood pressure control and overall brain small vessel disease burden: a post-hoc analysis of the SPRINT randomized clinical trial",
       "authors": "S Charisis, NM Pajewski, LR Price, NH Ho T Rashid, D Wang, Y Zeng, NS Kutty, RN Bryan, KC Kern, BC Dickerson, S Seshadri, I Nasrallah, L Launer, C Davatzikos, JD Williamson, M Habes",
@@ -76,7 +87,8 @@
       "type": "journal",
       "doi": "10.1038/s41467-026-74515-w",
       "url": "https://www.nature.com/articles/s41467-026-74515-w",
-      "topic": "dementia"
+      "topic": "dementia",
+      "code_url": "https://github.com/UTHSCSA-NAL/explainable_and_fair_ML_for_ADRD"
     },
     {
       "id": "journal-03",

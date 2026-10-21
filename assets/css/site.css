@@ -146,6 +146,7 @@ h2 span { color: var(--green); }
 .publication h3 a:hover { text-decoration: underline; text-underline-offset: 4px; }
 .pub-authors { font-size: 10px; color: var(--muted); margin-bottom: 4px; overflow-wrap: anywhere; }
 .pub-venue { font-size: 10px; color: var(--green); margin-bottom: 0; }
+.publication-code { display: inline-block; margin-top: 8px; font-size: 11px; color: var(--green); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
 .pub-arrow { font-size: 17px; padding-top: 17px; color: var(--green); }
 #load-more { margin-top: 24px; }
 .empty-state { padding: 50px 20px; text-align: center; color: var(--muted); border-block: 1px solid var(--line); }
