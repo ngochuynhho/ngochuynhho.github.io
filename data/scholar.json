@@ -2,8 +2,8 @@
   "schema_version": 1,
   "author_id": "dYRENHsAAAAJ",
   "profile_url": "https://scholar.google.com/citations?user=dYRENHsAAAAJ&hl=en",
-  "updated_at": "2026-10-15T15:35:21.877365+00:00",
-  "citations": 1143,
+  "updated_at": "2026-10-20T15:38:48.837612+00:00",
+  "citations": 1145,
   "h_index": 14,
   "i10_index": 16,
   "previously_recorded_citations": 1089,
@@ -285,18 +285,6 @@
       "topic": "affective-ai"
     },
     {
-      "title": "Application of Deep Recurrent Q Network with Dueling Architecture for Optimal Sepsis Treatment Policy",
-      "authors": "TC Do, HJ Yang, NH Ho",
-      "venue": "스마트미디어저널 10 (2), 48-54, 2021",
-      "year": 2021,
-      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dYRENHsAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dYRENHsAAAAJ:aqlVkmm33-oC",
-      "doi": "",
-      "scholar_id": "dYRENHsAAAAJ:aqlVkmm33-oC",
-      "citations": null,
-      "type": "other",
-      "topic": "medical-imaging"
-    },
-    {
       "title": "Multimodal Deep Graph Fusion for Evoked Expression Recognition in Large-Scale Videos",
       "authors": "AQ Duong, NH Ho, HJ Yang, SH Kim, G Lee, O A-Ran",
       "venue": "Korea Computer Congress, 2021",
@@ -328,7 +316,7 @@
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dYRENHsAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dYRENHsAAAAJ:WF5omc3nYNoC",
       "doi": "",
       "scholar_id": "dYRENHsAAAAJ:WF5omc3nYNoC",
-      "citations": 72,
+      "citations": 73,
       "type": "journal",
       "topic": "sensing-interaction"
     },
@@ -342,6 +330,18 @@
       "scholar_id": "dYRENHsAAAAJ:M3ejUd6NZC8C",
       "citations": null,
       "type": "other",
+      "topic": "medical-imaging"
+    },
+    {
+      "title": "Application of Deep Recurrent Q Network with Dueling Architecture for Optimal Sepsis Treatment Policy",
+      "authors": "TC Do, HJ Yang, NH Ho",
+      "venue": "스마트미디어저널= Smart media journal 10 (2), 48-54, 2021",
+      "year": 2021,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dYRENHsAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dYRENHsAAAAJ:aqlVkmm33-oC",
+      "doi": "",
+      "scholar_id": "dYRENHsAAAAJ:aqlVkmm33-oC",
+      "citations": null,
+      "type": "journal",
       "topic": "medical-imaging"
     },
     {
@@ -364,7 +364,7 @@
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dYRENHsAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dYRENHsAAAAJ:YsMSGLbcyi4C",
       "doi": "",
       "scholar_id": "dYRENHsAAAAJ:YsMSGLbcyi4C",
-      "citations": 123,
+      "citations": 124,
       "type": "journal",
       "topic": "medical-imaging"
     },
