@@ -1,0 +1,14 @@
+{
+  "best": {
+    "model_count": 1,
+    "bytes": 97532,
+    "gzip_bytes": 35326,
+    "sha256": "90ede69186f0899acce47bd8f5d3c993c3524237292f0dbf4ab54d3176fd6b5d"
+  },
+  "average": {
+    "model_count": 100,
+    "bytes": 15653636,
+    "gzip_bytes": 5358347,
+    "sha256": "2ecb39620fa1dfc3c3d1b9ef49b0428fdaa2943444ce98cad813b7c4e587b5b8"
+  }
+}

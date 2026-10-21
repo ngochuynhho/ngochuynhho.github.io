@@ -10,6 +10,7 @@ services:
       APP_PUBLIC_ORIGIN: ${APP_PUBLIC_ORIGIN:-}
       APP_FRAME_ANCESTORS: "'self'"
       SPARE_AD_BUNDLE: /opt/spare-ad
+      SPARE_AD_LEGACY_BACKEND: "1"
     volumes:
       - type: bind
         source: ../../.spare-ad-runtime/bundle

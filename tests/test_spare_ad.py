@@ -15,7 +15,7 @@ from services.spare_ad.server import PortfolioApplication
 class SpareADIntegrationTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.gateway = PortfolioApplication()
+        cls.gateway = PortfolioApplication(legacy_backend=True)
         cls.bundle = cls.gateway.bundle
         if not (cls.bundle / "portfolio-integration.json").exists():
             raise unittest.SkipTest("Run scripts/prepare_spare_ad.py first.")
@@ -96,15 +96,16 @@ class SpareADIntegrationTests(unittest.TestCase):
                 classified = self.request("/spare-ad/api/classify", "POST", {"model": model, "rows": actual["rows"], "score": "age_z", "trend": "curve"})
             self.assertEqual([r["p"] for r in json.loads(classified["body"])["rows"]], [r["p"] for r in actual["rows"]])
 
-    def test_static_host_fallback_without_backend(self):
-        gateway = PortfolioApplication(bundle=ROOT / "missing-runtime")
+    def test_static_browser_is_default_even_with_native_bundle(self):
+        gateway = PortfolioApplication()
         result = {}
         response = b"".join(gateway({"PATH_INFO": "/spare-ad/"}, lambda status, headers: result.update(status=status)))
         self.assertTrue(result["status"].startswith("200"))
-        self.assertIn(b"service-status", response)
+        self.assertIn(b"calculation-status", response)
+        self.assertIsNone(gateway.backend)
         response = b"".join(gateway({"PATH_INFO": "/spare-ad/api/config"}, lambda status, headers: result.update(status=status)))
-        self.assertTrue(result["status"].startswith("503"))
-        self.assertIn(b"not been connected", response)
+        self.assertTrue(result["status"].startswith("404"))
+        self.assertIsNone(gateway.backend)
 
 
 if __name__ == "__main__":

@@ -8,6 +8,8 @@ on:
       - 'blog/**'
       - 'talks/**'
       - 'spare-ad/**'
+      - 'services/spare_ad/browser/**'
+      - 'scripts/verify_spare_ad_public.py'
       - 'content/blog/**'
       - 'templates/blog.html'
       - 'scripts/build_blog.mjs'
@@ -51,6 +53,8 @@ jobs:
       - uses: actions/configure-pages@v5
       - name: Build scientific blogs
         run: node scripts/build_blog.mjs
+      - name: Verify browser app privacy and model assets
+        run: python3 scripts/verify_spare_ad_public.py
       - name: Stage the public website
         run: |
           mkdir -p _site

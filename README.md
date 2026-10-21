@@ -14,11 +14,11 @@ Open `http://localhost:8000`. Open `http://localhost:8000/admin.html` for the ow
 
 ## Fair SPARE-AD application
 
-The Nature Communications paper, dementia research note, and related blog bibliography link to **`/spare-ad/`**. The supplied application is integrated with a Python gateway for real Best/Average CSV scoring, three score definitions, and the original frozen reference plots. See [services/spare_ad/README.md](services/spare_ad/README.md) for exact setup, validation, Docker, and HTTPS proxy commands.
+The publication, dementia research note, and related blog bibliography link to **`/spare-ad/`**. The full application now runs on **GitHub Pages**, including Best and 100-member Average model scoring. No separate host, Python backend, or API key is needed. CSV calculations run in a Web Worker on the visitor’s device; CSV content is never uploaded.
 
-Prepare the handoff with `python3 scripts/prepare_spare_ad.py --bundle /mnt/d/Clone_GitHub/resources/spare_ad_website`, then run the integrated server using the Python environment with the pinned app dependencies. The private runtime is ignored by Git and excluded from the Pages artifact. Use the preview command above rather than a repository-root static server, which could expose private runtime files.
+The owner-approved public assets include inference parameters and reference points with **subject IDs, cohort information, and source partition labels removed**. Each model’s reference rows are independently shuffled. Original identity mappings, native models, and the shuffle key stay in the ignored private runtime. Reference ages, diagnoses, ethnicity, scores, and frozen trends are retained. See [the app guide](services/spare_ad/README.md) and [privacy and numerical details](services/spare_ad/BROWSER.md).
 
-GitHub Pages publishes a lightweight launch page at the same path. After deploying the Python service to its intended audience, set its HTTPS app URL in `spare-ad/service.json`. Until that is configured, the launcher explains that the research-server connection is pending. The model and row-level reference bundle is never included in the public site.
+Preview the portfolio and app using `python3 scripts/serve_portfolio.py --port 8000`, then open **http://127.0.0.1:8000/spare-ad/**. The existing Pages workflow audits and publishes the static `spare-ad/` directory alongside the website. Changes are local until committed and pushed.
 
 ## Enable live Scholar updates and admin scanning
 

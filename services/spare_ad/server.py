@@ -1,6 +1,5 @@
-"""Serve the portfolio and the portable SPARE-AD app through one origin."""
+"""Safely preview the static portfolio; native backend is explicit legacy opt-in."""
 import importlib
-import json
 import mimetypes
 import os
 from pathlib import Path
@@ -13,10 +12,11 @@ PUBLIC_FILES = {"index.html", "admin.html", "robots.txt", "sitemap.xml"}
 
 
 class PortfolioApplication:
-    def __init__(self, root=ROOT, bundle=None):
+    def __init__(self, root=ROOT, bundle=None, legacy_backend=False):
         self.root = Path(root).resolve()
         self.bundle = Path(bundle or os.environ.get("SPARE_AD_BUNDLE", self.root / ".spare-ad-runtime/bundle")).resolve()
         self.backend = None
+        self.legacy_backend = legacy_backend
 
     def load_backend(self):
         if self.backend is None:
@@ -40,12 +40,10 @@ class PortfolioApplication:
         if path == "/spare-ad":
             start_response("308 Permanent Redirect", [("Location", "/spare-ad/"), ("Content-Length", "0")])
             return [b""]
-        if path.startswith("/spare-ad/") and (self.bundle / "portfolio-integration.json").is_file():
+        if self.legacy_backend and path.startswith("/spare-ad/") and (self.bundle / "portfolio-integration.json").is_file():
             return self.load_backend()(environ, start_response)
         if path.startswith("/spare-ad/api/") or path == "/spare-ad/healthz":
-            body = json.dumps({"error": "The Python research service has not been connected at this address."}).encode()
-            start_response("503 Service Unavailable", [("Content-Type", "application/json"), ("Content-Length", str(len(body))), ("Cache-Control", "no-store")])
-            return [body]
+            return self.not_found(start_response)
         relative = path.lstrip("/")
         parts = Path(relative).parts
         if any(part.startswith(".") for part in parts) or "\\" in relative or not (relative in PUBLIC_FILES or not relative or (parts and parts[0] in PUBLIC_DIRECTORIES)):
@@ -82,4 +80,4 @@ class PortfolioApplication:
         return [b"Not found"]
 
 
-application = PortfolioApplication()
+application = PortfolioApplication(legacy_backend=os.environ.get("SPARE_AD_LEGACY_BACKEND") == "1")

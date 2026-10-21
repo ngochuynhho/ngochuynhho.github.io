@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Preview the complete portfolio, including Python inference at /spare-ad/."""
+"""Safely preview the static portfolio and browser-only /spare-ad/ application."""
 import argparse
 from pathlib import Path
 import sys
