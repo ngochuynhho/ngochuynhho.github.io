@@ -2,12 +2,24 @@
   "schema_version": 1,
   "author_id": "dYRENHsAAAAJ",
   "profile_url": "https://scholar.google.com/citations?user=dYRENHsAAAAJ&hl=en",
-  "updated_at": "2026-10-21T15:56:29.081515+00:00",
-  "citations": 1144,
+  "updated_at": "2026-10-22T15:52:17.990527+00:00",
+  "citations": 1145,
   "h_index": 14,
   "i10_index": 16,
   "previously_recorded_citations": 1089,
   "articles": [
+    {
+      "title": "Integration of neuroimaging signatures of aging and Alzheimer's with fluid biomarkers",
+      "authors": "MM Gonzales, NH Ho, DH Wang, T Rashid, SR Brandigampala, M Dong, ...",
+      "venue": "Alzheimer's & Dementia 22 (10), e71889, 2026",
+      "year": 2026,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dYRENHsAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dYRENHsAAAAJ:4JMBOYKVnBMC",
+      "doi": "",
+      "scholar_id": "dYRENHsAAAAJ:4JMBOYKVnBMC",
+      "citations": null,
+      "type": "other",
+      "topic": "dementia"
+    },
     {
       "title": "Intensive versus standard blood pressure control and overall brain small vessel disease burden: a post-hoc analysis of the SPRINT randomized clinical trial",
       "authors": "S Charisis, NM Pajewski, LR Price, NH Ho, T Rashid, D Wang, Y Zeng, ...",
@@ -400,7 +412,7 @@
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dYRENHsAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dYRENHsAAAAJ:Tyk-4Ss8FVUC",
       "doi": "",
       "scholar_id": "dYRENHsAAAAJ:Tyk-4Ss8FVUC",
-      "citations": 123,
+      "citations": 124,
       "type": "journal",
       "topic": "sensing-interaction"
     },
