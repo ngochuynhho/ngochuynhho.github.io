@@ -2,8 +2,8 @@
   "schema_version": 1,
   "author_id": "dYRENHsAAAAJ",
   "profile_url": "https://scholar.google.com/citations?user=dYRENHsAAAAJ&hl=en",
-  "updated_at": "2026-11-05T18:43:36.484078+00:00",
-  "citations": 1152,
+  "updated_at": "2026-11-06T17:56:45.296374+00:00",
+  "citations": 1154,
   "h_index": 14,
   "i10_index": 16,
   "previously_recorded_citations": 1089,
@@ -28,7 +28,7 @@
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dYRENHsAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dYRENHsAAAAJ:RHpTSmoSYBkC",
       "doi": "",
       "scholar_id": "dYRENHsAAAAJ:RHpTSmoSYBkC",
-      "citations": null,
+      "citations": 1,
       "type": "journal",
       "topic": "brain-health"
     },
@@ -376,7 +376,7 @@
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dYRENHsAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dYRENHsAAAAJ:YsMSGLbcyi4C",
       "doi": "",
       "scholar_id": "dYRENHsAAAAJ:YsMSGLbcyi4C",
-      "citations": 126,
+      "citations": 127,
       "type": "journal",
       "topic": "medical-imaging"
     },
