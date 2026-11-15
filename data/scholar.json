@@ -2,8 +2,8 @@
   "schema_version": 1,
   "author_id": "dYRENHsAAAAJ",
   "profile_url": "https://scholar.google.com/citations?user=dYRENHsAAAAJ&hl=en",
-  "updated_at": "2026-11-14T17:04:36.079177+00:00",
-  "citations": 1161,
+  "updated_at": "2026-11-15T17:41:36.815859+00:00",
+  "citations": 1164,
   "h_index": 14,
   "i10_index": 16,
   "previously_recorded_citations": 1089,
@@ -328,7 +328,7 @@
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dYRENHsAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dYRENHsAAAAJ:WF5omc3nYNoC",
       "doi": "",
       "scholar_id": "dYRENHsAAAAJ:WF5omc3nYNoC",
-      "citations": 75,
+      "citations": 76,
       "type": "journal",
       "topic": "sensing-interaction"
     },
@@ -345,7 +345,7 @@
       "topic": "medical-imaging"
     },
     {
-      "title": "Application of Deep Recurrent Q Network with Dueling Architecture for Optimal Sepsis Treatment Policy",
+      "title": "Application of deep recurrent Q network with dueling architecture for optimal sepsis treatment policy",
       "authors": "TC Do, HJ Yang, NH Ho",
       "venue": "스마트미디어저널= Smart media journal 10 (2), 48-54, 2021",
       "year": 2021,
@@ -412,7 +412,7 @@
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dYRENHsAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dYRENHsAAAAJ:Tyk-4Ss8FVUC",
       "doi": "",
       "scholar_id": "dYRENHsAAAAJ:Tyk-4Ss8FVUC",
-      "citations": 125,
+      "citations": 126,
       "type": "journal",
       "topic": "sensing-interaction"
     },
@@ -484,7 +484,7 @@
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dYRENHsAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dYRENHsAAAAJ:UeHWp8X0CEIC",
       "doi": "",
       "scholar_id": "dYRENHsAAAAJ:UeHWp8X0CEIC",
-      "citations": 86,
+      "citations": 87,
       "type": "journal",
       "topic": "dementia"
     },
